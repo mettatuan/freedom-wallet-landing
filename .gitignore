@@ -1,0 +1,29 @@
+# Sensitive Files
+*.env
+.env.local
+config.local.js
+
+# Credentials
+*credentials*.json
+*secret*.json
+*token*.txt
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Testing
+test-data/
+*.test.html
