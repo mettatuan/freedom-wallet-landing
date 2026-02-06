@@ -1441,7 +1441,7 @@
         // ✅ DEPLOYED v2.0 - CORS Fixed - Feb 6, 2026, 3:30 PM
         // Google Sheet: https://docs.google.com/spreadsheets/d/1-fruHaSlCKIOpIfU5Qrkns0ze3bx3E-mKUgQ5fUF-Hg/edit
         
-        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyEAj9qe83vi749TA41cbTLImtjpfj5C3gCRQqz_k3od7KDp183gi2zdqZ5uqg5BRtxmA/exec';
+        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwGBB22T6QWEx7W25XuU-yYnBgkg4PAFJu2dD9NdWAikT582wN63P1Xdyt1qAsXDdxr_w/exec';
         
         let currentRegistrationData = null;
         let userReferralCode = null;
@@ -1571,10 +1571,12 @@
                     userReferralCode = data.referralCode;
                 }
                 
+                // WORKAROUND: Use text/plain to avoid CORS preflight
+                // Browser won't send OPTIONS request for simple requests
                 const response = await fetch(GOOGLE_SHEETS_URL, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
+                        'Content-Type': 'text/plain',
                     },
                     body: JSON.stringify(data),
                     redirect: 'follow'
