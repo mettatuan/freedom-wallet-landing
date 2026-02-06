@@ -1585,10 +1585,11 @@
             const btn = event.target.closest('button');
             const originalText = btn.innerHTML;
             btn.innerHTML = '<i class="fas fa-check"></i> Đã Copy!';
-            btn.style.background = var(--success);
+            btn.style.background = '#2B8F4F';
             
             setTimeout(() => {
                 btn.innerHTML = originalText;
+                btn.style.background = '';
             }, 2000);
         }
 
