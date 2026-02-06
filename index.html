@@ -875,6 +875,7 @@
         .btn-telegram { background: #0088cc; }
         .btn-zalo { background: #0068ff; }
         .btn-twitter { background: #1da1f2; }
+        .btn-tiktok { background: #000000; }
         .btn-copy-link { background: var(--text); }
 
         .install-guide {
@@ -1267,8 +1268,8 @@
                 <div class="footer-col">
                     <h3>Cộng Đồng</h3>
                     <ul class="footer-links">
-                        <li>📱 <a href="https://t.me/giautoandien" target="_blank">Group WIT</a></li>
-                        <li>💬 <a href="https://t.me/freedomwalletapp" target="_blank">Group Freedom Wallet</a></li>
+                        <li>📱 <a href="https://t.me/giautoandien" target="_blank">Cộng đồng Giàu Toàn Diện</a></li>
+                        <li>💬 <a href="https://t.me/freedomwalletapp" target="_blank">Hỗ trợ Freedom Wallet</a></li>
                     </ul>
                 </div>
             </div>
@@ -1389,17 +1390,20 @@
                         Chia sẻ ngay:
                     </p>
                     <div class="social-share">
-                        <a href="#" id="shareFacebook" class="btn-social btn-facebook" target="_blank">
+                        <a href="javascript:void(0)" id="shareFacebook" class="btn-social btn-facebook" target="_blank">
                             <i class="fab fa-facebook-f"></i> Facebook
                         </a>
-                        <a href="#" id="shareTelegram" class="btn-social btn-telegram" target="_blank">
+                        <a href="javascript:void(0)" id="shareTelegram" class="btn-social btn-telegram" target="_blank">
                             <i class="fab fa-telegram-plane"></i> Telegram
                         </a>
-                        <a href="#" id="shareZalo" class="btn-social btn-zalo" target="_blank">
+                        <a href="javascript:void(0)" id="shareZalo" class="btn-social btn-zalo" target="_blank">
                             <i class="fas fa-comment"></i> Zalo
                         </a>
-                        <a href="#" id="shareTwitter" class="btn-social btn-twitter" target="_blank">
-                            <i class="fab fa-twitter"></i> X (Twitter)
+                        <a href="javascript:void(0)" id="shareTwitter" class="btn-social btn-twitter" target="_blank">
+                            <i class="fab fa-twitter"></i> X
+                        </a>
+                        <a href="javascript:void(0)" id="shareTikTok" class="btn-social btn-tiktok" target="_blank">
+                            <i class="fab fa-tiktok"></i> TikTok
                         </a>
                     </div>
                 </div>
@@ -1621,10 +1625,37 @@
                 
                 // Setup social share links
                 const shareText = encodeURIComponent('🎁 Freedom Wallet MIỄN PHÍ! Quản lý tài chính thông minh, áp dụng 6 Hũ Tiền và 5 Cấp Bậc Tài Chính. Đăng ký ngay!');
-                document.getElementById('shareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(referralLink)}&quote=${shareText}`;
-                document.getElementById('shareTelegram').href = `https://t.me/share/url?url=${encodeURIComponent(referralLink)}&text=${shareText}`;
-                document.getElementById('shareZalo').href = `https://zalo.me/share?url=${encodeURIComponent(referralLink)}`;
-                document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(referralLink)}&text=${shareText}`;
+                const shareTitle = encodeURIComponent('Freedom Wallet - Quản Lý Tài Chính');
+                
+                // Setup click handlers with proper URLs
+                document.getElementById('shareFacebook').onclick = function(e) {
+                    e.preventDefault();
+                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(referralLink)}&quote=${shareText}`, '_blank', 'width=600,height=400');
+                };
+                
+                document.getElementById('shareTelegram').onclick = function(e) {
+                    e.preventDefault();
+                    window.open(`https://t.me/share/url?url=${encodeURIComponent(referralLink)}&text=${shareText}`, '_blank', 'width=600,height=400');
+                };
+                
+                document.getElementById('shareZalo').onclick = function(e) {
+                    e.preventDefault();
+                    window.open(`https://zalo.me/share?url=${encodeURIComponent(referralLink)}`, '_blank', 'width=600,height=400');
+                };
+                
+                document.getElementById('shareTwitter').onclick = function(e) {
+                    e.preventDefault();
+                    window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(referralLink)}&text=${shareText}`, '_blank', 'width=600,height=400');
+                };
+                
+                document.getElementById('shareTikTok').onclick = function(e) {
+                    e.preventDefault();
+                    // TikTok không có direct share URL, copy link để user tự paste
+                    const input = document.getElementById('referralLinkInput');
+                    input.select();
+                    document.execCommand('copy');
+                    alert('✅ Link đã copy! Mở TikTok và paste vào bài đăng của bạn.');
+                };
                 
                 installGuide.style.display = 'none';
             } else {
