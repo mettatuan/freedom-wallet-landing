@@ -1621,31 +1621,6 @@
                     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
                 
-                // Read response as text first to debug
-                const responseText = await response.text();
-                console.log('📄 Response text:', responseText.substring(0, 500));
-                
-                // Try to parse as JSON
-                if (response.ok) {
-                    try {
-                        const result = JSON.parse(responseText);
-                        console.log('✅ Server response:', result);
-                        if (!result.success) {
-                            throw new Error(result.message || 'Server returned error');
-                        }
-                        console.log('========================================\n');
-                    } catch (e) {
-                        console.error('⚠️ Could not parse JSON response:', e);
-                        console.log('This might be an HTML error page. Check Apps Script deployment!');
-                        console.log('========================================\n');
-                        throw new Error('Google Apps Script returned HTML error instead of JSON. Check deployment settings.');
-                    }
-                } else {
-                    console.error('❌ HTTP Error:', response.status, response.statusText);
-                    console.log('========================================\n');
-                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-                }
-                
             } catch (error) {
                 console.error('\n========================================');
                 console.error('❌ ERROR SENDING TO GOOGLE SHEETS');
