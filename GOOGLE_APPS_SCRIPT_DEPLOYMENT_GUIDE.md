@@ -1,177 +1,197 @@
-# 🚀 HƯỚNG DẪN DEPLOY GOOGLE APPS SCRIPT
+# 🚀 HƯỚNG DẪN DEPLOY GOOGLE APPS SCRIPT - CỰC KỲ QUAN TRỌNG!
 
-## ⚠️ QUAN TRỌNG: Đây là lý do Google Sheets không nhận được data!
+## ⚠️ CẢNH BÁO: Đây là lý do Google Sheets không nhận được data!
 
-Google Apps Script phải được deploy với **đúng permissions** thì landing page mới gửi data được.
+**Current Error**: `SyntaxError: Identifier 'CONFIG' has already been declared`
+
+**Root Cause**: Bạn paste code mới vào Apps Script mà chưa xóa code cũ → bị duplicate!
 
 ---
 
-## 📋 CÁC BƯỚC DEPLOY
+## 🔥 BƯỚC 1: XÓA CODE CŨ (QUAN TRỌNG NHẤT!)
 
-### Bước 1: Mở Google Apps Script Editor
-
-1. Vào Google Sheet của bạn: https://docs.google.com/spreadsheets/d/1Xj2sH_LuJtFS0zQX-C2VkNtF52f5sOBGa6-0bSUIvGw/edit
+1. Vào Google Sheet: https://docs.google.com/spreadsheets/d/1Xj2sH_LuJtFS0zQX-C2VkNtF52f5sOBGa6-0bSUIvGw/edit
 2. Click **Extensions** → **Apps Script**
-3. Xóa toàn bộ code mặc định
-4. Copy toàn bộ nội dung từ file `google_apps_script.gs` và paste vào
+3. ⚠️ **XÓA TOÀN BỘ** code hiện có (Ctrl+A → Delete)
+4. Nhìn thấy file trống hoàn toàn → OK!
 
-### Bước 2: Save Project
+---
 
-1. Click vào icon đĩa (Save) hoặc `Ctrl + S`
-2. Đặt tên project: `FreedomWallet_Backend`
+## 📋 BƯỚC 2: PASTE CODE MỚI
 
-### Bước 3: Deploy Web App (QUAN TRỌNG NHẤT!)
+1. Mở file [google_apps_script.gs](google_apps_script.gs) trong VS Code
+2. Copy **TOÀN BỘ** code (Ctrl+A → Ctrl+C)
+3. Paste vào Apps Script Editor (Ctrl+V)
+4. Click **Save** (Ctrl+S)
+5. Đổi tên project: `FreedomWallet_Backend`
 
-1. Click nút **Deploy** (góc trên bên phải) → **New deployment**
-2. Click vào icon bánh răng ⚙️ → chọn **Web app**
+---
+
+## 🚀 BƯỚC 3: DEPLOY (ĐÚNG CÁCH!)
+
+1. Click nút **Deploy** (góc trên phải) → **New deployment**
+2. Click icon ⚙️ → chọn **Web app**
 3. Điền thông tin:
-   - **Description**: `FreedomWallet Landing Page API v1`
-   - **Execute as**: Chọn **Me** (email của bạn)
+   - **Description**: `FreedomWallet v1`
+   - **Execute as**: ✅ **Me** (email của bạn)
    - **Who has access**: ⚠️ **PHẢI CHỌN "Anyone"** ⚠️
-     - ❌ KHÔNG chọn "Only myself" (sẽ bị lỗi authentication!)
-     - ✅ PHẢI chọn "Anyone" để landing page có thể gửi data
+     - ❌ KHÔNG chọn "Only myself" (sẽ bị CORS error!)
+     - ✅ PHẢI chọn "Anyone"
 4. Click **Deploy**
 
-### Bước 4: Xác nhận Permissions
+---
+
+## 🔐 BƯỚC 4: AUTHORIZE (QUAN TRỌNG!)
 
 1. Click **Authorize access**
-2. Chọn tài khoản Google của bạn
-3. Click **Advanced** → **Go to FreedomWallet_Backend (unsafe)**
-4. Click **Allow**
-
-### Bước 5: Copy URL
-
-1. Sau khi deploy thành công, bạn sẽ thấy **Web app URL**
-2. Copy URL này (dạng: `https://script.google.com/macros/s/AKfycb.../exec`)
-3. Paste vào file `index.html` tại dòng **1440**:
-
-```javascript
-const GOOGLE_SHEETS_URL = 'PASTE_URL_VÀO_ĐÂY';
-```
+2. Chọn tài khoản Google
+3. Click **Advanced**
+4. Click **Go to FreedomWallet_Backend (unsafe)**
+5. Click **Allow**
 
 ---
 
-## 🧪 KIỂM TRA DEPLOYMENT
+## 📝 BƯỚC 5: COPY URL MỚI
 
-### Test 1: Kiểm tra API hoạt động
+1. Sau deploy thành công, thấy **Web app URL**
+2. Copy URL (dạng: `https://script.google.com/macros/s/AKfycb.../exec`)
+3. Mở [index.html](index.html) trong VS Code
+4. Tìm dòng 1444 (search: `GOOGLE_SHEETS_URL`)
+5. Replace URL cũ bằng URL mới:
 
-Mở trình duyệt và truy cập URL vừa copy, thêm `?test=1` vào cuối:
-
+```javascript
+const GOOGLE_SHEETS_URL = 'PASTE_URL_MỚI_VÀO_ĐÂY';
 ```
-https://script.google.com/macros/s/AKfycb.../exec?test=1
+
+6. **Save file** (Ctrl+S)
+
+---
+
+## 🧪 BƯỚC 6: TEST (KIỂM TRA THÀNH CÔNG!)
+
+### Test 1: Kiểm tra API
+
+Mở trình duyệt, paste URL + `?test=1`:
+```
+https://script.google.com/macros/s/YOUR_NEW_URL/exec?test=1
 ```
 
-Nếu thấy response dạng này là **THÀNH CÔNG**:
-
+**Expected Success Response**:
 ```json
 {
   "success": true,
   "message": "Freedom Wallet API is working!",
   "data": {
-    "timestamp": "2024-02-06T...",
+    "timestamp": "2026-02-06T...",
     "version": "1.0.0",
     "sheetName": "FreedomWallet_Registrations"
   }
 }
 ```
 
+❌ **If you see HTML error page** → Code có lỗi, quay lại Bước 1!
+
 ### Test 2: Kiểm tra từ Landing Page
 
-1. Mở [index.html](index.html) trong trình duyệt
-2. Mở **Developer Console** (`F12`)
-3. Đăng ký với thông tin test
+1. Refresh [index.html](index.html) trong browser (`F5`)
+2. Mở **Console** (`F12`)
+3. Đăng ký với email test
 4. Xem console logs:
-   - ✅ `📝 Form data: {...}` 
-   - ✅ `📤 Sending to Google Sheets: {...}`
-   - ✅ `🔗 URL: https://script...`
-   - ✅ `✅ Response status: 200`
-   - ✅ `✅ Server response: {success: true, ...}`
 
-5. Kiểm tra Google Sheet → phải thấy dòng mới xuất hiện!
+```
+========================================
+📝 SENDING TO GOOGLE SHEETS
+========================================
+Data: {
+  "timestamp": "...",
+  "fullName": "Test",
+  ...
+}
+URL: https://script.google.com/...
+✅ Response status: 200
+✅ Response OK: true
+📄 Response preview: {"success":true,...
+✅ Server response: {success: true, ...}
+========================================
+```
+
+5. ✅ Kiểm tra Google Sheet → thấy dòng mới!
 
 ---
 
-## ❌ CÁC LỖI THƯỜNG GẶP
+## ❌ TROUBLESHOOTING - CÁC LỖI THƯỜNG GẶP
 
-### Lỗi 1: CORS Policy Error
+### Lỗi 1: SyntaxError (CODE DUPLICATE)
 ```
-Access to fetch at 'https://script.google.com/...' from origin 'http://localhost:8000' 
-has been blocked by CORS policy
+SyntaxError: Identifier 'CONFIG' has already been declared
 ```
 
-**Nguyên nhân**: Deploy với "Only myself" thay vì "Anyone"
+**FIX**: 
+1. Vào Apps Script Editor
+2. **XÓA TOÀN BỘ code** (Ctrl+A → Delete)
+3. Paste code từ [google_apps_script.gs](google_apps_script.gs)
+4. Save → Deploy lại
 
-**Giải pháp**: 
-1. Deploy lại với **"Who has access" = "Anyone"**
-2. Copy URL mới và update vào [index.html](index.html)
+### Lỗi 2: CORS Policy Error
+```
+Access to fetch has been blocked by CORS policy
+```
 
-### Lỗi 2: Authorization Required
+**FIX**: Deploy với **"Who has access" = "Anyone"**, không phải "Only myself"!
+
+### Lỗi 3: HTML Error Page thay vì JSON
+
+Console hiển thị:
+```
+❌ Google Apps Script returned HTML error page!
+⚠️ This usually means:
+1. Script has syntax errors
+2. Script not deployed with "Anyone" access
+3. Duplicate code in Apps Script editor
+
+🔧 FIX: Open Apps Script, DELETE ALL code, paste fresh code, then Deploy
+```
+
+**FIX**: Làm theo hướng dẫn từ Bước 1!
+
+### Lỗi 4: Authorization Required
 ```
 Authorization is required to perform that action
 ```
 
-**Nguyên nhân**: Chưa authorize hoặc deploy sai cấu hình
-
-**Giải pháp**:
+**FIX**: 
 1. Vào Apps Script Editor
-2. Run hàm `doGet` một lần để trigger authorization
-3. Deploy lại
-
-### Lỗi 3: Response Status 302 (Redirect)
-
-**Nguyên nhân**: URL bị redirect vì permissions chưa đúng
-
-**Giải pháp**: 
-1. Kiểm tra lại **"Execute as" = Me**
-2. Kiểm tra lại **"Who has access" = Anyone**
-3. Deploy lại và lấy URL mới
-
-### Lỗi 4: Không thấy data trong Google Sheet
-
-**Nguyên nhân**: URL trong [index.html](index.html) không khớp với deployment hiện tại
-
-**Giải pháp**:
-1. Vào Apps Script Editor → **Deploy** → **Manage deployments**
-2. Copy lại **Web app URL** từ deployment mới nhất
-3. Update vào [index.html](index.html) dòng 1440
+2. Click **Run** → chọn function `doGet`
+3. Authorize lại
+4. Deploy mới
 
 ---
 
-## 🔍 DEBUG CHECKLIST
+## 📞 NẾU VẪN LỖI:
 
-Khi data không được gửi đến Google Sheets, check từng bước:
-
-- [ ] Apps Script đã deploy với **"Who has access" = Anyone**
-- [ ] URL trong [index.html](index.html) khớp với deployment URL
-- [ ] Test endpoint `?test=1` trả về JSON success
-- [ ] Console log không có lỗi CORS
-- [ ] Console log hiển thị `Response status: 200`
-- [ ] Google Sheet có tab tên `FreedomWallet_Registrations`
-- [ ] Header row đã tồn tại (row 1)
+1. Open browser Console (`F12`)
+2. Đăng ký test
+3. Screenshot toàn bộ console logs
+4. Gửi cho tôi kèm:
+   - Deployment URL
+   - Apps Script deployment settings screenshot
+   - Console errors
 
 ---
 
-## 📞 HỖ TRỢ
+## ✅ CHECKLIST HOÀN TẤT
 
-Nếu vẫn gặp vấn đề:
-
-1. Mở trình duyệt, bật Console (`F12`)
-2. Đăng ký thử trên landing page
-3. Copy toàn bộ console logs
-4. Gửi cho tôi kèm theo:
-   - Screenshot lỗi (nếu có)
-   - Deployment URL hiện tại
-   - Screenshot Apps Script deployment settings
+- [ ] ✅ Xóa toàn bộ code cũ trong Apps Script
+- [ ] ✅ Paste code mới từ google_apps_script.gs
+- [ ] ✅ Save project
+- [ ] ✅ Deploy với "Execute as: Me" và "Anyone" access
+- [ ] ✅ Authorize permissions
+- [ ] ✅ Copy URL mới vào index.html dòng 1444
+- [ ] ✅ Save index.html
+- [ ] ✅ Test endpoint với ?test=1 → thấy JSON success
+- [ ] ✅ Test registration → thấy console logs OK
+- [ ] ✅ Check Google Sheet → thấy dòng mới xuất hiện!
 
 ---
 
-## ✅ HOÀN TẤT!
-
-Sau khi deploy đúng:
-- ✅ Landing page gửi data thành công
-- ✅ Google Sheets nhận được registrations
-- ✅ Referral tracking hoạt động
-- ✅ Social share buttons có thể click
-- ✅ Console logs hiển thị debug info
-
-**Lưu ý**: Mỗi lần thay đổi code Apps Script, phải **deploy lại** (New deployment) để có URL mới!
+## 🎉 HOÀN TẤT

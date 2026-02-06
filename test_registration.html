@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Freedom Wallet Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .success { background: #d4edda; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; border: 1px solid #f5c6cb; }
+        button {
+            background: #0F50AD;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover { background: #0d4291; }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Freedom Wallet Registration API</h1>
+    
+    <form id="testForm">
+        <label>Họ tên:</label>
+        <input type="text" id="fullName" value="Test User" required>
+        
+        <label>Email:</label>
+        <input type="email" id="email" value="test@example.com" required>
+        
+        <label>Số điện thoại:</label>
+        <input type="tel" id="phone" value="0901234567" required>
+        
+        <label>Gói:</label>
+        <select id="plan" style="width: 100%; padding: 10px; margin: 8px 0;">
+            <option value="free">FREE</option>
+            <option value="premium">Premium</option>
+        </select>
+        
+        <button type="submit" style="margin-top: 20px; width: 100%;">🚀 Test Registration</button>
+    </form>
+    
+    <div id="result"></div>
+    
+    <script>
+        const API_URL = 'https://script.google.com/macros/s/AKfycbyrYYTCcpebO2f_oaPi1wBCIj8VBKHZTLzpntzb8HGRzjMEEepraCgGY9oT9oobjsO6Fg/exec';
+        
+        function generateReferralCode(email) {
+            let hash = 0;
+            for (let i = 0; i < email.length; i++) {
+                const char = email.charCodeAt(i);
+                hash = ((hash << 5) - hash) + char;
+                hash = hash & hash;
+            }
+            return Math.abs(hash).toString(36).substring(0, 8).toUpperCase();
+        }
+        
+        document.getElementById('testForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<p>🔄 Sending request...</p>';
+            resultDiv.className = 'result';
+            
+            const formData = {
+                timestamp: new Date().toISOString(),
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                plan: document.getElementById('plan').value,
+                source: 'Test Page',
+                status: document.getElementById('plan').value === 'premium' ? 'Chờ thanh toán' : 'Đã đăng ký',
+                referralCode: generateReferralCode(document.getElementById('email').value),
+                referrer: ''
+            };
+            
+            console.log('📝 Sending data:', formData);
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                    redirect: 'follow'
+                });
+                
+                console.log('✅ Response status:', response.status);
+                
+                const responseText = await response.text();
+                console.log('📄 Response:', responseText);
+                
+                const result = JSON.parse(responseText);
+                
+                if (result.success) {
+                    resultDiv.className = 'result success';
+                    resultDiv.innerHTML = `✅ SUCCESS!\n\n${JSON.stringify(result, null, 2)}`;
+                } else {
+                    resultDiv.className = 'result error';
+                    resultDiv.innerHTML = `❌ ERROR\n\n${JSON.stringify(result, null, 2)}`;
+                }
+                
+            } catch (error) {
+                console.error('❌ Error:', error);
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `❌ EXCEPTION\n\n${error.message}\n\n${error.stack}`;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -73,6 +73,19 @@ const CONFIG = {
 // ============================================
 
 /**
+ * Handle OPTIONS requests for CORS preflight
+ */
+function doOptions(e) {
+  return ContentService
+    .createTextOutput('')
+    .setMimeType(ContentService.MimeType.TEXT)
+    .setHeader('Access-Control-Allow-Origin', '*')
+    .setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
+    .setHeader('Access-Control-Allow-Headers', 'Content-Type')
+    .setHeader('Access-Control-Max-Age', '3600');
+}
+
+/**
  * Handle GET requests - Test endpoint
  */
 function doGet(e) {
