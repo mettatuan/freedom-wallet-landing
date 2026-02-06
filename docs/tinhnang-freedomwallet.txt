@@ -1,0 +1,438 @@
+🎯 DANH SÁCH ĐẦY ĐỦ TÍNH NĂNG FREEDOM WALLET
+📊 I. TÍNH NĂNG CỐT LÕI (CORE FEATURES)
+✅ 1. DASHBOARD TỰ DO TÀI CHÍNH
+Tổng quan tài chính trong một màn hình
+5 Summary Cards: Tổng thu, Tổng chi, Tổng cộng, Giao dịch, Trung bình
+6 biểu đồ phân tích:
+Thu - Chi theo tháng (Line chart)
+Chi tiêu theo danh mục (Donut chart)
+Thu nhập theo danh mục (Donut chart)
+Thu chi theo tài khoản (Bar chart)
+Thống kê đầu tư (Line/Bar chart)
+Danh mục nợ (Donut chart)
+Financial Journey Roadmap - Lộ trình tài chính
+Time Filter - Lọc theo ngày/tuần/tháng/quý/năm/tùy chỉnh
+Giao dịch gần đây - 10 giao dịch mới nhất
+Cảnh báo thông minh khi chi tiêu vượt ngưỡng
+
+💰 2. QUẢN LÝ GIAO DỊCH THÔNG MINH
+3 loại giao dịch: Thu, Chi, Chuyển khoản
+Phân loại tự động theo danh mục
+Filters nâng cao:
+Time filter (7 loại khoảng thời gian)
+Type filter (Thu/Chi/Chuyển khoản)
+Category filter (tất cả danh mục)
+Jar filter (6 hũ tiền)
+2 chế độ hiển thị:
+Desktop: Table view với pagination (10 items/page)
+Mobile: Date-grouped list view
+Transaction Modal - Form nhập chi tiết:
+Ngày, loại, danh mục, số tiền
+Tài khoản nguồn/đích
+Hũ tiền phân bổ (tự động theo danh mục)
+Ghi chú
+Reset filters - Xóa bộ lọc nhanh
+Xuất dữ liệu (Excel/CSV)
+Báo cáo chi tiết theo danh mục, thời gian
+
+🏦 3. QUẢN LÝ TÀI KHOẢN
+Hỗ trợ 5 loại tài khoản:
+Tiền mặt
+Ngân hàng (30+ ngân hàng Việt Nam)
+Ví điện tử (MoMo, ZaloPay, VNPay...)
+Thẻ tín dụng
+Khác
+Custom Account ID - Tự đặt tên mã tài khoản
+Icon Picker - 3 tabs:
+Basic icons (15+ emoji)
+Financial institutions (30+ ngân hàng)
+Upload custom logo (PNG, JPG, max 2MB)
+2 chế độ hiển thị:
+Desktop: Accounts list với số dư
+Mobile: Balance card với account selector
+Transaction history by account - Lịch sử giao dịch theo tài khoản
+Eye toggle - Ẩn/hiện số dư
+Account Details - Chi tiết tài khoản:
+Số dư đầu kỳ
+Tổng thu/chi
+Số dư hiện tại
+Biểu đồ xu hướng
+
+🏷️ 4. QUẢN LÝ DANH MỤC
+8 loại danh mục:
+Thu nhập
+Chi tiêu
+Đầu tư
+Nợ
+Cho vay
+Tài sản
+Khác
+Category Modal - Form tạo danh mục:
+Tên danh mục
+Icon picker (16+ emoji mặc định + custom)
+Loại danh mục
+Auto-allocate 6 hũ (checkbox)
+Jar assignment (dropdown)
+Ghi chú
+8 tabs hiển thị - Desktop:
+Tất cả + 7 loại riêng
+Mobile dropdown - Chuyển tab dễ dàng
+Card grid display - Hiển thị dạng thẻ với icon
+Category counts - Đếm số lượng mỗi loại
+
+💸 5. QUẢN LÝ KHOẢN NỢ
+2 loại nợ: Vay / Cho vay
+Debt Modal - Form tạo khoản nợ:
+Loại nợ (Vay/Cho vay)
+Danh mục (tự động lấy jar từ category)
+Người cho vay/đi vay
+Số tiền vay
+Lãi suất (%/năm)
+Tài khoản nhận tiền (với balance hint)
+Ngày vay/trả
+Tên khoản nợ (optional)
+Digital Contract - Hợp đồng số:
+Thông tin đầy đủ
+Điều khoản thanh toán
+Chữ ký điện tử
+Chia sẻ qua email/social
+Pay Debt Modal - Trả nợ:
+Số tiền trả (max hint)
+Tài khoản thanh toán
+Hũ trả nợ (ẩn, tự động từ category)
+Ngày trả
+Ghi chú
+Summary: Số tiền trả + Còn nợ sau khi trá
+5 Summary Cards: Tổng nợ, Đã trả, Còn nợ, Lãi, Khoản nợ
+Mobile status filter tabs: Tất cả/Đang vay/Đã trả
+Desktop table - 13 columns:
+Tên, Loại, Người cho vay, Số tiền, Đã trả, Còn nợ, Lãi suất, Ngày vay, Ngày trả, Progress bar, Trạng thái, Actions
+Filters: Status/Category/Jar/Sort/Search
+Progress tracking - Tiến độ trả nợ
+Debt Detail Modal - Chi tiết khoản nợ:
+Thông tin đầy đủ
+Payment history
+Biểu đồ thanh toán
+
+📈 6. QUẢN LÝ ĐẦU TƯ
+Investment Modal - 2 tabs:
+Tab 1: Thông tin cơ bản:
+Tên đầu tư, Danh mục
+Vốn đầu tư, Vốn tự có, Vốn vay (tự động)
+Số lượng (hỗ trợ thập phân), Giá mua bình quân (tự động)
+Ngày mua, Giá hiện tại, Phí giao dịch
+Trạng thái (Đang đầu tư/Đã bán)
+Ngày bán (conditional)
+Tab 2: Liên kết & Cấu hình:
+Tài khoản thanh toán (custom dropdown with icon)
+Hũ nguồn vốn (với balance display)
+Khoản nợ liên kết (nếu vốn vay)
+Buy Investment Transaction - Mua thêm:
+Ngày mua, Số lượng, Giá mua
+Tổng tiền (tự động), Phí giao dịch
+Tài khoản chi, Hũ tiền nguồn
+Balance warning
+Sell Investment Transaction - Bán:
+2 loại: Bán một phần / Bán toàn bộ
+Ngày bán, Số lượng (nếu partial), Giá bán
+Tổng tiền (tự động), Phí giao dịch
+Tài khoản nhận, Hũ tiền nhận
+Net amount summary
+Update Current Price - Cập nhật giá:
+Giá đơn vị mới
+Preview giá trị mới
+Tính toán profit/ROI tự động
+Sell Investment Modal - Bán đầu tư:
+Giá bán, Phí giao dịch
+Profit/Loss preview (Lãi/Lỗ + ROI%)
+Debt repayment option (nếu có vốn vay)
+Return & Allocation:
+Tài khoản nhận
+Ngày bán
+Auto-allocate to 6 jars (checkbox) hoặc chọn jar cụ thể
+Summary: Tổng thu - Phí - Trả nợ = Số tiền nhận về
+5 Status Filter Buttons: Tất cả/Đang đầu tư/Đã bán
+5 Summary Cards: Tổng vốn, Giá trị hiện tại, Lãi/Lỗ, ROI%, Số lượng
+2 Charts:
+Value trend (Line chart)
+Category allocation (Donut chart)
+3 Summary Stat Cards: Tổng, Lãi-Lỗ, Hiển thị
+Mobile status tabs
+Filters: Category/Sort/Search
+Investment Detail Modal - Chi tiết:
+Thông tin đầy đủ
+Transaction history
+Profit/Loss analysis
+Charts (value trend, profit analysis)
+Conflict Resolution - Xử lý xung đột dữ liệu:
+So sánh Local vs Server changes
+3 options: Keep local / Use server / Merge
+
+🏠 7. QUẢN LÝ TÀI SẢN
+Asset Modal - 2 tabs:
+Tab 1: Thông tin cơ bản:
+Danh mục, Loại chi tiết (subcategory)
+Tên tài sản
+Hình ảnh (multiple):
+Upload files (nhiều ảnh)
+URL input (fallback)
+Preview gallery với horizontal scroll
+Thông tin BĐS (conditional):
+Địa chỉ
+Diện tích (m²)
+Giá mua, Ngày mua, Phí giao dịch
+Giá hiện tại, Lãi/Lỗ preview, Thu nhập thuê (conditional)
+Ngày bán (conditional), Ghi chú, Trạng thái (4 loại)
+Tab 2: Liên kết & Cấu hình:
+Tài khoản thanh toán (custom dropdown)
+Hũ nguồn vốn
+Khoản nợ liên kết (chỉ nợ vay chưa tất toán, + Add new)
+5 Status Filter Buttons: Tất cả/Đang sử dụng/Cho thuê/Đã bán/Bảo trì
+2 Charts: Value trend + Category allocation
+View Mode Toggle: Table / Grid
+Filters: Time/Category/Sort
+Pagination system
+Conditional rental income column
+Sell Asset Modal - Bán tài sản:
+Giá bán, Phí giao dịch
+Profit/Loss preview (enhanced design)
+Return & Allocation:
+Tài khoản nhận
+Ngày bán
+Jar allocation info (dựa vào danh mục)
+Jar override (optional)
+Asset Detail Modal - Chi tiết:
+3 tabs: Info / Value / Profit
+Image gallery (nếu có)
+Profit/Loss banner
+Info grid (14+ fields)
+Action buttons (Edit/Sell/Update price)
+Charts (value trend, profit analysis)
+
+💰 8. HỆ THỐNG 6 HŨ TIỀN
+6 Jars theo phương pháp T. Harv Eker:
+Tự Do Tài Chính (FFA) - 10%
+Giáo Dục (EDU) - 10%
+Hưởng Thụ (PLAY) - 10%
+Quỹ Dự Phòng (LTSS) - 10%
+Chi Tiêu Cần Thiết (NEC) - 55%
+Cho Đi (GIVE) - 5%
+Jars Page:
+6 Jars grid display với số dư
+TimeFilter component
+Settings button
+3 Charts:
+Allocation donut chart
+Monthly income-expense line chart
+Category spending by jar
+Jar Transfer Modal - Chuyển tiền giữa các hũ:
+Từ hũ, Đến hũ
+Số tiền (validation)
+Ghi chú
+Source balance display
+Jar History Modal - Lịch sử giao dịch:
+Time filter
+Summary stats
+Mobile date-grouped list
+Desktop table
+Jar Details Modal - Chi tiết hũ:
+Thông tin tỷ lệ
+Số dư hiện tại
+Mục tiêu
+Settings shortcut
+Jars Settings Modal - Cài đặt hũ:
+Tùy chỉnh tỷ lệ (%)
+Số dư đầu kỳ
+Mục tiêu
+Màu sắc (color picker)
+Ghi chú
+Save all jars button
+
+⚙️ II. TÍNH NĂNG CÀI ĐẶT & TÙY CHỈNH
+🎨 9. CÀI ĐẶT ỨNG DỤNG
+General Settings:
+Currency (VND/USD/EUR...)
+Date format (DD/MM/YYYY, MM/DD/YYYY...)
+Theme Selection - 5 themes:
+Blue (default)
+Purple
+Pink
+Green
+Orange
+Bottom Navigation Customizer (Mobile):
+Drag-drop tabs
+Max 3 tabs (+ 2 fixed: Menu & FAB)
+Choose from: Dashboard, Transactions, Accounts, Categories, etc.
+6 Jars Settings Shortcut
+Security & Password:
+Change password modal
+Password strength indicator
+Data Management:
+Delete sample data (2-step confirmation)
+Sync all data
+Backup config
+Auto-backup toggle
+Progress modal with steps
+
+📱 III. TÍNH NĂNG MOBILE (RESPONSIVE)
+📱 10. MOBILE UI COMPONENTS
+Floating Action Button (FAB) - Quick add transaction
+Bottom Navigation Bar:
+Menu button (fixed left)
+Dynamic tabs container (3 slots)
+FAB center button
+Customizable tabs
+Menu Drawer:
+9 navigation items
+User actions (disabled: Notifications, Profile)
+Settings
+Logout
+Footer (v3.2.0)
+Mobile Investment Portfolio:
+3 tabs: Profit / Assets / Market Value
+Donut chart with center value
+Filter button
+Asset list
+Add investment button
+Mobile Investment Detail Screen:
+3 tabs: Profit / Balance / Growth
+Time filters (Day/Week/Month/Quarter/Year)
+Charts per tab
+Action buttons (Buy/Sell/Add)
+Summary section (6 rows)
+Transaction history
+Mobile Asset Portfolio:
+3 tabs: Profit / Assets / Growth
+Donut chart
+5 Status tabs
+Asset list
+Add asset button
+Mobile Asset Detail Screen:
+Image gallery (swipeable)
+Profit/Loss banner
+3 action buttons (Edit/Sell/Update)
+Info grid (14+ fields)
+Conditional fields (location, area, rental income...)
+Mobile Asset Selection Modal:
+Activity toggle
+Checkbox list
+Done button
+
+🔧 IV. TÍNH NĂNG KỸ THUẬT & TỐI ƯU
+⚡ 11. PERFORMANCE & OPTIMIZATION
+Multi-level Caching:
+Script Cache (10 minutes)
+User Cache (30 minutes)
+Document Cache (6 hours)
+Data Sync Manager:
+Background sync
+Smart retry mechanism
+Conflict resolution
+Performance Monitor:
+Load time tracking
+API call metrics
+Memory usage
+Lazy Loading:
+Module preload
+Chart lazy init
+Image lazy load
+Error Boundary:
+Global error handling
+User-friendly error messages
+Error recovery
+
+🔐 12. AUTHENTICATION & SECURITY
+Login System:
+Username/Password
+Password toggle (eye icon)
+Remember me
+Error handling
+Change Password:
+Current password validation
+New password with strength indicator
+Confirm password matching
+6+ characters required
+Session Management:
+Auto logout after inactivity
+Secure session storage
+Data Protection:
+Google Apps Script security
+User-level data isolation
+
+📊 13. ANALYTICS & REPORTING
+Dashboard Analytics:
+6 comprehensive charts
+Financial Journey Roadmap
+Recent transactions
+Transaction Reports:
+Group by date/category/jar
+Export to Excel/CSV
+Custom date range
+Account Reports:
+Balance trends
+Transaction history
+Account details
+Investment Analytics:
+Profit/Loss calculation
+ROI tracking
+Value trend analysis
+Transaction history
+Asset Analytics:
+Value appreciation
+Rental income tracking
+Profit/Loss analysis
+Debt Analytics:
+Payment progress
+Interest calculation
+Payment history
+
+🎯 V. TÍNH NĂNG ĐẶC BIỆT
+🤖 14. AI & AUTOMATION (ROADMAP)
+AI Financial Advisor (Planned):
+Spending behavior analysis
+Optimization recommendations
+24/7 Q&A chatbot
+Auto-allocation:
+Category → Jar mapping
+Transaction categorization
+Smart Reminders:
+Bill payment reminders
+Budget alerts
+Goal milestone notifications
+
+👥 15. COMMUNITY FEATURES (ROADMAP)
+Freedom Leaders Community:
+Connect with experts
+Share experiences
+Learn from success stories
+Referral Program:
+Invite friends
+Earn rewards
+Leaderboard
+Local Meetups:
+Find events near you
+Network with community
+Attend workshops
+
+📈 TỔNG KẾT
+Số liệu thống kê:
+✅ 15 Module Groups (Core + Mobile + Settings)
+✅ 50+ Features chi tiết
+✅ 23 Modals cho các chức năng
+✅ 15+ Charts phân tích dữ liệu
+✅ 100% Responsive (Desktop + Mobile)
+✅ Offline-capable với caching
+✅ Google Apps Script - Miễn phí hosting
+USP - Điểm Khác Biệt:
+🎯 6 Jars Money Management - Độc quyền
+📊 Financial Journey Roadmap - Trực quan
+🤝 Community-driven - Kết nối chuyên gia
+💰 Multi-asset tracking - Đầu tư, Tài sản, Nợ
+📱 Mobile-first design - UX tối ưu
+🔒 Privacy-focused - Dữ liệu riêng tư
+💸 100% Free - Không quảng cáo
+🌐 Vietnamese-optimized - Hỗ trợ ngân hàng VN
+
+FREEDOM WALLET v3.2.0
+Ví Thông Minh Cho Người Sống Tự Do Tài Chính 🕊️
+

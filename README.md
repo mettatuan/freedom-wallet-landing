@@ -1,183 +1,165 @@
-# 🏦 Freedom Wallet - Landing Page & Registration System
+# 💰 Freedom Wallet - Landing Page
 
-> Hệ thống đăng ký hoàn chỉnh cho Freedom Wallet với backend tự động hóa
+Landing page quảng bá app **Freedom Wallet** với chiến lược viral marketing và hệ thống referral.
 
-## 📁 Cấu Trúc Thư Mục
+## 🎯 Mục Tiêu
 
-```
-freedom-wallet-registration/
-├── index.html                          # Landing page chính
-├── README.md                           # File này
-│
-├── backend/
-│   └── registration-handler.gs         # Google Apps Script API
-│
-├── docs/
-│   ├── README.md                       # Tổng quan chi tiết hệ thống
-│   ├── FLOW.md                         # Mô tả flow đầy đủ
-│   └── DEPLOYMENT.md                   # Hướng dẫn deploy từng bước
-│
-└── assets/
-    └── (images, css, js nếu tách riêng)
-```
-
-## 🚀 Quick Start
-
-### 1. Xem Landing Page
-Mở file `index.html` trong trình duyệt để xem trước.
-
-### 2. Deploy
-Đọc hướng dẫn chi tiết tại: [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)
-
-**Các bước chính:**
-1. Setup Google Sheet
-2. Deploy Google Apps Script (`backend/registration-handler.gs`)
-3. Update API URL trong `index.html`
-4. Deploy landing page lên hosting
-5. Test và go live!
-
-### 3. Tìm Hiểu Flow
-Xem flow diagram và mô tả chi tiết tại: [`docs/FLOW.md`](docs/FLOW.md)
-
-## 📖 Documentation
-
-### 📄 Chi Tiết Files
-
-| File | Mô tả |
-|------|-------|
-| **index.html** | Landing page với form đăng ký, pricing cards, features |
-| **backend/registration-handler.gs** | Google Apps Script xử lý submissions, gửi email & Telegram |
-| **docs/README.md** | Tài liệu tổng quan hệ thống |
-| **docs/FLOW.md** | Flow diagram: WIT → Freedom Wallet → EliroxBot → Phụng Sự |
-| **docs/DEPLOYMENT.md** | Hướng dẫn deploy chi tiết từng bước |
-
-### 🎯 Tính Năng Chính
-
-#### Landing Page (index.html)
-- ✅ Hero section với flow visualization
-- ✅ Pricing: 999K vs FREE (WIT members)
-- ✅ Form đăng ký với validation
-- ✅ Features showcase
-- ✅ Responsive design
-- ✅ Success modal
-
-#### Backend (registration-handler.gs)
-- ✅ Save to Google Sheet
-- ✅ Telegram bot notifications
-- ✅ Email confirmations (2 templates)
-- ✅ Data validation
-- ✅ Analytics functions
-
-## 🎨 Customization
-
-### Thay Đổi Màu Sắc
-Trong `index.html`, tìm section `:root`:
-```css
-:root {
-    --primary-blue: #0066FF;
-    --primary-purple: #667eea;
-    --gold: #FFD700;
-}
-```
-
-### Thay Đổi Giá
-Tìm và sửa trong `index.html`:
-```html
-<div class="price">
-    999K <small>VNĐ</small>
-</div>
-```
-
-### Cập Nhật Links
-- Telegram groups
-- EliroxBot URL
-- Payment information
-
-## 🔗 Resources
-
-### Telegram Groups
-- 🎓 **WIT**: https://t.me/giautoandien
-- 💰 **Freedom Wallet**: https://t.me/freedomwalletapp
-- 🤖 **EliroxBot**: https://t.me/eliroxvip
-
-### Websites
-- 🤖 **EliroxBot**: https://eliroxbot.com/
-
-## 🧪 Testing
-
-```bash
-# 1. Test landing page locally
-# Mở index.html trong browser
-
-# 2. Test Google Apps Script
-# Run function `testRegistration()` trong Apps Script Editor
-
-# 3. Test full flow
-# Submit form với data thật và verify:
-# - Google Sheet có data mới
-# - Telegram notification gửi thành công
-# - Email confirmation được gửi
-```
-
-## 📊 Tech Stack
-
-- **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
-- **Backend**: Google Apps Script
-- **Database**: Google Sheets
-- **Notifications**: Telegram Bot API, Gmail API
-- **Hosting**: GitHub Pages / Netlify / Vercel (recommended)
-
-## 🔐 Security
-
-- ✅ Input validation (client & server)
-- ✅ Rate limiting
-- ✅ CORS handling
-- ✅ HTTPS only
-- ⚠️ Khuyến nghị thêm: CAPTCHA, email verification
-
-## 📈 Analytics
-
-Xem thống kê trong Google Apps Script:
-```javascript
-// Run function này
-getRegistrationStats()
-```
-
-Hoặc gửi qua Telegram:
-```javascript
-sendStatsToTelegram()
-```
-
-## 🐛 Troubleshooting
-
-Các vấn đề thường gặp và cách giải quyết:
-
-1. **Form không submit** → Check Console (F12), verify API URL
-2. **Telegram không nhận notification** → Check Bot Token & Chat ID
-3. **Email không gửi** → Check Gmail daily limit (100 emails/day)
-
-Xem thêm tại: [`docs/DEPLOYMENT.md#troubleshooting`](docs/DEPLOYMENT.md#troubleshooting)
-
-## 🛣️ Roadmap
-
-- [ ] Payment gateway integration
-- [ ] Auto-send app links
-- [ ] Admin dashboard
-- [ ] Email marketing automation
-- [ ] A/B testing
-
-## 📞 Support
-
-- 💬 Telegram: https://t.me/freedomwalletapp
-- 📧 Email: support@freedomwallet.com
-- 📖 Docs: Xem thư mục `docs/`
-
-## 📜 License
-
-© 2026 Freedom Wallet by WIT - Giàu Toàn Diện
+- Thu hút **1000 người dùng đầu tiên** với gói FREE
+- Chuyển đổi sang gói Premium 999K
+- Viral growth qua hệ thống giới thiệu (2 bạn = FREE trọn đời)
 
 ---
 
-**🚀 Ready to deploy?** Start with [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)
+## 📁 Cấu Trúc Files
 
-**❓ Need help?** Check [`docs/README.md`](docs/README.md) for detailed documentation
+```
+freedom-wallet-landing/
+├── index.html                    # Landing page chính
+├── google_apps_script.gs         # Backend xử lý đăng ký
+├── DEPLOYMENT_GUIDE.md           # Hướng dẫn deploy chi tiết
+├── README.md                     # File này
+└── images/
+    ├── freedom-wallet.jpg        # Hero image
+    ├── freedom-wallet (2).jpg    # Dashboard
+    ├── freedom-wallet (3).jpg    # Giao dịch
+    ├── freedom-wallet (4).jpg    # 6 Hũ tiền
+    ├── freedom-wallet (5).jpg    # Tài sản
+    └── freedom-wallet (6).jpg    # 5 Cấp bậc
+```
+
+---
+
+## ✨ Tính Năng Landing Page
+
+### 🎨 Hero Section
+- Badge "FREE cho 1000 người đầu tiên" với animation
+- 1 nút CTA: **ĐĂNG KÝ NGAY**
+- 3 trust badges (tạo lòng tin)
+- Hình ảnh app thật
+
+### 💔 Pain Points
+6 vấn đề tài chính khách hàng thường gặp
+
+### 🚀 Features
+5 tính năng chính với screenshot thật:
+- Dashboard tài chính toàn diện
+- Quản lý giao dịch thông minh
+- Phương pháp 6 Hũ Tiền
+- Quản lý tài sản toàn diện
+- 5 Cấp bậc tài chính
+
+### 💰 Pricing
+2 gói rõ ràng:
+- **FREE**: 1000 người đầu HOẶC giới thiệu 2 bạn
+- **Premium 999K**: Trọn đời, được update tính năng mới
+
+### ❓ FAQ
+5 câu hỏi thường gặp
+
+### 📱 3 Modals
+1. **Registration Modal**: Chọn gói + điền thông tin
+2. **Payment Modal**: QR code OCB bank (VietQR)
+3. **Success Modal**: Redirect Telegram
+
+---
+
+## 🔧 Stack Công Nghệ
+
+| Công nghệ | Mục đích |
+|-----------|----------|
+| HTML5 + CSS3 | Frontend |
+| Vanilla JavaScript | Logic xử lý |
+| Google Apps Script | Backend API |
+| Google Sheets | Database |
+| VietQR API | QR code thanh toán |
+| Telegram Bot | Survey & support |
+
+---
+
+## 🚀 Deploy Checklist
+
+### Bước 1: Setup Google Apps Script ✅
+Xem chi tiết: [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md)
+
+1. ✅ Mở Google Sheets
+2. ✅ Tạo Apps Script project
+3. ✅ Copy code từ `google_apps_script.gs`
+4. ✅ Deploy as Web App (Anyone can access)
+5. ✅ Copy Deployment URL
+6. ✅ Update `index.html`
+
+### Bước 2: Test ✅
+
+1. ✅ Test API endpoint: `?test=1`
+2. ✅ Đăng ký thử từ landing page
+3. ✅ Kiểm tra data trong Google Sheets
+
+### Bước 3: Upload Landing Page 🚀
+
+**Option A: GitHub Pages (Free)**
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin YOUR_GITHUB_REPO
+git push -u origin main
+```
+
+**Option B: Netlify (Free)**
+Drag & drop folder vào Netlify
+
+---
+
+## 💳 Payment Flow
+
+### Gói FREE:
+1. User chọn FREE → Điền form
+2. Submit → Lưu vào Sheets (status: "Đã đăng ký")
+3. Redirect Telegram → Bot survey
+
+### Gói Premium:
+1. User chọn Premium → Điền form
+2. Hiển thị Payment Modal với QR code OCB
+3. User click "Tôi đã chuyển khoản"
+4. Admin xác nhận → Update status: "Đã thanh toán"
+
+---
+
+## 📊 Google Sheets Database
+
+**Sheet**: `FreedomWallet_Registrations`
+
+| Cột | Dữ liệu | Auto-fill |
+|-----|---------|-----------|
+| A | 📅 Ngày đăng ký | ✅ Timestamp |
+| B | Họ & Tên | User input |
+| C | 📧 Email | User input |
+| D | 📞 Điện thoại | User input |
+| E | 💎 Gói | User select |
+| F | 📍 Nguồn | ✅ "Landing Page" |
+| G | 📊 Trạng thái | ✅ Auto-set |
+| H | 👥 Người giới thiệu | Referral link |
+
+---
+
+## 📞 Support
+
+- 💬 Telegram Group: https://t.me/freedomwalletapp
+- 🤖 Telegram Bot: @FreedomWalletbot
+
+---
+
+## 📝 Changelog
+
+### v1.0.0 (2026-02-06)
+- ✅ Landing page với 5 sections
+- ✅ 2-tier pricing (FREE/Premium)
+- ✅ Google Apps Script backend
+- ✅ Payment flow với QR code
+- ✅ Modal system
+- ✅ Responsive design
+
+---
+
+**🚀 Let's achieve financial freedom together!**
