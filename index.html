@@ -301,18 +301,24 @@
             transform: scale(1.05);
         }
 
-        .pricing-card.featured::before {
-            content: '🔥 PHỔ BIẾN NHẤT';
+        .featured-badge {
             position: absolute;
             top: -15px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--accent);
-            color: var(--white);
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: var(--primary);
             padding: 8px 20px;
             border-radius: 20px;
             font-weight: 700;
             font-size: 0.85rem;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .pricing-card.featured::before {
+            content: '';
+            display: none;
         }
 
         .pricing-header {
@@ -965,23 +971,28 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-left">
-                    <div class="hero-badge">🎁 FREE cho 1000 người đầu tiên!</div>
-                    <h1>Quản Lý Tài Chính Thông Minh, Xây Dựng Tương Lai Giàu Có</h1>
-                    <p class="sub-headline">Freedom Wallet - Ứng dụng quản lý tài chính cá nhân hiện đại, giúp bạn kiểm soát thu chi, xây dựng 6 hũ tiền và chinh phục 5 cấp bậc tài chính.</p>
+                    <div class="hero-badge">🎁 Giới thiệu 2 bạn = FREE Forever!</div>
+                    <h1>Quản Lý Tài Chính Thông Minh với AI Assistant</h1>
+                    <p class="sub-headline">Freedom Wallet - Ứng dụng quản lý tài chính hiện đại dựa trên phương pháp 6 Hũ Tiền. Tích hợp Telegram Bot & AI để giúp bạn kiểm soát thu chi, xây dựng tài sản và đạt tự do tài chính.</p>
                     
-                    <button class="btn-register" onclick="openRegistrationModal()">
-                        <i class="fas fa-rocket"></i> ĐĂNG KÝ NGAY
-                    </button>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 30px;">
+                        <button class="btn-register" onclick="openRegistrationModal('free')" style="flex: 1; min-width: 200px;">
+                            <i class="fas fa-gift"></i> ĐĂNG KÝ FREE
+                        </button>
+                        <button class="btn-register" onclick="openRegistrationModal('premium')" style="flex: 1; min-width: 200px; background: linear-gradient(135deg, #FFD700, #FFA500); color: var(--primary);">
+                            <i class="fas fa-crown"></i> DÙ THỬ PREMIUM
+                        </button>
+                    </div>
                     
                     <div class="trust-badges">
                         <div class="trust-badge">
-                            <i class="fas fa-gift"></i> Miễn phí cho 1000 người đầu
+                            <i class="fas fa-users"></i> Giới thiệu 2 bạn = FREE vĩnh viễn
                         </div>
                         <div class="trust-badge">
-                            <i class="fas fa-users"></i> Giới thiệu 2 bạn = FREE trọn đời
+                            <i class="fas fa-robot"></i> Telegram Bot + AI Assistant
                         </div>
                         <div class="trust-badge">
-                            <i class="fas fa-shield-alt"></i> Dữ liệu an toàn 100%
+                            <i class="fas fa-shield-alt"></i> Data 100% của bạn
                         </div>
                     </div>
                 </div>
@@ -1127,55 +1138,155 @@
         <div class="container">
             <div class="section-title">
                 <h2>Chọn Gói Phù Hợp Với Bạn</h2>
-                <p>Đầu tư cho tương lai tài chính của bạn ngay hôm nay</p>
+                <p>Bắt đầu hành trình tự do tài chính ngay hôm nay</p>
+            </div>
+            
+            <!-- Pricing Comparison Toggle -->
+            <div style="text-align: center; margin-bottom: 40px;">
+                <div style="display: inline-flex; background: white; padding: 8px; border-radius: 50px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    <span style="padding: 12px 30px; font-weight: 600; color: var(--primary);">💰 Tiết kiệm với gói năm</span>
+                </div>
             </div>
             
             <div class="pricing-grid">
+                <!-- FREE PLAN -->
                 <div class="pricing-card">
                     <div class="pricing-header">
                         <div class="pricing-icon">🎁</div>
                         <h3>Gói FREE</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 5px;">Mở khóa vĩnh viễn</p>
                     </div>
                     <div class="pricing-price">
-                        FREE
+                        <span style="font-size: 3rem; font-weight: 700;">FREE</span>
+                        <span style="display: block; font-size: 1rem; opacity: 0.7; margin-top: -5px;">Trọn đời</span>
                     </div>
-                    <p class="pricing-note">Giới hạn 1000 người đầu tiên<br>HOẶC giới thiệu 2 bạn</p>
+                    <p class="pricing-note">
+                        🎯 Giới thiệu <strong>2 người bạn</strong> đăng ký<br>
+                        → Nhận FREE Forever ♾️
+                    </p>
                     
                     <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Tất cả tính năng cơ bản</li>
-                        <li><i class="fas fa-check"></i> 6 Hũ Tiền & Dashboard</li>
-                        <li><i class="fas fa-check"></i> Quản lý thu chi không giới hạn</li>
-                        <li><i class="fas fa-check"></i> Hỗ trợ qua Telegram group</li>
-                        <li><i class="fas fa-times"></i> Không được nâng cấp tính năng mới</li>
+                        <li><i class="fas fa-check"></i> <strong>Template Freedom Wallet v3.2</strong></li>
+                        <li><i class="fas fa-check"></i> 6 Hũ Tiền + Dashboard đầy đủ</li>
+                        <li><i class="fas fa-check"></i> Quản lý giao dịch không giới hạn</li>
+                        <li><i class="fas fa-check"></i> Đầu tư, tài sản, nợ</li>
+                        <li><i class="fas fa-check"></i> Self-hosted (100% privacy)</li>
+                        <li><i class="fas fa-check"></i> Hướng dẫn deploy chi tiết</li>
+                        <li><i class="fas fa-check"></i> <strong>Telegram Bot miễn phí</strong></li>
+                        <li style="padding-left: 30px; font-size: 0.9rem; opacity: 0.8;">
+                            <i class="fas fa-circle" style="font-size: 6px; margin-right: 8px;"></i> FAQ & Hướng dẫn
+                        </li>
+                        <li style="padding-left: 30px; font-size: 0.9rem; opacity: 0.8;">
+                            <i class="fas fa-circle" style="font-size: 6px; margin-right: 8px;"></i> Tips tài chính (1/tuần)
+                        </li>
+                        <li style="padding-left: 30px; font-size: 0.9rem; opacity: 0.8;">
+                            <i class="fas fa-circle" style="font-size: 6px; margin-right: 8px;"></i> Chat: 5 tin/ngày
+                        </li>
+                        <li><i class="fas fa-check"></i> Cập nhật template mới miễn phí</li>
+                        <li><i class="fas fa-check"></i> Community support</li>
+                        <li><i class="fas fa-times"></i> Xem số dư qua bot</li>
+                        <li><i class="fas fa-times"></i> Thêm giao dịch qua bot</li>
+                        <li><i class="fas fa-times"></i> AI Financial Assistant</li>
+                        <li><i class="fas fa-times"></i> Managed setup service</li>
+                        <li><i class="fas fa-times"></i> Priority support</li>
                     </ul>
                     
                     <button class="btn-select-plan free" onclick="openRegistrationModal('free')">
-                        Đăng Ký FREE
+                        <i class="fas fa-user-plus"></i> Đăng Ký FREE
                     </button>
+                    
+                    <p style="text-align: center; margin-top: 15px; font-size: 0.85rem; color: var(--text-light);">
+                        💡 Tip: Chia sẻ ngay để unlock nhanh!
+                    </p>
                 </div>
                 
+                <!-- PREMIUM PLAN -->
                 <div class="pricing-card featured">
+                    <div class="featured-badge">⭐ KHUYẾN NGHỊ</div>
                     <div class="pricing-header">
                         <div class="pricing-icon">💎</div>
                         <h3>Gói PREMIUM</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 5px;">Trải nghiệm cao cấp</p>
                     </div>
                     <div class="pricing-price">
-                        999K
+                        <span style="font-size: 3rem; font-weight: 700;">999.000đ</span>
+                        <span style="display: block; font-size: 1rem; opacity: 0.7; margin-top: -5px;">/năm</span>
                     </div>
-                    <p class="pricing-note">Thanh toán 1 lần - Trọn đời</p>
+                    <p class="pricing-note" style="background: linear-gradient(135deg, #ffd700, #ffed4e); color: var(--primary); padding: 12px; border-radius: 10px; font-weight: 600;">
+                        💰 ~83K/tháng • 🎁 Tặng 7 ngày dùng thử
+                    </p>
                     
                     <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> <strong>TẤT CẢ tính năng Gói FREE</strong></li>
-                        <li><i class="fas fa-check"></i> Được nâng cấp tính năng mới miễn phí</li>
-                        <li><i class="fas fa-check"></i> Hướng dẫn 1-1 cách sử dụng</li>
-                        <li><i class="fas fa-check"></i> Ưu tiên hỗ trợ từ mentor</li>
-                        <li><i class="fas fa-check"></i> Tham gia group VIP</li>
-                        <li><i class="fas fa-check"></i> Video hướng dẫn đầy đủ</li>
+                        <li><i class="fas fa-check" style="color: #FFD700;"></i> <strong>TẤT CẢ tính năng FREE</strong></li>
+                        <li><i class="fas fa-check" style="color: #FFD700;"></i> <strong>Telegram Bot KHÔNG GIỚI HẠN</strong></li>
+                        <li style="padding-left: 30px; font-size: 0.9rem;">
+                            <i class="fas fa-circle" style="font-size: 6px; margin-right: 8px;"></i> Xem số dư real-time
+                        </li>
+                        <li style="padding-left: 30px; font-size: 0.9rem;">
+                            <i class="fas fa-circle" style="font-size: 6px; margin-right: 8px;"></i> Thêm GD: "Chi 50k ăn sáng"
+                        </li>
+                        <li style="padding-left: 30px; font-size: 0.9rem;">
+                            <i class="fas fa-circle" style="font-size: 6px; margin-right: 8px;"></i> Báo cáo tức thì
+                        </li>
+                        <li style="padding-left: 30px; font-size: 0.9rem;">
+                            <i class="fas fa-circle" style="font-size: 6px; margin-right: 8px;"></i> Nhắc nhở thông minh
+                        </li>
+                        <li style="padding-left: 30px; font-size: 0.9rem;">
+                            <i class="fas fa-circle" style="font-size: 6px; margin-right: 8px;"></i> Chat ♾️ không giới hạn
+                        </li>
+                        <li><i class="fas fa-check" style="color: #FFD700;"></i> <strong>🤖 AI Financial Assistant</strong></li>
+                        <li style="padding-left: 30px; font-size: 0.9rem;">
+                            <i class="fas fa-circle" style="font-size: 6px; margin-right: 8px;"></i> Phân tích chi tiêu thông minh
+                        </li>
+                        <li style="padding-left: 30px; font-size: 0.9rem;">
+                            <i class="fas fa-circle" style="font-size: 6px; margin-right: 8px;"></i> Tư vấn ngân sách cá nhân
+                        </li>
+                        <li style="padding-left: 30px; font-size: 0.9rem;">
+                            <i class="fas fa-circle" style="font-size: 6px; margin-right: 8px;"></i> Dự đoán xu hướng
+                        </li>
+                        <li style="padding-left: 30px; font-size: 0.9rem;">
+                            <i class="fas fa-circle" style="font-size: 6px; margin-right: 8px;"></i> Coaching tài chính
+                        </li>
+                        <li><i class="fas fa-check" style="color: #FFD700;"></i> Managed Setup (5 phút)</li>
+                        <li><i class="fas fa-check" style="color: #FFD700;"></i> Multi-device sync real-time</li>
+                        <li><i class="fas fa-check" style="color: #FFD700;"></i> Automated backup hàng ngày</li>
+                        <li><i class="fas fa-check" style="color: #FFD700;"></i> Priority support (1h response)</li>
+                        <li><i class="fas fa-check" style="color: #FFD700;"></i> Custom reports & export</li>
+                        <li><i class="fas fa-check" style="color: #FFD700;"></i> 30 phút tư vấn/tháng</li>
+                        <li><i class="fas fa-check" style="color: #FFD700;"></i> Early access features mới</li>
+                        <li><i class="fas fa-check" style="color: #FFD700;"></i> VIP Community Telegram</li>
                     </ul>
                     
-                    <button class="btn-select-plan premium" onclick="openRegistrationModal('premium')">
-                        Đăng Ký 999K
+                    <button class="btn-select-plan premium" onclick="openRegistrationModal('premium')" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: var(--primary); font-weight: 700;">
+                        <i class="fas fa-crown"></i> Dùng Thử 7 Ngày MIỄN PHÍ
                     </button>
+                    
+                    <p style="text-align: center; margin-top: 15px; font-size: 0.85rem; color: var(--text-light);">
+                        💳 Không cần thẻ • ⚡ Hủy bất cứ lúc nào
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Comparison Note -->
+            <div style="text-align: center; margin-top: 50px; padding: 30px; background: white; border-radius: 20px; box-shadow: var(--shadow);">
+                <h3 style="margin-bottom: 20px; color: var(--primary);">🤔 Chưa chắc chắn?</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 25px; line-height: 1.8;">
+                    Bắt đầu với <strong>FREE</strong> để trải nghiệm app<br>
+                    Sau đó nâng cấp <strong>PREMIUM</strong> khi cần AI Assistant & Bot nâng cao
+                </p>
+                <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                    <div style="padding: 15px 25px; background: var(--background); border-radius: 10px;">
+                        <strong>✅ Data 100% của bạn</strong><br>
+                        <span style="font-size: 0.9rem; color: var(--text-light);">Lưu trên Drive cá nhân</span>
+                    </div>
+                    <div style="padding: 15px 25px; background: var(--background); border-radius: 10px;">
+                        <strong>🔒 Bảo mật tuyệt đối</strong><br>
+                        <span style="font-size: 0.9rem; color: var(--text-light);">Không bên thứ 3 truy cập</span>
+                    </div>
+                    <div style="padding: 15px 25px; background: var(--background); border-radius: 10px;">
+                        <strong>⚡ Setup nhanh</strong><br>
+                        <span style="font-size: 0.9rem; color: var(--text-light);">Premium: 5 phút • FREE: 15 phút</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1191,31 +1302,51 @@
             <div class="faq-container">
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>❓ Làm sao để nhận gói FREE?</span>
+                        <span>❓ Làm sao để nhận gói FREE vĩnh viễn?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Có 2 cách: (1) Đăng ký trong 1000 người đầu tiên, HOẶC (2) Giới thiệu 2 bạn bè đăng ký thành công thì bạn sẽ được nâng cấp lên gói FREE trọn đời.</p>
+                        <p>Đăng ký tài khoản, sau đó <strong>giới thiệu 2 người bạn đăng ký thành công</strong>. Khi đủ 2 người, bạn sẽ tự động được nâng cấp lên FREE Forever và nhận email hướng dẫn tải Template Freedom Wallet v3.2 để tự deploy.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>❓ Khác biệt giữa FREE và Premium?</span>
+                        <span>❓ Khác biệt chính giữa FREE và Premium?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Gói FREE có tất cả tính năng hiện tại nhưng KHÔNG được nâng cấp các tính năng mới trong tương lai. Gói Premium 999K sẽ được update miễn phí tất cả tính năng mới trọn đời + hỗ trợ ưu tiên.</p>
+                        <p><strong>FREE:</strong> Template + self-hosted + bot giới hạn (FAQ, 5 tin/ngày). <strong>PREMIUM (999k/năm):</strong> Thêm Bot không giới hạn (xem số dư, thêm GD qua chat) + AI Financial Assistant (phân tích chi tiêu, tư vấn) + Managed Setup + Priority Support.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>❓ Dữ liệu có an toàn không?</span>
+                        <span>❓ Premium 999k là trọn đời hay hàng năm?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Tuyệt đối an toàn! Dữ liệu được lưu trữ trên Google Sheet cá nhân của bạn, chỉ bạn có quyền truy cập. Không có bên thứ 3 nào có thể xem dữ liệu của bạn.</p>
+                        <p><strong>999,000đ/năm</strong> (~83k/tháng). Sau 1 năm bạn cần gia hạn để tiếp tục dùng Bot Premium & AI. Webapp vẫn hoạt động bình thường 100% vì data lưu trên Drive của bạn. Có thể hủy bất cứ lúc nào.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>❓ Dữ liệu có bị mất khi hết hạn Premium không?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>KHÔNG!</strong> Data 100% của bạn, lưu trên Google Drive cá nhân. Khi hết hạn Premium, webapp vẫn hoạt động bình thường, chỉ có Telegram Bot chuyển về chế độ FREE (giới hạn) và tắt AI Assistant. Bạn vẫn quản lý tài chính đầy đủ.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>❓ AI Assistant làm được gì?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>AI (ChatGPT-4) có thể: <strong>Phân tích chi tiêu</strong> ("Tháng này tôi chi nhiều nhất ở đâu?"), <strong>Tư vấn ngân sách</strong> ("Làm sao tiết kiệm 2tr/tháng?"), <strong>Dự đoán xu hướng</strong>, <strong>So sánh với cộng đồng</strong>, và <strong>Coaching tài chính</strong> cá nhân hóa. Chỉ có trong gói Premium.</p>
                     </div>
                 </div>
 
@@ -1225,7 +1356,37 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Sau khi đăng ký, bạn sẽ nhận được link giới thiệu cá nhân. Chia sẻ link này cho bạn bè, khi 2 người đăng ký qua link của bạn, hệ thống sẽ tự động gửi cho bạn tài liệu hướng dẫn tạo Google Apps Script Freedom Wallet 3.2</p>
+                        <p>Sau khi đăng ký, bạn nhận được <strong>link giới thiệu cá nhân</strong> (vd: freedomwallet.app/ref/ABC123). Chia sẻ link cho bạn bè qua Telegram, Facebook, Zalo... Khi 2 người đăng ký qua link của bạn, hệ thống tự động gửi email với Template v3.2 và hướng dẫn deploy chi tiết.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>❓ Tôi có thể dùng chung Premium cho gia đình không?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>1 Premium = 1 Telegram Bot account. Nhưng <strong>webapp Google Sheet có thể share</strong> cho nhiều người (vì là Google Sheet thông thường). Vậy nên: 1 người mua Premium để dùng bot + AI, share sheet cho cả gia đình để cùng nhập liệu.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>❓ Premium có bản dùng thử không?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>CÓ!</strong> Dùng thử <strong>7 ngày MIỄN PHÍ</strong>, không cần thẻ tín dụng. Trải nghiệm đầy đủ Bot Premium + AI Assistant. Nếu không hài lòng, hủy trước ngày thứ 7 là không mất phí gì cả.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>❓ Setup có khó không? Tôi không biết code.</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>FREE:</strong> Tự setup theo video hướng dẫn (~15 phút), chỉ cần copy/paste, không cần biết code. <strong>PREMIUM:</strong> Team setup hộ trong 5 phút (Managed Setup), bạn chỉ cần đăng nhập và dùng. Có support 1-1 nếu gặp vấn đề.</p>
                     </div>
                 </div>
 
@@ -1235,7 +1396,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Chỉ 2-3 phút/ngày! Ghi nhanh các khoản thu chi, app sẽ tự động phân loại, tính toán và hiển thị báo cáo đẹp mắt cho bạn.</p>
+                        <p>Chỉ <strong>2-3 phút/ngày</strong>! Với Premium, còn nhanh hơn: mở Telegram bot, gõ "Chi 50k ăn sáng" → Xong! App tự động phân loại vào hũ, tính toán và cập nhật báo cáo real-time.</p>
                     </div>
                 </div>
             </div>
