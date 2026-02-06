@@ -1447,10 +1447,7 @@
         let userReferralCode = null;
 
         // Generate unique referral code
-        function generateReferralCode(email) {        🔗 Referral Link: http://localhost:8000/index.html?ref=ABC123
-        📱 Setting up social share buttons...
-        ✅ Social share buttons ready!
-        📘 Sharing to Facebook  <-- khi click Facebook
+        function generateReferralCode(email) {
             // Create a simple hash from email
             const hash = email.split('').reduce((acc, char) => {
                 return ((acc << 5) - acc) + char.charCodeAt(0);
