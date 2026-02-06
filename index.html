@@ -1497,10 +1497,12 @@
                 referrer: new URLSearchParams(window.location.search).get('ref') || ''
             };
             
+            console.log('📝 Form data:', formData);
             currentRegistrationData = formData;
             
             try {
                 if (formData.plan === 'premium') {
+                    await sendToGoogleSheets(formData);
                     closeModal();
                     showPaymentModal(formData);
                 } else {
@@ -1557,26 +1559,45 @@
 
         // Send data to Google Sheets
         async function sendToGoogleSheets(data) {
+            console.log('📤 Sending to Google Sheets:', data);
+            console.log('🔗 URL:', GOOGLE_SHEETS_URL);
+            
             try {
-                const response = await fetch(GOOGLE_SHEETS_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                });
-                
-                console.log('Data sent to Google Sheets:', data);
-                
                 // Store referral code for success message
                 if (data.referralCode) {
                     userReferralCode = data.referralCode;
                 }
                 
+                const response = await fetch(GOOGLE_SHEETS_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                    redirect: 'follow'
+                });
+                
+                console.log('✅ Response status:', response.status);
+                
+                // Try to read response (Apps Script should return JSON)
+                if (response.ok) {
+                    try {
+                        const result = await response.json();
+                        console.log('✅ Server response:', result);
+                        if (!result.success) {
+                            throw new Error(result.message || 'Server returned error');
+                        }
+                    } catch (e) {
+                        console.log('⚠️ Could not parse response, but request sent');
+                    }
+                } else {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
             } catch (error) {
-                console.error('Error sending to Google Sheets:', error);
-                throw error;
+                console.error('❌ Error sending to Google Sheets:', error);
+                // Still allow the flow to continue for better UX
+                // alert('Đã ghi nhận thông tin của bạn. Nếu có vấn đề, vui lòng liên hệ qua Telegram.');
             }
         }
 
@@ -1627,35 +1648,67 @@
                 const shareText = encodeURIComponent('🎁 Freedom Wallet MIỄN PHÍ! Quản lý tài chính thông minh, áp dụng 6 Hũ Tiền và 5 Cấp Bậc Tài Chính. Đăng ký ngay!');
                 const shareTitle = encodeURIComponent('Freedom Wallet - Quản Lý Tài Chính');
                 
-                // Setup click handlers with proper URLs
-                document.getElementById('shareFacebook').onclick = function(e) {
-                    e.preventDefault();
-                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(referralLink)}&quote=${shareText}`, '_blank', 'width=600,height=400');
-                };
+                console.log('🔗 Referral Link:', referralLink);
+                console.log('📱 Setting up social share buttons...');
                 
-                document.getElementById('shareTelegram').onclick = function(e) {
-                    e.preventDefault();
-                    window.open(`https://t.me/share/url?url=${encodeURIComponent(referralLink)}&text=${shareText}`, '_blank', 'width=600,height=400');
-                };
-                
-                document.getElementById('shareZalo').onclick = function(e) {
-                    e.preventDefault();
-                    window.open(`https://zalo.me/share?url=${encodeURIComponent(referralLink)}`, '_blank', 'width=600,height=400');
-                };
-                
-                document.getElementById('shareTwitter').onclick = function(e) {
-                    e.preventDefault();
-                    window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(referralLink)}&text=${shareText}`, '_blank', 'width=600,height=400');
-                };
-                
-                document.getElementById('shareTikTok').onclick = function(e) {
-                    e.preventDefault();
-                    // TikTok không có direct share URL, copy link để user tự paste
-                    const input = document.getElementById('referralLinkInput');
-                    input.select();
-                    document.execCommand('copy');
-                    alert('✅ Link đã copy! Mở TikTok và paste vào bài đăng của bạn.');
-                };
+                // Setup click handlers with proper URLs - Use setTimeout to ensure DOM is ready
+                setTimeout(() => {
+                    const fbBtn = document.getElementById('shareFacebook');
+                    const tgBtn = document.getElementById('shareTelegram');
+                    const zaloBtn = document.getElementById('shareZalo');
+                    const twitterBtn = document.getElementById('shareTwitter');
+                    const tiktokBtn = document.getElementById('shareTikTok');
+                    
+                    if (fbBtn) {
+                        fbBtn.onclick = function(e) {
+                            e.preventDefault();
+                            console.log('📘 Sharing to Facebook');
+                            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(referralLink)}&quote=${shareText}`, '_blank', 'width=600,height=400');
+                            return false;
+                        };
+                    }
+                    
+                    if (tgBtn) {
+                        tgBtn.onclick = function(e) {
+                            e.preventDefault();
+                            console.log('✈️ Sharing to Telegram');
+                            window.open(`https://t.me/share/url?url=${encodeURIComponent(referralLink)}&text=${shareText}`, '_blank', 'width=600,height=400');
+                            return false;
+                        };
+                    }
+                    
+                    if (zaloBtn) {
+                        zaloBtn.onclick = function(e) {
+                            e.preventDefault();
+                            console.log('💬 Sharing to Zalo');
+                            window.open(`https://zalo.me/s/${encodeURIComponent(referralLink)}`, '_blank', 'width=600,height=400');
+                            return false;
+                        };
+                    }
+                    
+                    if (twitterBtn) {
+                        twitterBtn.onclick = function(e) {
+                            e.preventDefault();
+                            console.log('🐦 Sharing to X (Twitter)');
+                            window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(referralLink)}&text=${shareText}`, '_blank', 'width=600,height=400');
+                            return false;
+                        };
+                    }
+                    
+                    if (tiktokBtn) {
+                        tiktokBtn.onclick = function(e) {
+                            e.preventDefault();
+                            console.log('🎵 TikTok - copying link');
+                            const input = document.getElementById('referralLinkInput');
+                            input.select();
+                            document.execCommand('copy');
+                            alert('✅ Link đã copy! Mở TikTok và paste vào bài đăng của bạn.');
+                            return false;
+                        };
+                    }
+                    
+                    console.log('✅ Social share buttons ready!');
+                }, 100);
                 
                 installGuide.style.display = 'none';
             } else {
