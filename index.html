@@ -1438,16 +1438,18 @@
         // ============================================
         // GOOGLE APPS SCRIPT CONFIGURATION
         // ============================================
-        // TODO: Deploy google_apps_script.gs và thay YOUR_DEPLOYMENT_ID bằng ID thực tế
-        // Hướng dẫn deploy ở file DEPLOYMENT_GUIDE.md
+        // Deployed: Version 16 on Feb 6, 2026, 2:48 PM ✅
         
-        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyNR6kEY-A5ml1YgsedBJ5Znmawmk9tSklAzPCzYmFv7uF5XSV9FqsOsEI3sOd9HxxM/exec';
+        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyrYYTCcpebO2f_oaPi1wBCIj8VBKHZTLzpntzb8HGRzjMEEepraCgGY9oT9oobjsO6Fg/exec';
         
         let currentRegistrationData = null;
         let userReferralCode = null;
 
         // Generate unique referral code
-        function generateReferralCode(email) {
+        function generateReferralCode(email) {        🔗 Referral Link: http://localhost:8000/index.html?ref=ABC123
+        📱 Setting up social share buttons...
+        ✅ Social share buttons ready!
+        📘 Sharing to Facebook  <-- khi click Facebook
             // Create a simple hash from email
             const hash = email.split('').reduce((acc, char) => {
                 return ((acc << 5) - acc) + char.charCodeAt(0);
@@ -1559,8 +1561,11 @@
 
         // Send data to Google Sheets
         async function sendToGoogleSheets(data) {
-            console.log('📤 Sending to Google Sheets:', data);
-            console.log('🔗 URL:', GOOGLE_SHEETS_URL);
+            console.log('\n========================================');
+            console.log('📝 SENDING TO GOOGLE SHEETS');
+            console.log('========================================');
+            console.log('Data:', JSON.stringify(data, null, 2));
+            console.log('URL:', GOOGLE_SHEETS_URL);
             
             try {
                 // Store referral code for success message
@@ -1578,26 +1583,77 @@
                 });
                 
                 console.log('✅ Response status:', response.status);
+                console.log('✅ Response OK:', response.ok);
                 
-                // Try to read response (Apps Script should return JSON)
+                // Read response as text first to debug
+                const responseText = await response.text();
+                console.log('📄 Response preview:', responseText.substring(0, 200) + '...');
+                
+                // Try to parse as JSON
                 if (response.ok) {
                     try {
-                        const result = await response.json();
+                        const result = JSON.parse(responseText);
+                        console.log('✅ Server response:', result);
+                        if (!result.success) {
+                            console.error('❌ Server error:', result.message);
+                            throw new Error(result.message || 'Server returned error');
+                        }
+                        console.log('========================================\n');
+                    } catch (e) {
+                        if (responseText.includes('<!DOCTYPE') || responseText.includes('<html')) {
+                            console.error('❌ Google Apps Script returned HTML error page!');
+                            console.error('⚠️ This usually means:');
+                            console.error('1. Script has syntax errors');
+                            console.error('2. Script not deployed with "Anyone" access');
+                            console.error('3. Duplicate code in Apps Script editor');
+                            console.log('\n🔧 FIX: Open Apps Script, DELETE ALL code, paste fresh code, then Deploy');
+                            console.log('========================================\n');
+                            throw new Error('Google Apps Script has errors. Check deployment!');
+                        } else {
+                            console.error('⚠️ Could not parse JSON:', e);
+                            console.log('========================================\n');
+                        }
+                    }
+                } else {
+                    console.error('❌ HTTP Error:', response.status, response.statusText);
+                    console.log('========================================\n');
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                // Read response as text first to debug
+                const responseText = await response.text();
+                console.log('📄 Response text:', responseText.substring(0, 500));
+                
+                // Try to parse as JSON
+                if (response.ok) {
+                    try {
+                        const result = JSON.parse(responseText);
                         console.log('✅ Server response:', result);
                         if (!result.success) {
                             throw new Error(result.message || 'Server returned error');
                         }
+                        console.log('========================================\n');
                     } catch (e) {
-                        console.log('⚠️ Could not parse response, but request sent');
+                        console.error('⚠️ Could not parse JSON response:', e);
+                        console.log('This might be an HTML error page. Check Apps Script deployment!');
+                        console.log('========================================\n');
+                        throw new Error('Google Apps Script returned HTML error instead of JSON. Check deployment settings.');
                     }
                 } else {
+                    console.error('❌ HTTP Error:', response.status, response.statusText);
+                    console.log('========================================\n');
                     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
                 
             } catch (error) {
-                console.error('❌ Error sending to Google Sheets:', error);
-                // Still allow the flow to continue for better UX
-                // alert('Đã ghi nhận thông tin của bạn. Nếu có vấn đề, vui lòng liên hệ qua Telegram.');
+                console.error('\n========================================');
+                console.error('❌ ERROR SENDING TO GOOGLE SHEETS');
+                console.error('========================================');
+                console.error('Error:', error);
+                console.error('Error details:', error.message);
+                console.error('========================================\n');
+                // Re-throw to let handleSubmit deal with it
+                throw error;
             }
         }
 
@@ -1681,7 +1737,11 @@
                         zaloBtn.onclick = function(e) {
                             e.preventDefault();
                             console.log('💬 Sharing to Zalo');
-                            window.open(`https://zalo.me/s/${encodeURIComponent(referralLink)}`, '_blank', 'width=600,height=400');
+                            // Zalo không có web share API, copy link để user paste vào Zalo
+                            const input = document.getElementById('referralLinkInput');
+                            input.select();
+                            document.execCommand('copy');
+                            alert('✅ Link đã copy!\n\nMở Zalo và paste link này vào tin nhắn hoặc story của bạn để chia sẻ.');
                             return false;
                         };
                     }
