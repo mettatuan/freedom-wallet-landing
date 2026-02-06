@@ -29,11 +29,13 @@ const CONFIG = {
     DATE: 0,        // A: 📅 Ngày đăng ký
     NAME: 1,        // B: Họ & Tên
     EMAIL: 2,       // C: 📧 Email
-    PHONE: 3,       // D: 📞 Điện thoại
+    PHONE: 3,       // D: � Điện thoại
     PLAN: 4,        // E: 💎 Gói
-    SOURCE: 5,      // F: 📍 Nguồn
-    STATUS: 6,      // G: 📊 Trạng thái
-    REFERRER: 7     // H: 👥 Người giới thiệu
+    REFERRAL_CODE: 5,  // F: 🔗 Link giới thiệu
+    REFERRAL_COUNT: 6, // G: 👥 Số người đã giới thiệu
+    SOURCE: 7,      // H: 📍 Nguồn
+    STATUS: 8,      // I: 📊 Trạng thái
+    REFERRER: 9     // J: 👤 Người giới thiệu
   },
   
   // Column headers
@@ -41,11 +43,13 @@ const CONFIG = {
     '📅 Ngày đăng ký',
     'Họ & Tên',
     '📧 Email',
-    '📞 Điện thoại',
+    '� Điện thoại',
     '💎 Gói',
+    '🔗 Link giới thiệu',
+    '👥 Số người đã giới thiệu',
     '📍 Nguồn',
     '📊 Trạng thái',
-    '👥 Người giới thiệu'
+    '👤 Người giới thiệu'
   ],
   
   // Plan types
@@ -134,6 +138,7 @@ function doPost(e) {
       
       return createJsonResponse(true, 'Đăng ký thành công! 🎉', {
         rowNumber: result.rowNumber,
+        referralCode: result.referralCode,
         plan: data.plan,
         message: data.plan === CONFIG.PLANS.PREMIUM 
           ? 'Vui lòng chuyển khoản để hoàn tất đăng ký.' 
@@ -189,9 +194,11 @@ function getOrCreateSheet() {
     sheet.setColumnWidth(3, 220);  // Email
     sheet.setColumnWidth(4, 120);  // Phone
     sheet.setColumnWidth(5, 100);  // Plan
-    sheet.setColumnWidth(6, 150);  // Source
-    sheet.setColumnWidth(7, 150);  // Status
-    sheet.setColumnWidth(8, 150);  // Referrer
+    sheet.setColumnWidth(6, 150);  // Referral Code
+    sheet.setColumnWidth(7, 100);  // Referral Count
+    sheet.setColumnWidth(8, 150);  // Source
+    sheet.setColumnWidth(9, 150);  // Status
+    sheet.setColumnWidth(10, 150); // Referrer
     
     logInfo('getOrCreateSheet', `Created new sheet: ${CONFIG.SHEET_NAME}`);
   }
@@ -235,6 +242,7 @@ function parseRequestData(e) {
       phone: (data.phone || '').trim(),
       plan: (data.plan || CONFIG.PLANS.FREE).trim().toLowerCase(),
       source: (data.source || 'Landing Page').trim(),
+      referralCode: (data.referralCode || '').trim(),
       referrer: (data.referrer || data.ref || '').trim()
     };
     
@@ -347,14 +355,16 @@ function addRegistration(data) {
     
     // Prepare row data
     const rowData = [
-      timestamp,           // Date
-      data.fullName,       // Name
-      data.email,          // Email
-      data.phone,          // Phone
-      planDisplay,         // Plan
-      data.source,         // Source
-      status,              // Status
-      data.referrer || ''  // Referrer
+      timestamp,              // Date
+      data.fullName,          // Name
+      data.email,             // Email
+      data.phone,             // Phone
+      planDisplay,            // Plan
+      data.referralCode || '', // Referral Code
+      0,                      // Referral Count (initial)
+      data.source,            // Source
+      status,                 // Status
+      data.referrer || ''     // Referrer
     ];
     
     // Append to sheet
@@ -366,9 +376,15 @@ function addRegistration(data) {
     
     logInfo('addRegistration', `Added row ${newRow}: ${data.fullName} - ${planDisplay}`);
     
+    // If user was referred, increment referrer's count
+    if (data.referrer) {
+      incrementReferralCount(data.referrer);
+    }
+    
     return {
       success: true,
-      rowNumber: newRow
+      rowNumber: newRow,
+      referralCode: data.referralCode
     };
     
   } catch (error) {
@@ -412,6 +428,52 @@ function formatNewRow(sheet, rowNumber, plan) {
     
   } catch (error) {
     logError('formatNewRow', error);
+  }
+}
+
+/**
+ * Increment referral count for a referrer
+ */
+function incrementReferralCount(referrerCode) {
+  try {
+    const sheet = getOrCreateSheet();
+    const lastRow = sheet.getLastRow();
+    
+    if (lastRow <= 1) return;
+    
+    const dataRange = sheet.getRange(2, 1, lastRow - 1, CONFIG.HEADERS.length);
+    const data = dataRange.getValues();
+    
+    for (let i = 0; i < data.length; i++) {
+      const referralCode = data[i][CONFIG.COLUMNS.REFERRAL_CODE];
+      
+      if (referralCode === referrerCode) {
+        const rowNumber = i + 2;
+        const countCell = sheet.getRange(rowNumber, CONFIG.COLUMNS.REFERRAL_COUNT + 1);
+        const currentCount = countCell.getValue() || 0;
+        const newCount = currentCount + 1;
+        
+        countCell.setValue(newCount);
+        
+        // Check if user reached 2 referrals (auto-upgrade)
+        if (newCount >= 2) {
+          const statusCell = sheet.getRange(rowNumber, CONFIG.COLUMNS.STATUS + 1);
+          statusCell.setValue(CONFIG.STATUS.UPGRADED_REFERRAL);
+          
+          // Highlight the row
+          const rowRange = sheet.getRange(rowNumber, 1, 1, CONFIG.HEADERS.length);
+          rowRange.setBackground('#E6F9F0');
+          
+          logInfo('incrementReferralCount', `User ${referralCode} reached 2 referrals - auto upgraded!`);
+        }
+        
+        logInfo('incrementReferralCount', `Incremented count for ${referrerCode}: ${newCount}`);
+        return;
+      }
+    }
+    
+  } catch (error) {
+    logError('incrementReferralCount', error);
   }
 }
 

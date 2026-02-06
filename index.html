@@ -798,6 +798,126 @@
             transform: translateY(-2px);
         }
 
+        /* Referral Link Box */
+        .referral-box {
+            background: var(--background);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border: 2px dashed var(--accent);
+        }
+
+        .referral-box h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .referral-link {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .referral-link input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+        }
+
+        .btn-copy {
+            padding: 12px 24px;
+            background: var(--success);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .btn-copy:hover {
+            background: #1d6b3a;
+        }
+
+        .social-share {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-social {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            color: var(--white);
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-social:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn-facebook { background: #1877f2; }
+        .btn-telegram { background: #0088cc; }
+        .btn-zalo { background: #0068ff; }
+        .btn-twitter { background: #1da1f2; }
+        .btn-copy-link { background: var(--text); }
+
+        .install-guide {
+            background: linear-gradient(135deg, #e6f3ff 0%, #f0f9ff 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid var(--primary);
+        }
+
+        .install-guide h3 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .install-guide p {
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .btn-install {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a6dd9 100%);
+            color: var(--white);
+            padding: 14px 32px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-install:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(15, 80, 173, 0.4);
+        }
+
         /* Spinner */
         .spinner {
             display: inline-block;
@@ -919,7 +1039,7 @@
             <div class="feature-grid">
                 <div class="feature-row">
                     <div class="feature-image">
-                        <img src="images/freedom-wallet (2).jpg" alt="Dashboard Tài Chính">
+                        <img src="images/dashboard-tai-chinh-toan-dien.jpg" alt="Dashboard Tài Chính">
                     </div>
                     <div class="feature-content">
                         <h3>📊 Dashboard Tài Chính Toàn Diện</h3>
@@ -935,10 +1055,10 @@
 
                 <div class="feature-row">
                     <div class="feature-image">
-                        <img src="images/freedom-wallet (3).jpg" alt="Quản Lý Giao Dịch">
+                        <img src="images/quan ly thu chi.jpg" alt="Quản Lý Thu Chi">
                     </div>
                     <div class="feature-content">
-                        <h3>💰 Quản Lý Giao Dịch Thông Minh</h3>
+                        <h3>💰 Quản Lý Thu Chi Thông Minh</h3>
                         <p>Ghi chép thu chi nhanh chóng, phân loại tự động theo danh mục. Bộ lọc nâng cao giúp bạn tìm kiếm giao dịch dễ dàng.</p>
                         <ul class="feature-list">
                             <li><i class="fas fa-check-circle"></i> Phân loại tự động theo 6 hũ tiền</li>
@@ -951,7 +1071,7 @@
 
                 <div class="feature-row">
                     <div class="feature-image">
-                        <img src="images/freedom-wallet (4).jpg" alt="6 Hũ Tiền">
+                        <img src="images/6-hu-tien.jpg" alt="6 Hũ Tiền">
                     </div>
                     <div class="feature-content">
                         <h3>🏺 Phương Pháp 6 Hũ Tiền</h3>
@@ -967,7 +1087,7 @@
 
                 <div class="feature-row">
                     <div class="feature-image">
-                        <img src="images/freedom-wallet (5).jpg" alt="Quản Lý Tài Sản">
+                        <img src="images/quan-ly-tai-san.jpg" alt="Quản Lý Tài Sản">
                     </div>
                     <div class="feature-content">
                         <h3>💼 Quản Lý Tài Sản Toàn Diện</h3>
@@ -983,7 +1103,7 @@
 
                 <div class="feature-row">
                     <div class="feature-image">
-                        <img src="images/freedom-wallet (6).jpg" alt="5 Cấp Bậc Tài Chính">
+                        <img src="images/5-cap-bac-tai-chinh.jpg" alt="5 Cấp Bậc Tài Chính">
                     </div>
                     <div class="feature-content">
                         <h3>📈 5 Cấp Bậc Tài Chính</h3>
@@ -1250,10 +1370,60 @@
                 <div class="success-icon">
                     <i class="fas fa-check"></i>
                 </div>
-                <h2>Đăng Ký Thành Công! 🎉</h2>
+                <h2 id="successTitle">Đăng Ký Thành Công! 🎉</h2>
                 <p id="successMessage">Cảm ơn bạn đã đăng ký Freedom Wallet!</p>
                 
-                <a href="https://t.me/freedomwalletapp" target="_blank" class="btn-join-telegram">
+                <!-- Referral Box for FREE users -->
+                <div id="referralBox" class="referral-box" style="display: none;">
+                    <h3>🎁 Giới Thiệu 2 Bạn = FREE Trọn Đời!</h3>
+                    <p style="text-align: center; margin-bottom: 15px; color: var(--text-light);">
+                        Chia sẻ link này để bạn bè đăng ký. Khi có 2 người đăng ký thành công, bạn sẽ được nâng cấp miễn phí!
+                    </p>
+                    <div class="referral-link">
+                        <input type="text" id="referralLinkInput" readonly>
+                        <button class="btn-copy" onclick="copyReferralLink()">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    <p style="text-align: center; margin-bottom: 15px; font-weight: 600; color: var(--text);">
+                        Chia sẻ ngay:
+                    </p>
+                    <div class="social-share">
+                        <a href="#" id="shareFacebook" class="btn-social btn-facebook" target="_blank">
+                            <i class="fab fa-facebook-f"></i> Facebook
+                        </a>
+                        <a href="#" id="shareTelegram" class="btn-social btn-telegram" target="_blank">
+                            <i class="fab fa-telegram-plane"></i> Telegram
+                        </a>
+                        <a href="#" id="shareZalo" class="btn-social btn-zalo" target="_blank">
+                            <i class="fas fa-comment"></i> Zalo
+                        </a>
+                        <a href="#" id="shareTwitter" class="btn-social btn-twitter" target="_blank">
+                            <i class="fab fa-twitter"></i> X (Twitter)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Installation Guide for Premium users -->
+                <div id="installGuide" class="install-guide" style="display: none;">
+                    <h3>📱 Hướng Dẫn Cài Đặt App</h3>
+                    <p><strong>Bước tiếp theo:</strong></p>
+                    <ol style="text-align: left; margin-left: 30px; line-height: 2;">
+                        <li>Đọc hướng dẫn cài đặt chi tiết</li>
+                        <li>Cài đặt Freedom Wallet trên thiết bị</li>
+                        <li>Tham gia group Telegram để được hỗ trợ 1-1</li>
+                    </ol>
+                    <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px; flex-wrap: wrap;">
+                        <a href="https://eliroxbot.notion.site/freedomwallet" target="_blank" class="btn-install">
+                            <i class="fas fa-book"></i> Xem Hướng Dẫn
+                        </a>
+                        <a href="https://t.me/FreedomWalletbot" target="_blank" class="btn-install" style="background: #0088cc;">
+                            <i class="fab fa-telegram-plane"></i> Nhắn Bot Hỗ Trợ
+                        </a>
+                    </div>
+                </div>
+                
+                <a href="https://t.me/freedomwalletapp" target="_blank" class="btn-join-telegram" style="margin-top: 20px;">
                     <i class="fab fa-telegram-plane"></i> Tham Gia Group Telegram
                 </a>
             </div>
@@ -1270,6 +1440,16 @@
         const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzQ59MvUKoyClSpvZxpaLxBgNe1pX8X5GX-79LYJvzdN180SHzGARX869nylqITmIIW/exec';
         
         let currentRegistrationData = null;
+        let userReferralCode = null;
+
+        // Generate unique referral code
+        function generateReferralCode(email) {
+            // Create a simple hash from email
+            const hash = email.split('').reduce((acc, char) => {
+                return ((acc << 5) - acc) + char.charCodeAt(0);
+            }, 0);
+            return Math.abs(hash).toString(36).toUpperCase().substring(0, 8);
+        }
 
         // Open registration modal
         function openRegistrationModal(planType) {
@@ -1308,7 +1488,9 @@
                 phone: form.phone.value,
                 plan: form.plan.value,
                 source: 'Landing Page',
-                status: form.plan.value === 'premium' ? 'Chờ thanh toán' : 'Đã đăng ký'
+                status: form.plan.value === 'premium' ? 'Chờ thanh toán' : 'Đã đăng ký',
+                referralCode: generateReferralCode(form.email.value),
+                referrer: new URLSearchParams(window.location.search).get('ref') || ''
             };
             
             currentRegistrationData = formData;
@@ -1383,36 +1565,81 @@
                 
                 console.log('Data sent to Google Sheets:', data);
                 
+                // Store referral code for success message
+                if (data.referralCode) {
+                    userReferralCode = data.referralCode;
+                }
+                
             } catch (error) {
                 console.error('Error sending to Google Sheets:', error);
                 throw error;
             }
         }
 
+        // Copy referral link
+        function copyReferralLink() {
+            const input = document.getElementById('referralLinkInput');
+            input.select();
+            document.execCommand('copy');
+            
+            const btn = event.target.closest('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> Đã Copy!';
+            btn.style.background = var(--success);
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+            }, 2000);
+        }
+
         // Show success message
         function showSuccessMessage(data) {
             const message = document.getElementById('successMessage');
+            const referralBox = document.getElementById('referralBox');
+            const installGuide = document.getElementById('installGuide');
+            const title = document.getElementById('successTitle');
+            
+            // Store referral code
+            userReferralCode = data.referralCode || generateReferralCode(data.email);
             
             if (data.plan === 'free') {
+                // FREE Plan - Show referral link
+                title.textContent = '🎉 Chúc Mừng Bạn Nhận Gói FREE!';
                 message.innerHTML = `
-                    Chúc mừng bạn đã nhận được gói FREE!<br><br>
-                    <strong>💡 Mẹo:</strong> Giới thiệu thêm 2 bạn để được nâng cấp lên FREE trọn đời (không giới hạn tính năng).<br><br>
-                    Hãy tham gia group Telegram để nhận hướng dẫn từ bot @FreedomWalletbot
+                    <strong>Xin chào ${data.fullName}!</strong><br><br>
+                    Bạn đã đăng ký thành công gói FREE. Giờ hãy giới thiệu 2 bạn bè để được nâng cấp lên <strong>FREE trọn đời</strong> với tất cả tính năng mới!
                 `;
+                
+                // Generate referral link
+                const baseUrl = window.location.origin + window.location.pathname;
+                const referralLink = `${baseUrl}?ref=${userReferralCode}`;
+                
+                // Show referral box
+                referralBox.style.display = 'block';
+                document.getElementById('referralLinkInput').value = referralLink;
+                
+                // Setup social share links
+                const shareText = encodeURIComponent('🎁 Freedom Wallet MIỄN PHÍ! Quản lý tài chính thông minh, áp dụng 6 Hũ Tiền và 5 Cấp Bậc Tài Chính. Đăng ký ngay!');
+                document.getElementById('shareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(referralLink)}&quote=${shareText}`;
+                document.getElementById('shareTelegram').href = `https://t.me/share/url?url=${encodeURIComponent(referralLink)}&text=${shareText}`;
+                document.getElementById('shareZalo').href = `https://zalo.me/share?url=${encodeURIComponent(referralLink)}`;
+                document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(referralLink)}&text=${shareText}`;
+                
+                installGuide.style.display = 'none';
             } else {
+                // PREMIUM Plan - Show installation guide
+                title.textContent = '💎 Cảm Ơn Bạn Đã Nâng Cấp Premium!';
                 message.innerHTML = `
-                    Cảm ơn bạn đã thanh toán gói Premium 999K!<br><br>
-                    Chúng tôi sẽ xác nhận thanh toán trong vòng 1-5 phút.<br>
-                    Bạn sẽ nhận được email hướng dẫn chi tiết.<br><br>
-                    Hãy tham gia group Telegram ngay để bắt đầu!
+                    <strong>Chào ${data.fullName}!</strong><br><br>
+                    Thanh toán của bạn đã được ghi nhận. Bạn có thể bắt đầu sử dụng Freedom Wallet ngay bây giờ!<br>
+                    <small style="color: var(--text-light);">✨ Bạn sẽ được ưu tiên hỗ trợ 1-1 và nhận tất cả update mới miễn phí.</small>
                 `;
+                
+                referralBox.style.display = 'none';
+                installGuide.style.display = 'block';
             }
             
             document.getElementById('successModal').classList.add('active');
-            
-            setTimeout(() => {
-                window.open('https://t.me/freedomwalletapp', '_blank');
-            }, 3000);
         }
 
         // Toggle FAQ
