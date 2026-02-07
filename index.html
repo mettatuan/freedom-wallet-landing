@@ -1768,10 +1768,6 @@
                         </a>
                     </div>
                 </div>
-                
-                <a href="https://t.me/FreedomWalletbot?start=WEBSITE" target="_blank" class="btn-join-telegram" style="margin-top: 20px; background: linear-gradient(135deg, #0F50AD, #1a6dd9);">
-                    <i class="fas fa-rocket"></i> Bắt đầu tại đây
-                </a>
             </div>
         </div>
     </div>
@@ -2041,10 +2037,35 @@
                                    style="width: 100%; padding: 12px; border: 2px solid rgba(255,255,255,0.4); border-radius: 8px; background: rgba(255,255,255,0.9); color: #333; font-size: 0.9em; text-align: center; font-weight: 600; cursor: pointer;"
                                    onclick="this.select(); document.execCommand('copy'); alert('✅ Đã copy link!');">
                         </div>
-                        <div style="background: linear-gradient(135deg, rgba(255,215,0,0.3), rgba(255,193,7,0.3)); padding: 12px; border-radius: 8px; border: 2px solid rgba(255,215,0,0.6); text-align: center;">
+                        <div style="background: linear-gradient(135deg, rgba(255,215,0,0.3), rgba(255,193,7,0.3)); padding: 12px; border-radius: 8px; border: 2px solid rgba(255,215,0,0.6); text-align: center; margin-bottom: 15px;">
                             <div style="font-size: 1em; font-weight: 700;">
                                 🎁 Giới Thiệu 2 Bạn = FREE Trọn Đời!
                             </div>
+                        </div>
+                        <div style="text-align: center; margin-bottom: 15px; font-weight: 600; color: white;">
+                            Chia sẻ ngay:
+                        </div>
+                        <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
+                            <a href="javascript:void(0)" id="shareFacebook" 
+                               style="padding: 10px 20px; background: #1877f2; color: white; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">
+                                <i class="fab fa-facebook-f"></i> Facebook
+                            </a>
+                            <a href="javascript:void(0)" id="shareTelegram" 
+                               style="padding: 10px 20px; background: #0088cc; color: white; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">
+                                <i class="fab fa-telegram-plane"></i> Telegram
+                            </a>
+                            <a href="javascript:void(0)" id="shareZalo" 
+                               style="padding: 10px 20px; background: #0068ff; color: white; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">
+                                <i class="fas fa-comment"></i> Zalo
+                            </a>
+                            <a href="javascript:void(0)" id="shareTwitter" 
+                               style="padding: 10px 20px; background: #1da1f2; color: white; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">
+                                <i class="fab fa-twitter"></i> X
+                            </a>
+                            <a href="javascript:void(0)" id="shareTikTok" 
+                               style="padding: 10px 20px; background: #000000; color: white; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">
+                                <i class="fab fa-tiktok"></i> TikTok
+                            </a>
                         </div>
                     </div>
                     <div style="background: linear-gradient(135deg, #0F50AD, #1a6dd9); padding: 20px; border-radius: 12px; margin: 15px 0; color: white;">
@@ -2061,8 +2082,8 @@
                     </div>
                 `;
                 
-                // SHOW referral box for social share buttons (but hide the link input since it's already shown above)
-                referralBox.style.display = 'block';
+                // Hide referral box since social buttons are now in message
+                referralBox.style.display = 'none';
                 document.getElementById('referralLinkInput').value = referralLink;
                 
                 // Setup social share links
@@ -2103,9 +2124,11 @@
                             e.preventDefault();
                             console.log('💬 Sharing to Zalo');
                             // Zalo không có web share API, copy link để user paste vào Zalo
-                            const input = document.getElementById('referralLinkInput');
-                            input.select();
-                            document.execCommand('copy');
+                            const input = document.getElementById('referralLinkPreview');
+                            if (input) {
+                                input.select();
+                                document.execCommand('copy');
+                            }
                             alert('✅ Link đã copy!\n\nMở Zalo và paste link này vào tin nhắn hoặc story của bạn để chia sẻ.');
                             return false;
                         };
@@ -2124,9 +2147,11 @@
                         tiktokBtn.onclick = function(e) {
                             e.preventDefault();
                             console.log('🎵 TikTok - copying link');
-                            const input = document.getElementById('referralLinkInput');
-                            input.select();
-                            document.execCommand('copy');
+                            const input = document.getElementById('referralLinkPreview');
+                            if (input) {
+                                input.select();
+                                document.execCommand('copy');
+                            }
                             alert('✅ Link đã copy! Mở TikTok và paste vào bài đăng của bạn.');
                             return false;
                         };
