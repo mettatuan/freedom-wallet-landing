@@ -1718,11 +1718,11 @@
                 
                 <!-- Referral Box for FREE users -->
                 <div id="referralBox" class="referral-box" style="display: none;">
-                    <h3>🎁 Giới Thiệu 2 Bạn = FREE Trọn Đời!</h3>
-                    <p style="text-align: center; margin-bottom: 15px; color: var(--text-light);">
+                    <h3 style="display: none;">🎁 Giới Thiệu 2 Bạn = FREE Trọn Đời!</h3>
+                    <p style="display: none; text-align: center; margin-bottom: 15px; color: var(--text-light);">
                         Chia sẻ link này để bạn bè đăng ký. Khi có 2 người đăng ký thành công, bạn sẽ được nâng cấp miễn phí!
                     </p>
-                    <div class="referral-link">
+                    <div class="referral-link" style="display: none;">
                         <input type="text" id="referralLinkInput" readonly>
                         <button class="btn-copy" onclick="copyReferralLink()">
                             <i class="fas fa-copy"></i> Copy
@@ -2009,6 +2009,10 @@
                 const emailHash = generateReferralCode(data.email);
                 const botDeepLink = `https://t.me/FreedomWalletbot?start=WEB_${emailHash}`;
                 
+                // Generate referral link for preview
+                const baseUrl = window.location.origin + window.location.pathname;
+                const referralLink = `${baseUrl}?ref=${userReferralCode}`;
+                
                 message.innerHTML = `
                     <strong>Xin chào ${data.fullName}!</strong><br><br>
                     ✅ Bạn đã đăng ký thành công gói FREE! Tiếp theo:<br><br>
@@ -2029,16 +2033,17 @@
                         <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 8px; margin-bottom: 15px;">
                             📊 <strong>Tiến độ:</strong> 0/2 người
                         </div>
-                        <div style="font-size: 0.85em; opacity: 0.95; margin-bottom: 15px;">
+                        <div style="font-size: 0.85em; opacity: 0.95; margin-bottom: 10px;">
                             👇 Chia sẻ link của bạn qua các nền tảng bên dưới
                         </div>
-                        <div style="background: rgba(255,255,255,0.25); padding: 15px; border-radius: 10px; border: 2px dashed rgba(255,255,255,0.5); text-align: center;">
-                            <div style="font-size: 1.1em; font-weight: 700; margin-bottom: 8px;">
+                        <div style="margin-bottom: 15px;">
+                            <input type="text" id="referralLinkPreview" readonly value="${referralLink}"
+                                   style="width: 100%; padding: 12px; border: 2px solid rgba(255,255,255,0.4); border-radius: 8px; background: rgba(255,255,255,0.9); color: #333; font-size: 0.9em; text-align: center; font-weight: 600; cursor: pointer;"
+                                   onclick="this.select(); document.execCommand('copy'); alert('✅ Đã copy link!');">
+                        </div>
+                        <div style="background: linear-gradient(135deg, rgba(255,215,0,0.3), rgba(255,193,7,0.3)); padding: 12px; border-radius: 8px; border: 2px solid rgba(255,215,0,0.6); text-align: center;">
+                            <div style="font-size: 1em; font-weight: 700;">
                                 🎁 Giới Thiệu 2 Bạn = FREE Trọn Đời!
-                            </div>
-                            <div style="font-size: 0.85em; line-height: 1.5;">
-                                Sau khi 2 bạn bè đăng ký thành công,<br>
-                                bạn sẽ tự động nhận tất cả tài liệu & tính năng!
                             </div>
                         </div>
                     </div>
@@ -2056,11 +2061,7 @@
                     </div>
                 `;
                 
-                // Generate website referral link
-                const baseUrl = window.location.origin + window.location.pathname;
-                const referralLink = `${baseUrl}?ref=${userReferralCode}`;
-                
-                // SHOW referral box (quan trọng cho việc share)
+                // SHOW referral box for social share buttons (but hide the link input since it's already shown above)
                 referralBox.style.display = 'block';
                 document.getElementById('referralLinkInput').value = referralLink;
                 
