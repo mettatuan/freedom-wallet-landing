@@ -1769,8 +1769,8 @@
                     </div>
                 </div>
                 
-                <a href="https://t.me/freedomwalletapp" target="_blank" class="btn-join-telegram" style="margin-top: 20px;">
-                    <i class="fab fa-telegram-plane"></i> Tham Gia Group Telegram
+                <a href="https://t.me/FreedomWalletbot?start=WEBSITE" target="_blank" class="btn-join-telegram" style="margin-top: 20px; background: linear-gradient(135deg, #0F50AD, #1a6dd9);">
+                    <i class="fas fa-rocket"></i> Bắt đầu tại đây
                 </a>
             </div>
         </div>
@@ -2002,19 +2002,41 @@
             userReferralCode = data.referralCode || generateReferralCode(data.email);
             
             if (data.plan === 'free') {
-                // FREE Plan - Show referral link
+                // FREE Plan - Show bot link + referral link
                 title.textContent = '🎉 Chúc Mừng Bạn Nhận Gói FREE!';
+                
+                // Generate bot deep link with email hash
+                const emailHash = generateReferralCode(data.email);
+                const botDeepLink = `https://t.me/FreedomWalletbot?start=WEB_${emailHash}`;
+                
                 message.innerHTML = `
                     <strong>Xin chào ${data.fullName}!</strong><br><br>
-                    Bạn đã đăng ký thành công gói FREE. Giờ hãy giới thiệu 2 bạn bè để được nâng cấp lên <strong>FREE trọn đời</strong> với tất cả tính năng mới!
+                    ✅ Bạn đã đăng ký thành công! Tiếp theo:<br><br>
+                    <div style="background: linear-gradient(135deg, #0F50AD, #1a6dd9); padding: 20px; border-radius: 12px; margin: 15px 0; color: white;">
+                        <div style="font-size: 1.2em; font-weight: 700; margin-bottom: 10px;">
+                            🎁 Bước 1: Nhận Template FREE
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            Mở Bot để nhận file Google Sheets template của bạn ngay!
+                        </div>
+                        <a href="${botDeepLink}" target="_blank" 
+                           style="display: inline-block; background: #FFD700; color: #0F50AD; padding: 15px 30px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1.1em; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);">
+                            <i class="fab fa-telegram-plane"></i> Mở Bot Nhận Template
+                        </a>
+                    </div>
+                    <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-radius: 8px; border-left: 4px solid #FFA500;">
+                        <strong>💎 Bước 2: Nhận FREE trọn đời</strong><br>
+                        Giới thiệu 2 bạn bè qua bot để được nâng cấp lên <strong>FREE FOREVER</strong> với tất cả tính năng mới!
+                    </div>
                 `;
                 
-                // Generate referral link
+                // Generate website referral link (cho sau, nếu họ muốn share trên web)
                 const baseUrl = window.location.origin + window.location.pathname;
                 const referralLink = `${baseUrl}?ref=${userReferralCode}`;
                 
-                // Show referral box
-                referralBox.style.display = 'block';
+                // Show referral box (ẩn đi vì giờ referral chủ yếu qua bot)
+                referralBox.style.display = 'none';
+                // Vẫn set value cho trường hợp sau này cần
                 document.getElementById('referralLinkInput').value = referralLink;
                 
                 // Setup social share links
@@ -2089,11 +2111,28 @@
                 
                 installGuide.style.display = 'none';
             } else {
-                // PREMIUM Plan - Show installation guide
+                // PREMIUM Plan - Show bot link + installation guide
                 title.textContent = '💎 Cảm Ơn Bạn Đã Nâng Cấp Premium!';
+                
+                // Generate bot deep link with email hash
+                const emailHash = generateReferralCode(data.email);
+                const botDeepLink = `https://t.me/FreedomWalletbot?start=WEB_${emailHash}`;
+                
                 message.innerHTML = `
                     <strong>Chào ${data.fullName}!</strong><br><br>
-                    Thanh toán của bạn đã được ghi nhận. Bạn có thể bắt đầu sử dụng Freedom Wallet ngay bây giờ!<br>
+                    ✅ Thanh toán của bạn đã được ghi nhận!<br><br>
+                    <div style="background: linear-gradient(135deg, #FFD700, #FFA500); padding: 20px; border-radius: 12px; margin: 15px 0;">
+                        <div style="font-size: 1.2em; font-weight: 700; margin-bottom: 10px; color: #0F50AD;">
+                            🎁 Nhận Template Premium
+                        </div>
+                        <div style="margin-bottom: 15px; color: #333;">
+                            Mở Bot để nhận file template + hỗ trợ AI 24/7!
+                        </div>
+                        <a href="${botDeepLink}" target="_blank" 
+                           style="display: inline-block; background: #0F50AD; color: white; padding: 15px 30px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1.1em; box-shadow: 0 4px 15px rgba(15, 80, 173, 0.4);">
+                            <i class="fab fa-telegram-plane"></i> Mở Bot Premium
+                        </a>
+                    </div>
                     <small style="color: var(--text-light);">✨ Bạn sẽ được ưu tiên hỗ trợ 1-1 và nhận tất cả update mới miễn phí.</small>
                 `;
                 
