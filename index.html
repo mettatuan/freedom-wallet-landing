@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Freedom Wallet - Ứng dụng quản lý tài chính cá nhân hiện đại. FREE cho 200 người đầu tiên! Miễn phí 6 tháng sử dụng full tính năng kết nối Telegram Bot + AI Assistant.">
+    <meta name="description" content="Freedom Wallet - Ứng dụng quản lý tài chính cá nhân hiện đại. Template FREE vĩnh viễn! Premium Bot + AI với mô hình đóng góp tự nguyện.">
     <title>Freedom Wallet - Quản Lý Tài Chính Thông Minh</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -963,6 +963,31 @@
                 grid-template-columns: 1fr;
             }
         }
+        
+        /* Donation Amount Buttons */
+        .donation-amount {
+            padding: 15px 20px;
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .donation-amount:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(15, 80, 173, 0.3);
+        }
+        
+        .donation-amount.selected {
+            background: var(--primary);
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -986,7 +1011,7 @@
                     
                     <div class="trust-badges">
                         <div class="trust-badge">
-                            <i class="fas fa-gift"></i> 200 người đầu: FREE 6 tháng
+                            <i class="fas fa-gift"></i> Template FREE vĩnh viễn cho mọi người
                         </div>
                         <div class="trust-badge">
                             <i class="fas fa-robot"></i> Telegram Bot + AI Assistant
@@ -1154,66 +1179,59 @@
                     <div class="pricing-header">
                         <div class="pricing-icon">🎁</div>
                         <h3>Gói FREE</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 5px;">Cho 200 người đầu tiên</p>
+                        <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 5px;">Miễn phí vĩnh viễn</p>
                     </div>
                     <div class="pricing-price">
                         <span style="font-size: 3rem; font-weight: 700;">FREE</span>
-                        <span style="display: block; font-size: 1rem; opacity: 0.7; margin-top: -5px;">6 tháng</span>
+                        <span style="display: block; font-size: 1rem; opacity: 0.7; margin-top: -5px;">Trọn đời</span>
                     </div>
                     <p class="pricing-note">
-                        🚀 <strong>200 người đầu tiên</strong> đăng ký<br>
-                        → Miễn phí 6 tháng FULL tính năng!
+                        ✨ <strong>FULL tính năng</strong> template<br>
+                        → Self-hosted, 100% của bạn!
                     </p>
                     
                     <ul class="pricing-features">
                         <li><i class="fas fa-check"></i> <strong>Template Freedom Wallet v3.2</strong></li>
+                        <li><i class="fas fa-check"></i> <strong>Google Sheet + Apps Script</strong></li>
                         <li><i class="fas fa-check"></i> 6 Hũ Tiền + Dashboard đầy đủ</li>
+                        <li><i class="fas fa-check"></i> 5 Cấp bậc tài chính</li>
                         <li><i class="fas fa-check"></i> Quản lý giao dịch không giới hạn</li>
-                        <li><i class="fas fa-check"></i> Đầu tư, tài sản, nợ</li>
+                        <li><i class="fas fa-check"></i> Đầu tư, tài sản, nợ, mục tiêu</li>
+                        <li><i class="fas fa-check"></i> Biểu đồ & báo cáo chi tiết</li>
                         <li><i class="fas fa-check"></i> Self-hosted (100% privacy)</li>
-                        <li><i class="fas fa-check"></i> Hướng dẫn deploy chi tiết</li>
-                        <li><i class="fas fa-check"></i> <strong>Telegram Bot miễn phí</strong></li>
-                        <li style="padding-left: 30px; font-size: 0.9rem; opacity: 0.8;">
-                            <i class="fas fa-circle" style="font-size: 6px; margin-right: 8px;"></i> FAQ & Hướng dẫn
-                        </li>
-                        <li style="padding-left: 30px; font-size: 0.9rem; opacity: 0.8;">
-                            <i class="fas fa-circle" style="font-size: 6px; margin-right: 8px;"></i> Tips tài chính (1/tuần)
-                        </li>
-                        <li style="padding-left: 30px; font-size: 0.9rem; opacity: 0.8;">
-                            <i class="fas fa-circle" style="font-size: 6px; margin-right: 8px;"></i> Chat: 5 tin/ngày
-                        </li>
+                        <li><i class="fas fa-check"></i> <strong>Hướng dẫn deploy chi tiết</strong></li>
+                        <li><i class="fas fa-check"></i> Video tutorial đầy đủ</li>
                         <li><i class="fas fa-check"></i> Cập nhật template mới miễn phí</li>
-                        <li><i class="fas fa-check"></i> Community support</li>
-                        <li><i class="fas fa-times"></i> Xem số dư qua bot</li>
-                        <li><i class="fas fa-times"></i> Thêm giao dịch qua bot</li>
-                        <li><i class="fas fa-times"></i> AI Financial Assistant</li>
-                        <li><i class="fas fa-times"></i> Managed setup service</li>
-                        <li><i class="fas fa-times"></i> Priority support</li>
+                        <li><i class="fas fa-check"></i> Community support (Telegram)</li>
+                        <li style="margin-top: 15px; padding: 12px; background: var(--background); border-radius: 8px; font-weight: 600; color: var(--text-light);">
+                            <i class="fas fa-info-circle"></i> Không có Bot (chỉ template)
+                        </li>
                     </ul>
                     
                     <button class="btn-select-plan free" onclick="openRegistrationModal('free')">
-                        <i class="fas fa-user-plus"></i> Đăng Ký FREE
+                        <i class="fas fa-download"></i> Tải Template FREE
                     </button>
                     
                     <p style="text-align: center; margin-top: 15px; font-size: 0.85rem; color: var(--text-light);">
-                        ⏰ Chỉ còn <span id="remainingSlots" style="font-weight: 700; color: var(--danger);">200</span> suất!
+                        ♾️ Sử dụng vĩnh viễn • 🔄 Update miễn phí
                     </p>
                 </div>
                 
                 <!-- PREMIUM PLAN -->
                 <div class="pricing-card featured">
-                    <div class="featured-badge">⭐ KHUYẾN NGHỊ</div>
+                    <div class="featured-badge">🤖 CÓ BOT</div>
                     <div class="pricing-header">
                         <div class="pricing-icon">💎</div>
-                        <h3>Gói PREMIUM</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 5px;">Trải nghiệm cao cấp</p>
+                        <h3>Premium + Bot Access</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 5px;">Đóng góp theo giá trị bạn nhận được</p>
                     </div>
                     <div class="pricing-price">
-                        <span style="font-size: 3rem; font-weight: 700;">999.000đ</span>
-                        <span style="display: block; font-size: 1rem; opacity: 0.7; margin-top: -5px;">/năm</span>
+                        <span style="font-size: 2.5rem; font-weight: 700;">Tùy Tâm</span>
+                        <span style="display: block; font-size: 1rem; opacity: 0.7; margin-top: -5px;">Đóng góp tự nguyện</span>
                     </div>
-                    <p class="pricing-note" style="background: linear-gradient(135deg, #ffd700, #ffed4e); color: var(--primary); padding: 12px; border-radius: 10px; font-weight: 600;">
-                        💰 ~83K/tháng • 🎁 Tặng 7 ngày dùng thử
+                    <p class="pricing-note" style="background: linear-gradient(135deg, #ffd700, #ffed4e); color: var(--primary); padding: 15px; border-radius: 10px; font-weight: 600; line-height: 1.6;">
+                        💡 <strong>Dùng rồi thấy hiệu quả → Đóng góp</strong><br>
+                        <span style="font-size: 0.85em; opacity: 0.8;">Mức đề xuất: 50K - 200K/tháng (tùy khả năng)</span>
                     </p>
                     
                     <ul class="pricing-features">
@@ -1258,21 +1276,23 @@
                     </ul>
                     
                     <button class="btn-select-plan premium" onclick="openRegistrationModal('premium')" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: var(--primary); font-weight: 700;">
-                        <i class="fas fa-crown"></i> Dùng Thử 7 Ngày MIỄN PHÍ
+                        <i class="fas fa-robot"></i> Kết Nối Bot Ngay
                     </button>
                     
-                    <p style="text-align: center; margin-top: 15px; font-size: 0.85rem; color: var(--text-light);">
-                        💳 Không cần thẻ • ⚡ Hủy bất cứ lúc nào
+                    <p style="text-align: center; margin-top: 15px; font-size: 0.85rem; color: var(--text-light); line-height: 1.6;">
+                        🎁 <strong>Dùng thử FREE</strong> → Đóng góp khi thấy giá trị<br>
+                        💰 Chi phí duy trì: Server + AI API
                     </p>
                 </div>
             </div>
             
             <!-- Comparison Note -->
             <div style="text-align: center; margin-top: 50px; padding: 30px; background: white; border-radius: 20px; box-shadow: var(--shadow);">
-                <h3 style="margin-bottom: 20px; color: var(--primary);">🤔 Chưa chắc chắn?</h3>
+                <h3 style="margin-bottom: 20px; color: var(--primary);">💡 Triết Lý "Pay What You Want"</h3>
                 <p style="font-size: 1.1rem; margin-bottom: 25px; line-height: 1.8;">
-                    Bắt đầu với <strong>FREE</strong> để trải nghiệm app<br>
-                    Sau đó nâng cấp <strong>PREMIUM</strong> khi cần AI Assistant & Bot nâng cao
+                    <strong>Template FREE vĩnh viễn</strong> - Bạn đã có đủ để quản lý tài chính<br>
+                    <strong>Bot + AI</strong> - Dùng thử, chỉ đóng góp khi thấy hiệu quả thực sự<br>
+                    <span style="font-size: 0.95rem; color: var(--text-light);">🤝 Cùng xây dựng, cùng phát triển</span>
                 </p>
                 <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
                     <div style="padding: 15px 25px; background: var(--background); border-radius: 10px;">
@@ -1302,31 +1322,31 @@
             <div class="faq-container">
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>❓ Làm sao để nhận gói FREE 6 tháng?</span>
+                        <span>❓ Làm sao để nhận template FREE?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Rất đơn giản! Chỉ cần <strong>đăng ký</strong> trong số <strong>200 người đầu tiên</strong>. Bạn sẽ nhận ngay FREE 6 tháng sử dụng full tính năng kết nối Telegram Bot + AI Assistant. Sau 6 tháng, bạn có thể tiếp tục sử dụng hoặc nâng cấp Premium nếu thích.</p>
+                        <p>Rất đơn giản! Chỉ cần <strong>đăng ký</strong> và bạn sẽ nhận ngay template Freedom Wallet <strong>miễn phí vĩnh viễn</strong>. Template bao gồm full tính năng quản lý tài chính trên Google Sheets. Nếu muốn kết nối Telegram Bot + AI, bạn có thể dùng thử và đóng góp tự nguyện.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>❓ Sau 6 tháng FREE thì sao?</span>
+                        <span>❓ Template FREE có giới hạn thời gian không?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Sau 6 tháng, bạn có thể: <strong>(1)</strong> Tiếp tục sử dụng template miễn phí (self-hosted, không bot). <strong>(2)</strong> Nâng cấp Premium để giữ đầy đủ tính năng Bot + AI. Dữ liệu của bạn vẫn giữ nguyên 100%, không mất gì cả!</p>
+                        <p><strong>KHÔNG giới hạn!</strong> Template Freedom Wallet là của bạn <strong>mãi mãi</strong>. Bạn sử dụng trên Google Sheets của mình, tự host, dữ liệu 100% thuộc về bạn. Chỉ có Telegram Bot + AI là premium features cần đóng góp để duy trì chi phí server.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>❓ Premium 999k là trọn đời hay hàng năm?</span>
+                        <span>❓ Mô hình đóng góp tự nguyện hoạt động thế nào?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p><strong>999,000đ/năm</strong> (~83k/tháng). Sau 1 năm bạn cần gia hạn để tiếp tục dùng Bot Premium & AI. Webapp vẫn hoạt động bình thường 100% vì data lưu trên Drive của bạn. Có thể hủy bất cứ lúc nào.</p>
+                        <p><strong>FREE mãi mãi:</strong> Template + webapp hoàn toàn miễn phí, không giới hạn thời gian. <strong>Premium (Bot + AI):</strong> Dùng thử miễn phí → Nếu thấy hiệu quả, bạn đóng góp theo khả năng (gợi ý: 50-200K/tháng). Không bắt buộc, hoàn toàn tự nguyện. Bot vẫn chạy bình thường cho dù bạn chưa đóng góp.</p>
                     </div>
                 </div>
 
@@ -1372,83 +1392,69 @@
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>❓ Premium có bản dùng thử không?</span>
+                        <span>❓ Nên đóng góp bao nhiêu cho Premium?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p><strong>CÓ!</strong> Dùng thử <strong>7 ngày MIỄN PHÍ</strong>, không cần thẻ tín dụng. Trải nghiệm đầy đủ Bot Premium + AI Assistant. Nếu không hài lòng, hủy trước ngày thứ 7 là không mất phí gì cả.</p>
+                        <p><strong>Tùy khả năng & giá trị bạn nhận!</strong> Mức gợi ý: <strong>50K/tháng</strong> (học sinh/sinh viên), <strong>100K/tháng</strong> (nghề tự do), <strong>200K/tháng</strong> (corporate). Nhiều bạn đóng góp 1 lần 500K-1M/năm. <strong>Quan trọng:</strong> Bạn vẫn dùng được bot ngay cả khi chưa đóng góp, chỉ đóng góp khi thấy app thực sự giúp ích cuộc sống bạn.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>💰 Tại sao phải trả 999k/năm cho Premium? Tiền đó dùng vào đâu?</span>
+                        <span>💰 Đóng góp của tôi được dùng vào đâu?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p style="margin-bottom: 15px;">Chúng tôi tin vào <strong>minh bạch tài chính</strong>. Dưới đây là cách chúng tôi sử dụng 999k của bạn:</p>
+                        <p style="margin-bottom: 15px;">Chúng tôi tin vào <strong>minh bạch tài chính</strong>. Dưới đây là cách chúng tôi sử dụng đóng góp của bạn:</p>
                         
                         <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 15px;">
                             <h4 style="color: var(--primary); margin-bottom: 12px; font-size: 1rem;">📊 Phân Bổ Chi Phí:</h4>
                             
                             <div style="margin-bottom: 12px;">
-                                <strong>🖥️ Chi phí vận hành (40% ~ 400k):</strong>
+                                <strong>🖥️ Chi phí vận hành (60%):</strong>
                                 <ul style="margin-top: 5px; padding-left: 20px; font-size: 0.95rem;">
-                                    <li>Server Telegram Bot 24/7 (AWS/Digital Ocean)</li>
-                                    <li>Database cloud (PostgreSQL) cho millions users</li>
-                                    <li>API ChatGPT-4 cho AI Assistant (~$0.03/request × 1000 requests/năm)</li>
-                                    <li>Backup & disaster recovery infrastructure</li>
-                                    <li>SSL certificates & security</li>
+                                    <li>Server Telegram Bot 24/7 (AWS/Digital Ocean): ~30-50K/user/năm</li>
+                                    <li>API ChatGPT-4 cho AI Assistant (~$0.03/request)</li>
+                                    <li>Database, backup & disaster recovery</li>
+                                    <li>SSL certificates & security infrastructure</li>
                                 </ul>
                             </div>
                             
                             <div style="margin-bottom: 12px;">
-                                <strong>👨‍💻 Team & Support (30% ~ 300k):</strong>
+                                <strong>👨‍💻 Team & Support (25%):</strong>
                                 <ul style="margin-top: 5px; padding-left: 20px; font-size: 0.95rem;">
                                     <li>Developer maintain & update tính năng mới</li>
                                     <li>Support team trả lời 9h-21h hàng ngày</li>
-                                    <li>Mentor tư vấn tài chính 1-1</li>
-                                    <li>QA testing & bug fixes</li>
+                                    <li>QA testing & bug fixes liên tục</li>
                                 </ul>
                             </div>
                             
                             <div style="margin-bottom: 12px;">
-                                <strong>❤️ Đóng góp xã hội (15% ~ 150k):</strong>
-                                <ul style="margin-top: 5px; padding-left: 20px; font-size: 0.95rem;">
-                                    <li><strong>Quỹ 1 Triệu Trẻ Em Học FREE:</strong> Tài trợ học phí, sách vở cho trẻ em khó khăn</li>
-                                    <li>Workshops giáo dục tài chính miễn phí tại trường học & cộng đồng</li>
-                                    <li>Cung cấp templates & tools miễn phí cho người nghèo</li>
-                                </ul>
-                            </div>
-                            
-                            <div style="margin-bottom: 12px;">
-                                <strong>🚀 Tái đầu tư phát triển (15% ~ 150k):</strong>
+                                <strong>🚀 Tái đầu tư phát triển (15%):</strong>
                                 <ul style="margin-top: 5px; padding-left: 20px; font-size: 0.95rem;">
                                     <li>R&D tính năng mới (AI nâng cao, mobile app...)</li>
                                     <li>Nâng cấp UX/UI cho trải nghiệm tốt hơn</li>
-                                    <li>Mở rộng team để phục vụ 1M+ users</li>
-                                    <li>Training & upskill cho team</li>
+                                    <li>Mở rộng team để phục vụ cộng đồng</li>
                                 </ul>
                             </div>
                         </div>
                         
                         <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); padding: 20px; border-radius: 10px; margin-top: 15px;">
-                            <h4 style="color: var(--primary); margin-bottom: 10px; font-size: 1rem;">🎯 Sứ Mệnh Của Chúng Tôi:</h4>
+                            <h4 style="color: var(--primary); margin-bottom: 10px; font-size: 1rem;">🎯 Triết Lý Của Chúng Tôi:</h4>
                             <p style="margin-bottom: 10px; font-size: 0.95rem;">
-                                <strong>"Giúp 1 triệu người Việt Nam đạt tự do tài chính trong 10 năm tới"</strong>
+                                <strong>"Ứng dụng miễn phí vĩnh viễn, ai thấy giá trị thì hỗ trợ tài chính"</strong>
                             </p>
                             <p style="font-size: 0.9rem; line-height: 1.6;">
-                                Chúng tôi không chỉ xây dựng một ứng dụng, mà đang xây dựng một <strong>phong trào giáo dục tài chính</strong>. 
-                                Mỗi người Premium không chỉ đầu tư cho bản thân, mà còn đóng góp vào việc giúp đỡ hàng ngàn người khác 
-                                (qua referral FREE) và hàng triệu trẻ em (qua quỹ học bổng).
+                                Chúng tôi không bán ứng dụng, mà xây dựng <strong>cộng đồng</strong>. Template FREE vĩnh viễn giúp mọi người quản lý tài chính. 
+                                Ai dùng Bot + AI và thấy hiệu quả thì đóng góp giúp chúng tôi duy trì server và tiếp tục phát triển.
                             </p>
                         </div>
                         
                         <div style="margin-top: 15px; padding: 15px; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 5px;">
                             <p style="margin: 0; font-size: 0.95rem; line-height: 1.6;">
-                                💡 <strong>So sánh:</strong> Chi phí 999k/năm = 83k/tháng = 2.7k/ngày. 
-                                Bằng 1 ly cà phê, bạn có AI assistant + bot 24/7 + managed service + ủng hộ giáo dục cho trẻ em. 
-                                <strong>ROI của bạn?</strong> Nếu app giúp bạn tiết kiệm được chỉ 100k/tháng = 1.2tr/năm → Lãi 201k! 🎉
+                                💡 <strong>Ví dụ:</strong> Nếu app giúp bạn tiết kiệm được 200K/tháng, bạn đóng góp 100K/tháng → Vẫn lãi 100K + có AI assistant 24/7! 🎉
+                                <strong>Nhưng quan trọng:</strong> Bạn chỉ đóng góp khi THẬT SỰ thấy hiệu quả, không phải vì bị bắt buộc.
                             </p>
                         </div>
                     </div>
@@ -1500,7 +1506,7 @@
                         <li>✅ Telegram Bot tích hợp</li>
                         <li>✅ AI Financial Assistant</li>
                         <li>✅ Self-hosted deployment</li>
-                        <li>✅ Free 6 tháng cho 200 người đầu</li>
+                        <li>✅ FREE vĩnh viễn cho mọi người</li>
                     </ul>
                 </div>
                 
@@ -1589,11 +1595,11 @@
             <div style="text-align: center; margin-top: 50px;">
                 <h3 style="font-size: 2rem; margin-bottom: 20px;">Bắt Đầu Hành Trình Ngay Hôm Nay!</h3>
                 <p style="font-size: 1.1rem; margin-bottom: 30px; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">
-                    Đăng ký ngay để nhận <strong>FREE 6 tháng</strong> full tính năng<br>
-                    <span style="font-size: 0.95rem;">⏰ Chỉ còn 200 suất!</span>
+                    Đăng ký ngay để nhận <strong>Template FREE vĩnh viễn</strong><br>
+                    <span style="font-size: 0.95rem;">🎁 Full tính năng - Không giới hạn thời gian!</span>
                 </p>
                 <button class="btn-register" onclick="openRegistrationModal('free')" style="background: #FFD700; color: var(--primary); font-size: 1.2rem; padding: 18px 40px;">
-                    <i class="fas fa-rocket"></i> Đăng Ký FREE Ngay
+                    <i class="fas fa-download"></i> Tải Template Miễn Phí
                 </button>
             </div>
         </div>
@@ -1651,19 +1657,19 @@
                         <div class="radio-option">
                             <input type="radio" id="plan-free" name="plan" value="free" required>
                             <label for="plan-free">
-                                Gói FREE
-                                <span class="price">0đ</span>
+                                Template FREE
+                                <span class="price">Vĩnh viễn</span>
                             </label>
                         </div>
                         <div class="radio-option">
                             <input type="radio" id="plan-premium" name="plan" value="premium" required>
                             <label for="plan-premium">
-                                Gói Premium
-                                <span class="price">999K</span>
+                                Premium + Bot
+                                <span class="price">Đóng góp tự nguyện</span>
                             </label>
                         </div>
                     </div>
-                    <p class="form-note">💡 Chỉ còn <span id="modalRemainingSlots" style="font-weight: 700; color: var(--danger);">200</span> suất FREE 6 tháng!</p>
+                    <p class="form-note">💡 Template FREE vĩnh viễn cho mọi người • Bot + AI với mức đóng góp tùy tâm</p>
                 </div>
 
                 <div class="form-group">
@@ -1693,30 +1699,59 @@
         <div class="modal-content">
             <button class="modal-close" onclick="closePaymentModal()">&times;</button>
             
-            <h2 class="modal-title">Thanh Toán Gói Premium</h2>
+            <h2 class="modal-title">💝 Đóng Góp Hỗ Trợ Phát Triển</h2>
             
             <div class="payment-info">
-                <h3>Thông Tin Chuyển Khoản</h3>
-                <div class="payment-details">
-                    <p><strong>Ngân hàng:</strong> OCB</p>
-                    <p><strong>Số tài khoản:</strong> 0814267626</p>
-                    <p><strong>Chủ tài khoản:</strong> PHAM THANH TUAN</p>
-                    <p><strong>Số tiền:</strong> 999,000 VNĐ</p>
-                    <p><strong>Nội dung:</strong> <span id="paymentContent"></span></p>
-                </div>
-
-                <div class="qr-code">
-                    <img src="" alt="QR Code Payment" id="qrImage">
-                </div>
-
-                <p style="text-align: center; color: var(--text-light); font-size: 0.95rem;">
-                    Sau khi chuyển khoản, vui lòng chờ 1-5 phút để hệ thống xác nhận.<br>
-                    Bạn sẽ nhận được email hướng dẫn và link tham gia group Telegram.
+                <p style="text-align: center; font-size: 1rem; margin-bottom: 25px; line-height: 1.6;">
+                    <strong>Cảm ơn bạn đã tin tùng Freedom Wallet!</strong><br>
+                    Bot + AI cần chi phí duy trì (server, API). Bạn có thể đóng góp để hỗ trợ chúng tôi:<br>
+                    <span style="color: var(--text-light); font-size: 0.9rem;">(Hoàn toàn tự nguyện - Bạn vẫn dùng được Bot ngay cả khi chưa đóng góp)</span>
                 </p>
+                
+                <!-- Suggested Amounts -->
+                <div style="margin-bottom: 25px;">
+                    <h4 style="text-align: center; margin-bottom: 15px; color: var(--primary);">Chọn mức đóng góp:</h4>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 15px;">
+                        <button class="donation-amount" onclick="selectDonationAmount(50000)">50K</button>
+                        <button class="donation-amount" onclick="selectDonationAmount(100000)">100K</button>
+                        <button class="donation-amount" onclick="selectDonationAmount(200000)">200K</button>
+                        <button class="donation-amount" onclick="selectDonationAmount(500000)">500K</button>
+                        <button class="donation-amount" onclick="selectDonationAmount(1000000)">1M</button>
+                        <button class="donation-amount" onclick="showCustomAmount()">Tùy chỉnh</button>
+                    </div>
+                    <div id="customAmountInput" style="display: none; margin-bottom: 15px;">
+                        <input type="number" id="customAmount" placeholder="Nhập số tiền (VNĐ)" min="10000" step="10000" style="width: 100%; padding: 12px; border: 2px solid var(--primary); border-radius: 8px; font-size: 1rem;">
+                        <button onclick="applyCustomAmount()" style="width: 100%; margin-top: 10px; padding: 10px; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">Áp dụng</button>
+                    </div>
+                </div>
+                
+                <div id="paymentDetails" style="display: none;">
+                    <h3>Thông Tin Chuyển Khoản</h3>
+                    <div class="payment-details">
+                        <p><strong>Ngân hàng:</strong> OCB</p>
+                        <p><strong>Số tài khoản:</strong> 0814267626</p>
+                        <p><strong>Chủ tài khoản:</strong> PHAM THANH TUAN</p>
+                        <p><strong>Số tiền:</strong> <span id="selectedAmount">0</span> VNĐ</p>
+                        <p><strong>Nội dung:</strong> <span id="paymentContent"></span></p>
+                    </div>
+
+                    <div class="qr-code">
+                        <img src="" alt="QR Code Payment" id="qrImage">
+                    </div>
+
+                    <p style="text-align: center; color: var(--text-light); font-size: 0.95rem;">
+                        Sau khi chuyển khoản, vui lòng chờ 1-5 phút để hệ thống xác nhận.<br>
+                        Bạn sẽ nhận được email hướng dẫn và link tham gia group Telegram.
+                    </p>
+                    
+                    <button class="btn-submit" onclick="confirmPayment()">
+                        Tôi Đã Chuyển Khoản
+                    </button>
+                </div>
             </div>
 
-            <button class="btn-submit" onclick="confirmPayment()">
-                Tôi Đã Chuyển Khoản
+            <button class="btn-submit" onclick="skipDonation()" style="background: var(--text-light); margin-top: 15px;">
+                Bỏ Qua - Chỉ Dùng Template FREE
             </button>
         </div>
     </div>
@@ -1876,14 +1911,72 @@
         }
 
         // Show payment modal
+        let selectedDonationAmount = 0;
+        
         function showPaymentModal(data) {
-            const paymentContent = `FREEDOMWALLET ${data.phone}`;
+            currentRegistrationData = data;
+            document.getElementById('paymentModal').classList.add('active');
+        }
+        
+        // Select donation amount
+        function selectDonationAmount(amount) {
+            selectedDonationAmount = amount;
+            
+            // Remove selected class from all buttons
+            document.querySelectorAll('.donation-amount').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked button
+            event.target.classList.add('selected');
+            
+            // Hide custom input if showing
+            document.getElementById('customAmountInput').style.display = 'none';
+            
+            // Show payment details
+            showPaymentDetails();
+        }
+        
+        // Show custom amount input
+        function showCustomAmount() {
+            document.getElementById('customAmountInput').style.display = 'block';
+            
+            // Remove selected class from all buttons
+            document.querySelectorAll('.donation-amount').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+        }
+        
+        // Apply custom amount
+        function applyCustomAmount() {
+            const customAmount = parseInt(document.getElementById('customAmount').value);
+            if (!customAmount || customAmount < 10000) {
+                alert('Vui lòng nhập số tiền tối thiểu 10,000 VNĐ');
+                return;
+            }
+            
+            selectedDonationAmount = customAmount;
+            showPaymentDetails();
+        }
+        
+        // Show payment details with QR
+        function showPaymentDetails() {
+            const paymentContent = `FREEDOMWALLET ${currentRegistrationData.phone}`;
             document.getElementById('paymentContent').textContent = paymentContent;
+            document.getElementById('selectedAmount').textContent = selectedDonationAmount.toLocaleString('vi-VN');
             
             const qrImage = document.getElementById('qrImage');
-            qrImage.src = `https://img.vietqr.io/image/OCB-0814267626-compact2.jpg?amount=999000&addInfo=${encodeURIComponent(paymentContent)}`;
+            qrImage.src = `https://img.vietqr.io/image/OCB-0814267626-compact2.jpg?amount=${selectedDonationAmount}&addInfo=${encodeURIComponent(paymentContent)}`;
             
-            document.getElementById('paymentModal').classList.add('active');
+            document.getElementById('paymentDetails').style.display = 'block';
+        }
+        
+        // Skip donation
+        function skipDonation() {
+            currentRegistrationData.status = 'FREE - No donation';
+            currentRegistrationData.donationAmount = 0;
+            closePaymentModal();
+            showSuccessMessage(currentRegistrationData);
         }
 
         // Confirm payment
@@ -1896,6 +1989,7 @@
             
             try {
                 currentRegistrationData.status = 'Đã thanh toán';
+                currentRegistrationData.donationAmount = selectedDonationAmount;
                 await sendToGoogleSheets(currentRegistrationData);
                 
                 closePaymentModal();
@@ -2013,7 +2107,7 @@
             userReferralCode = data.referralCode || generateReferralCode(data.email);
             
             if (data.plan === 'free') {
-                // FREE Plan - 6 months trial
+                // FREE Plan - Permanent
                 title.textContent = '🎉 Chào Mừng Bạn Đến Với Freedom Wallet!';
                 
                 // Generate bot deep link with email hash
@@ -2026,36 +2120,36 @@
                 
                 message.innerHTML = `
                     <strong>Xin chào ${data.fullName}!</strong><br><br>
-                    🎊 <strong>Bạn đã nhận được FREE 6 tháng full tính năng!</strong><br><br>
+                    🎊 <strong>Bạn đã nhận được Template Freedom Wallet MIỄN PHÍ VĨNH VIỄN!</strong><br><br>
                     <div style="background: linear-gradient(135deg, #90EE90, #7CFC00); padding: 20px; border-radius: 12px; margin: 15px 0; color: white; box-shadow: 0 4px 15px rgba(144, 238, 144, 0.3);">
                         <div style="font-size: 1.2em; font-weight: 700; margin-bottom: 15px;">
                             ✨ Những gì bạn nhận được:
                         </div>
                         <div style="padding-left: 15px; margin-bottom: 15px; font-size: 0.95em; line-height: 1.8;">
-                            ✓ <strong>Telegram Bot KHÔNG GIỚI HẠN</strong> (6 tháng)<br>
-                            ✓ <strong>AI Financial Assistant</strong> (6 tháng)<br>
+                            ✓ <strong>Template Freedom Wallet v3.2</strong> (vĩnh viễn)<br>
                             ✓ <strong>Full Dashboard 6 Hũ Tiền + 5 Cấp Bậc</strong><br>
-                            ✓ <strong>Managed Setup</strong> (5 phút cài đặt)<br>
-                            ✓ <strong>Priority Support</strong> qua Telegram<br>
-                            ✓ <strong>Template + Google Sheet</strong> hoàn chỉnh
+                            ✓ <strong>Google Sheets + Apps Script</strong> hoàn chỉnh<br>
+                            ✓ <strong>Video hướng dẫn setup</strong> chi tiết<br>
+                            ✓ <strong>Community support</strong> qua Telegram<br>
+                            ✓ <strong>Cập nhật template mới</strong> miễn phí
                         </div>
                         <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
-                            📅 <strong>Hợp lệ đến:</strong> ${new Date(Date.now() + 180*24*60*60*1000).toLocaleDateString('vi-VN')}
+                            💎 <strong>Template</strong> là của bạn TRỌN ĐỜI - Self-hosted, 100% privacy!
                         </div>
                         <div style="font-size: 0.85em; opacity: 0.95;">
-                            💡 Sau 6 tháng, bạn có thể tiếp tục FREE (template only) hoặc nâng cấp Premium
+                            💡 Muốn Bot + AI? Dùng thử → Chỉ đóng góp khi thấy hiệu quả thực sự!
                         </div>
                     </div>
                     <div style="background: linear-gradient(135deg, #0F50AD, #1a6dd9); padding: 20px; border-radius: 12px; margin: 15px 0; color: white;">
                         <div style="font-size: 1.2em; font-weight: 700; margin-bottom: 10px;">
-                            🚀 Bắt đầu ngay hôm nay!
+                            🚀 Nhận Template & Hướng Dẫn
                         </div>
                         <div style="margin-bottom: 15px;">
-                            Nhấn vào nút bên dưới để kết nối Telegram Bot và bắt đầu hành trình tài chính!
+                            Tham gia Telegram để nhận link template và hướng dẫn deploy chi tiết!
                         </div>
                         <a href="${botDeepLink}" target="_blank" 
                            style="display: inline-block; background: #FFD700; color: #0F50AD; padding: 15px 30px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1.1em; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);">
-                            <i class="fab fa-telegram-plane"></i> Kết Nối Bot Ngay
+                            <i class="fab fa-telegram-plane"></i> Nhận Template Ngay
                         </a>
                     </div>
                     <div style="background: linear-gradient(135deg, #FFA500, #ff8c00); padding: 15px; border-radius: 12px; margin: 15px 0; color: white; text-align: center;">
@@ -2087,7 +2181,7 @@
                 document.getElementById('referralLinkInput').value = referralLink;
                 
                 // Setup social share links (optional, not required)
-                const shareText = encodeURIComponent('🎁 Freedom Wallet - FREE 6 tháng! Quản lý tài chính thông minh với AI Assistant. Đăng ký ngay: ' + referralLink);
+                const shareText = encodeURIComponent('🎁 Freedom Wallet - Template FREE vĩnh viễn! Quản lý tài chính thông minh với AI Assistant. Đăng ký ngay: ' + referralLink);
                 
                 console.log('🔗 Referral Link:', referralLink);
                 console.log('📱 Setting up social share buttons...');
