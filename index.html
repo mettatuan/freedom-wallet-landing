@@ -988,6 +988,126 @@
             background: var(--primary);
             color: white;
         }
+        
+        /* Kanban Card Styles */
+        .kanban-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .kanban-card:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transform: translateY(-2px);
+        }
+        
+        .kanban-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            gap: 10px;
+        }
+        
+        .kanban-card-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0;
+            flex: 1;
+            line-height: 1.3;
+        }
+        
+        .kanban-card-label {
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        
+        .label-feature {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .label-improvement {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+        
+        .label-bugfix {
+            background: #ffebee;
+            color: #d32f2f;
+        }
+        
+        .kanban-card-desc {
+            font-size: 0.85rem;
+            color: var(--text);
+            margin-bottom: 12px;
+            line-height: 1.5;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        
+        .kanban-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .kanban-vote-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .kanban-vote-btn:hover {
+            background: #0a3d78;
+            transform: scale(1.05);
+        }
+        
+        .kanban-vote-btn.voted {
+            background: #90EE90;
+            color: var(--primary);
+            cursor: default;
+        }
+        
+        .kanban-vote-btn.voted:hover {
+            transform: scale(1);
+        }
+        
+        .kanban-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+        
+        .kanban-card-id {
+            font-family: monospace;
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
@@ -1483,112 +1603,100 @@
         </div>
     </section>
 
-    <!-- ROADMAP -->
-    <section style="padding: 80px 20px; background: linear-gradient(135deg, #0F50AD 0%, #1a6dd9 100%); color: white;">
+    <!-- ROADMAP KANBAN -->
+    <section id="roadmap-section" style="padding: 80px 20px; background: linear-gradient(135deg, #0F50AD 0%, #1a6dd9 100%); color: white;">
         <div class="container">
             <div class="section-title" style="color: white;">
-                <h2 style="color: white;">🗺️ Roadmap Phát Triển Freedom Wallet</h2>
+                <h2 style="color: white;">🗺️ Roadmap Phát Triển - Kanban Board</h2>
                 <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem; max-width: 800px; margin: 10px auto 0;">
-                    Cùng xây dựng ứng dụng quản lý tài chính hoàn hảo cho người Việt<br>
-                    <strong>Đóng góp ý tưởng của bạn để app ngày càng pro hơn!</strong>
-                </p>
-            </div>
-            
-            <!-- Roadmap Timeline -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px;">
-                <!-- Phase 1: Now -->
-                <div style="background: rgba(144,238,144,0.2); backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; border: 2px solid rgba(144,238,144,0.5); text-align: center;">
-                    <div style="display: inline-block; padding: 8px 20px; background: #90EE90; color: var(--primary); border-radius: 20px; font-weight: 700; margin-bottom: 15px;">✅ HIỆN TẠI</div>
-                    <div style="font-size: 3.5rem; margin-bottom: 15px;">🚀</div>
-                    <h3 style="font-size: 1.5rem; margin-bottom: 15px; color: #90EE90;">Phase 1: MVP Launch</h3>
-                    <ul style="text-align: left; font-size: 0.95rem; line-height: 1.8; opacity: 0.9; list-style: none; padding: 0;">
-                        <li>✅ Template + Dashboard 6 Hũ Tiền</li>
-                        <li>✅ Telegram Bot tích hợp</li>
-                        <li>✅ AI Financial Assistant</li>
-                        <li>✅ Self-hosted deployment</li>
-                        <li>✅ FREE vĩnh viễn cho mọi người</li>
-                    </ul>
-                </div>
-                
-                <!-- Phase 2: Q2 2026 -->
-                <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; border: 2px solid rgba(255,255,255,0.2); text-align: center;">
-                    <div style="display: inline-block; padding: 8px 20px; background: #FFD700; color: var(--primary); border-radius: 20px; font-weight: 700; margin-bottom: 15px;">🔨 Q2/2026</div>
-                    <div style="font-size: 3.5rem; margin-bottom: 15px;">📊</div>
-                    <h3 style="font-size: 1.5rem; margin-bottom: 15px; color: #FFD700;">Phase 2: Advanced Analytics</h3>
-                    <ul style="text-align: left; font-size: 0.95rem; line-height: 1.8; opacity: 0.9; list-style: none; padding: 0;">
-                        <li>📈 Dự báo xu hướng chi tiêu AI</li>
-                        <li>🎯 Đề xuất tối ưu ngân sách</li>
-                        <li>📊 Báo cáo insights nâng cao</li>
-                        <li>🔔 Cảnh báo thông minh</li>
-                        <li>📱 Mobile app iOS/Android</li>
-                    </ul>
-                </div>
-                
-                <!-- Phase 3: Q3 2026 -->
-                <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; border: 2px solid rgba(255,255,255,0.2); text-align: center;">
-                    <div style="display: inline-block; padding: 8px 20px; background: rgba(255,255,255,0.3); color: white; border-radius: 20px; font-weight: 700; margin-bottom: 15px;">🔮 Q3/2026</div>
-                    <div style="font-size: 3.5rem; margin-bottom: 15px;">🤝</div>
-                    <h3 style="font-size: 1.5rem; margin-bottom: 15px; color: #87CEEB;">Phase 3: Social & Goals</h3>
-                    <ul style="text-align: left; font-size: 0.95rem; line-height: 1.8; opacity: 0.9; list-style: none; padding: 0;">
-                        <li>🎯 Quản lý mục tiêu tài chính</li>
-                        <li>👥 Chia sẻ progress với gia đình</li>
-                        <li>🏆 Gamification + Challenges</li>
-                        <li>📚 Thư viện tài chính cá nhân</li>
-                        <li>💬 Community forum</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- Feature Voting -->
-            <div style="margin-top: 50px; padding: 30px; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: 20px; border: 2px solid rgba(255,255,255,0.3);">
-                <h3 style="text-align: center; font-size: 1.8rem; margin-bottom: 20px;">💡 Tính Năng Cộng Đồng Mong Muốn</h3>
-                <p style="text-align: center; font-size: 0.95rem; opacity: 0.85; margin-bottom: 30px;">
-                    <strong>Vote và đề xuất ý tưởng</strong> - Tính năng có nhiều vote nhất sẽ được ưu tiên phát triển!
-                </p>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                    <!-- Feature Request 1 -->
-                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2);">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <h4 style="font-size: 1.1rem; margin: 0;">🔗 Kết nối ngân hàng</h4>
-                            <span style="background: #FFD700; color: var(--primary); padding: 5px 12px; border-radius: 20px; font-weight: 700; font-size: 0.9rem;">287 votes</span>
-                        </div>
-                        <p style="font-size: 0.9rem; opacity: 0.8; margin: 0;">Tự động sync giao dịch từ ngân hàng</p>
-                    </div>
-                    
-                    <!-- Feature Request 2 -->
-                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2);">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <h4 style="font-size: 1.1rem; margin: 0;">📸 Scan hóa đơn</h4>
-                            <span style="background: #90EE90; color: var(--primary); padding: 5px 12px; border-radius: 20px; font-weight: 700; font-size: 0.9rem;">156 votes</span>
-                        </div>
-                        <p style="font-size: 0.9rem; opacity: 0.8; margin: 0;">Chụp bill → tự động thêm giao dịch</p>
-                    </div>
-                    
-                    <!-- Feature Request 3 -->
-                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2);">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <h4 style="font-size: 1.1rem; margin: 0;">👨‍👩‍👧 Gia đình</h4>
-                            <span style="background: #87CEEB; color: var(--primary); padding: 5px 12px; border-radius: 20px; font-weight: 700; font-size: 0.9rem;">142 votes</span>
-                        </div>
-                        <p style="font-size: 0.9rem; opacity: 0.8; margin: 0;">Quản lý tài chính chung gia đình</p>
-                    </div>
-                    
-                    <!-- Feature Request 4 -->
-                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2);">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <h4 style="font-size: 1.1rem; margin: 0;">📊 Stock tracker</h4>
-                            <span style="background: rgba(255,255,255,0.3); color: white; padding: 5px 12px; border-radius: 20px; font-weight: 700; font-size: 0.9rem;">98 votes</span>
-                        </div>
-                        <p style="font-size: 0.9rem; opacity: 0.8; margin: 0;">Theo dõi danh mục chứng khoán</p>
-                    </div>
-                </div>
-                
-                <div style="text-align: center; margin-top: 30px;">
-                    <a href="https://t.me/freedomwalletapp" target="_blank" style="display: inline-block; padding: 15px 35px; background: #FFD700; color: var(--primary); border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 1.05rem; transition: transform 0.3s;">
+                    Xem tiến độ phát triển real-time • Đề xuất tính năng • Vote cho ý tưởng bạn thích!<br>
+                    <button onclick="openFeatureRequestModal()" style="margin-top: 15px; padding: 12px 30px; background: #FFD700; color: var(--primary); border: none; border-radius: 25px; font-weight: 700; cursor: pointer; font-size: 1rem; box-shadow: 0 4px 15px rgba(255,215,0,0.4);">
                         <i class="fas fa-lightbulb"></i> Đề Xuất Tính Năng Mới
-                    </a>
+                    </button>
+                </p>
+            </div>
+            
+            <!-- Kanban Board -->
+            <div class="kanban-board" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; max-width: 100%; overflow-x: auto;">
+                <!-- BACKLOG Column -->
+                <div class="kanban-column" style="background: rgba(128,128,128,0.15); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; min-height: 400px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(128,128,128,0.5);">
+                        <h3 style="margin: 0; font-size: 1.1rem; color: #D3D3D3;">💡 BACKLOG</h3>
+                        <span id="backlog-count" class="card-count" style="background: rgba(128,128,128,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; color: #D3D3D3;">0</span>
+                    </div>
+                    <div id="backlog-cards" class="kanban-cards" style="display: flex; flex-direction: column; gap: 12px;">
+                        <!-- Cards will be loaded here -->
+                        <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.7;">
+                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
+                            <p style="margin-top: 10px; font-size: 0.9rem;">Đang tải...</p>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- TO DO Column -->
+                <div class="kanban-column" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; min-height: 400px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(255,255,255,0.3);">
+                        <h3 style="margin: 0; font-size: 1.1rem; color: white;">📋 TO DO</h3>
+                        <span id="todo-count" class="card-count" style="background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700;">0</span>
+                    </div>
+                    <div id="todo-cards" class="kanban-cards" style="display: flex; flex-direction: column; gap: 12px;">
+                        <!-- Cards will be loaded here -->
+                        <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.7;">
+                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
+                            <p style="margin-top: 10px; font-size: 0.9rem;">Đang tải...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IN PROGRESS Column -->
+                <div class="kanban-column" style="background: rgba(255,215,0,0.15); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; min-height: 400px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(255,215,0,0.5);">
+                        <h3 style="margin: 0; font-size: 1.1rem; color: #FFD700;">🔨 IN PROGRESS</h3>
+                        <span id="progress-count" class="card-count" style="background: rgba(255,215,0,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; color: #FFD700;">0</span>
+                    </div>
+                    <div id="progress-cards" class="kanban-cards" style="display: flex; flex-direction: column; gap: 12px;">
+                        <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.7;">
+                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
+                            <p style="margin-top: 10px; font-size: 0.9rem;">Đang tải...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IN REVIEW Column -->
+                <div class="kanban-column" style="background: rgba(135,206,235,0.15); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; min-height: 400px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(135,206,235,0.5);">
+                        <h3 style="margin: 0; font-size: 1.1rem; color: #87CEEB;">🔍 IN REVIEW</h3>
+                        <span id="review-count" class="card-count" style="background: rgba(135,206,235,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; color: #87CEEB;">0</span>
+                    </div>
+                    <div id="review-cards" class="kanban-cards" style="display: flex; flex-direction: column; gap: 12px;">
+                        <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.7;">
+                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
+                            <p style="margin-top: 10px; font-size: 0.9rem;">Đang tải...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DONE Column -->
+                <div class="kanban-column" style="background: rgba(144,238,144,0.15); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; min-height: 400px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(144,238,144,0.5);">
+                        <h3 style="margin: 0; font-size: 1.1rem; color: #90EE90;">✅ DONE</h3>
+                        <span id="done-count" class="card-count" style="background: rgba(144,238,144,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; color: #90EE90;">0</span>
+                    </div>
+                    <div id="done-cards" class="kanban-cards" style="display: flex; flex-direction: column; gap: 12px;">
+                        <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.7;">
+                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
+                            <p style="margin-top: 10px; font-size: 0.9rem;">Đang tải...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Info Box -->
+            <div style="margin-top: 40px; padding: 25px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 15px; border: 2px solid rgba(255,255,255,0.2); text-align: center;">
+                <p style="font-size: 1rem; margin: 0; line-height: 1.6;">
+                    💡 <strong>Workflow:</strong> Đề xuất → <span style="color: #D3D3D3; font-weight: 600;">BACKLOG</span> → (Admin xét duyệt hoặc đạt 10+ votes) → <span style="color: white; font-weight: 600;">TODO</span> → IN PROGRESS → IN REVIEW → DONE<br>
+                    <span style="font-size: 0.9rem; opacity: 0.85;">Mỗi email chỉ vote 1 lần • Tính năng có nhiều vote nhất được ưu tiên triển khai</span>
+                </p>
             </div>
             
             <!-- CTA -->
@@ -1819,6 +1927,65 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- FEATURE REQUEST MODAL -->
+    <div id="featureRequestModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeFeatureRequestModal()">&times;</button>
+            
+            <h2 class="modal-title">💡 Đề Xuất Tính Năng Mới</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 25px;">
+                Chia sẻ ý tưởng của bạn để cùng xây dựng Freedom Wallet hoàn hảo hơn!
+            </p>
+            
+            <form id="featureRequestForm" onsubmit="handleFeatureRequest(event)">
+                <div class="form-group">
+                    <label>Email của bạn *</label>
+                    <input type="email" name="email" required placeholder="example@email.com">
+                    <p class="form-note">📧 Email để xác nhận và thông báo khi tính năng được phát triển</p>
+                </div>
+
+                <div class="form-group">
+                    <label>Tên tính năng *</label>
+                    <input type="text" name="title" required placeholder="vd: Kết nối ngân hàng tự động" maxlength="100">
+                </div>
+
+                <div class="form-group">
+                    <label>Mô tả chi tiết *</label>
+                    <textarea name="description" required placeholder="Mô tả chi tiết tính năng, lý do cần thiết, và cách sử dụng..." rows="4" maxlength="500"></textarea>
+                    <p class="form-note"><span id="descCharCount">0</span>/500 ký tự</p>
+                </div>
+
+                <div class="form-group">
+                    <label>Loại tính năng *</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="type-feature" name="type" value="FEATURE" required>
+                            <label for="type-feature">
+                                ✨ Tính năng mới
+                            </label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="type-improvement" name="type" value="IMPROVEMENT" required>
+                            <label for="type-improvement">
+                                🔧 Cải tiến hiện tại
+                            </label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="type-bugfix" name="type" value="BUGFIX" required>
+                            <label for="type-bugfix">
+                                🐛 Báo lỗi
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit" id="featureSubmitBtn">
+                    <i class="fas fa-paper-plane"></i> Gửi Đề Xuất
+                </button>
+            </form>
         </div>
     </div>
 
@@ -2289,6 +2456,281 @@
                     target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
+        });
+
+        // ============================================
+        // KANBAN ROADMAP FUNCTIONS
+        // ============================================
+        
+        let kanbanFeatures = [];
+        let userVotes = JSON.parse(localStorage.getItem('userVotes') || '{}');
+        
+        // Load features from Google Sheets
+        async function loadKanbanFeatures() {
+            try {
+                console.log('🔄 Loading Kanban features...');
+                
+                const response = await fetch(GOOGLE_SHEETS_URL + '?action=getFeatures');
+                const result = await response.json();
+                
+                console.log('📊 Features loaded:', result);
+                
+                if (result.status === 'success') {
+                    kanbanFeatures = result.data || [];
+                    renderKanbanBoard();
+                } else {
+                    console.error('❌ Failed to load features:', result);
+                    showKanbanError();
+                }
+            } catch (error) {
+                console.error('❌ Error loading features:', error);
+                showKanbanError();
+            }
+        }
+        
+        // Render Kanban board
+        function renderKanbanBoard() {
+            const columns = {
+                'BACKLOG': document.getElementById('backlog-cards'),
+                'TODO': document.getElementById('todo-cards'),
+                'IN PROGRESS': document.getElementById('progress-cards'),
+                'IN REVIEW': document.getElementById('review-cards'),
+                'DONE': document.getElementById('done-cards')
+            };
+            
+            // Clear loading spinners
+            Object.values(columns).forEach(col => col.innerHTML = '');
+            
+            // Group features by status
+            const grouped = {
+                'BACKLOG': [],
+                'TODO': [],
+                'IN PROGRESS': [],
+                'IN REVIEW': [],
+                'DONE': []
+            };
+            
+            kanbanFeatures.forEach(feature => {
+                const status = feature.status || 'TODO';
+                if (grouped[status]) {
+                    grouped[status].push(feature);
+                }
+            });
+            
+            // Render cards for each column
+            Object.entries(grouped).forEach(([status, features]) => {
+                const column = columns[status];
+                
+                if (features.length === 0) {
+                    column.innerHTML = '<div style="text-align: center; padding: 20px; opacity: 0.5; font-size: 0.9rem;">Không có task nào</div>';
+                } else {
+                    features.forEach(feature => {
+                        column.appendChild(createKanbanCard(feature));
+                    });
+                }
+            });
+            
+            // Update counts
+            document.getElementById('backlog-count').textContent = grouped['BACKLOG'].length;
+            document.getElementById('todo-count').textContent = grouped['TODO'].length;
+            document.getElementById('progress-count').textContent = grouped['IN PROGRESS'].length;
+            document.getElementById('review-count').textContent = grouped['IN REVIEW'].length;
+            document.getElementById('done-count').textContent = grouped['DONE'].length;
+        }
+        
+        // Create Kanban card element
+        function createKanbanCard(feature) {
+            const card = document.createElement('div');
+            card.className = 'kanban-card';
+            
+            const labelClass = {
+                'FEATURE': 'label-feature',
+                'IMPROVEMENT': 'label-improvement',
+                'BUGFIX': 'label-bugfix'
+            }[feature.type] || 'label-feature';
+            
+            const labelText = {
+                'FEATURE': '✨ Tính năng',
+                'IMPROVEMENT': '🔧 Cải tiến',
+                'BUGFIX': '🐛 Sửa lỗi'
+            }[feature.type] || '✨ Tính năng';
+            
+            const hasVoted = userVotes[feature.id] === true;
+            const voteCount = parseInt(feature.votes) || 0;
+            
+            card.innerHTML = `
+                <div class="kanban-card-header">
+                    <h4 class="kanban-card-title">${escapeHtml(feature.title)}</h4>
+                    <span class="kanban-card-label ${labelClass}">${labelText}</span>
+                </div>
+                <p class="kanban-card-desc">${escapeHtml(feature.description)}</p>
+                <div class="kanban-card-footer">
+                    <button class="kanban-vote-btn ${hasVoted ? 'voted' : ''}" 
+                            onclick="voteForFeature('${feature.id}')" 
+                            ${hasVoted ? 'disabled' : ''}>
+                        <i class="fas ${hasVoted ? 'fa-check' : 'fa-thumbs-up'}"></i>
+                        <span>${hasVoted ? 'Đã vote' : 'Vote'} (${voteCount})</span>
+                    </button>
+                    <div class="kanban-card-meta">
+                        <span class="kanban-card-id">#${feature.id}</span>
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+        
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // Vote for feature
+        async function voteForFeature(featureId) {
+            if (userVotes[featureId]) {
+                alert('❌ Bạn đã vote cho tính năng này rồi!');
+                return;
+            }
+            
+            // Ask for email confirmation
+            const email = prompt('📧 Nhập email để xác nhận vote:');
+            if (!email || !email.includes('@')) {
+                alert('❌ Email không hợp lệ!');
+                return;
+            }
+            
+            try {
+                const response = await fetch(GOOGLE_SHEETS_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'text/plain',
+                    },
+                    body: JSON.stringify({
+                        action: 'voteFeature',
+                        featureId: featureId,
+                        email: email,
+                        timestamp: new Date().toISOString()
+                    })
+                });
+                
+                // Save vote locally
+                userVotes[featureId] = true;
+                localStorage.setItem('userVotes', JSON.stringify(userVotes));
+                
+                // Update vote count in local data
+                const feature = kanbanFeatures.find(f => f.id === featureId);
+                if (feature) {
+                    feature.votes = (parseInt(feature.votes) || 0) + 1;
+                }
+                
+                // Re-render board
+                renderKanbanBoard();
+                
+                alert('✅ Vote thành công! Cảm ơn bạn đã đóng góp ý kiến!');
+                
+            } catch (error) {
+                console.error('❌ Error voting:', error);
+                alert('❌ Có lỗi xảy ra. Vui lòng thử lại sau!');
+            }
+        }
+        
+        // Open feature request modal
+        function openFeatureRequestModal() {
+            document.getElementById('featureRequestModal').classList.add('active');
+        }
+        
+        // Close feature request modal
+        function closeFeatureRequestModal() {
+            document.getElementById('featureRequestModal').classList.remove('active');
+        }
+        
+        // Handle feature request submission
+        async function handleFeatureRequest(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const submitBtn = document.getElementById('featureSubmitBtn');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner"></span> Đang gửi...';
+            
+            const formData = {
+                action: 'addFeature',
+                timestamp: new Date().toISOString(),
+                email: form.email.value,
+                title: form.title.value,
+                description: form.description.value,
+                type: form.type.value,
+                status: 'BACKLOG',
+                votes: 0
+            };
+            
+            console.log('📝 Feature request:', formData);
+            
+            try {
+                const response = await fetch(GOOGLE_SHEETS_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'text/plain',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                console.log('✅ Feature request submitted');
+                
+                // Close modal and reset form
+                closeFeatureRequestModal();
+                form.reset();
+                
+                // Reload features
+                setTimeout(() => {
+                    loadKanbanFeatures();
+                }, 2000);
+                
+                alert('✅ Cảm ơn bạn đã đề xuất! Tính năng sẽ được team xem xét và cập nhật lên Kanban board.');
+                
+            } catch (error) {
+                console.error('❌ Error submitting feature:', error);
+                alert('❌ Có lỗi xảy ra. Vui lòng thử lại sau!');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            }
+        }
+        
+        // Show error in Kanban board
+        function showKanbanError() {
+            ['backlog-cards', 'todo-cards', 'progress-cards', 'review-cards', 'done-cards'].forEach(id => {
+                const container = document.getElementById(id);
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 20px; color: #d32f2f; opacity: 0.8;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 1.5rem; margin-bottom: 10px;"></i>
+                        <p style="font-size: 0.85rem; margin: 0;">Không thể tải dữ liệu</p>
+                    </div>
+                `;
+            });
+        }
+        
+        // Character counter for description
+        document.addEventListener('DOMContentLoaded', function() {
+            const descTextarea = document.querySelector('textarea[name="description"]');
+            const charCount = document.getElementById('descCharCount');
+            
+            if (descTextarea && charCount) {
+                descTextarea.addEventListener('input', function() {
+                    charCount.textContent = this.value.length;
+                });
+            }
+            
+            // Load Kanban features on page load
+            if (document.getElementById('roadmap-section')) {
+                loadKanbanFeatures();
+            }
         });
     </script>
 </body>
