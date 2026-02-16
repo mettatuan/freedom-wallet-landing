@@ -1648,27 +1648,13 @@
                     </div>
                 </div>
 
-                <!-- IN PROGRESS Column -->
-                <div class="kanban-column" style="background: rgba(255,215,0,0.15); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; min-height: 400px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(255,215,0,0.5);">
-                        <h3 style="margin: 0; font-size: 1.1rem; color: #FFD700;">🔨 IN PROGRESS</h3>
-                        <span id="progress-count" class="card-count" style="background: rgba(255,215,0,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; color: #FFD700;">0</span>
+                <!-- IN DEVELOPMENT Column (Merged: IN PROGRESS + IN REVIEW) -->
+                <div class="kanban-column" style="background: rgba(255,165,0,0.15); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; min-height: 400px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(255,165,0,0.5);">
+                        <h3 style="margin: 0; font-size: 1.1rem; color: #FFA500;">🔨 IN DEVELOPMENT</h3>
+                        <span id="development-count" class="card-count" style="background: rgba(255,165,0,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; color: #FFA500;">0</span>
                     </div>
-                    <div id="progress-cards" class="kanban-cards" style="display: flex; flex-direction: column; gap: 12px;">
-                        <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.7;">
-                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
-                            <p style="margin-top: 10px; font-size: 0.9rem;">Đang tải...</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- IN REVIEW Column -->
-                <div class="kanban-column" style="background: rgba(135,206,235,0.15); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; min-height: 400px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(135,206,235,0.5);">
-                        <h3 style="margin: 0; font-size: 1.1rem; color: #87CEEB;">🔍 IN REVIEW</h3>
-                        <span id="review-count" class="card-count" style="background: rgba(135,206,235,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; color: #87CEEB;">0</span>
-                    </div>
-                    <div id="review-cards" class="kanban-cards" style="display: flex; flex-direction: column; gap: 12px;">
+                    <div id="development-cards" class="kanban-cards" style="display: flex; flex-direction: column; gap: 12px;">
                         <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.7;">
                             <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
                             <p style="margin-top: 10px; font-size: 0.9rem;">Đang tải...</p>
@@ -1694,7 +1680,7 @@
             <!-- Info Box -->
             <div style="margin-top: 40px; padding: 25px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 15px; border: 2px solid rgba(255,255,255,0.2); text-align: center;">
                 <p style="font-size: 1rem; margin: 0; line-height: 1.6;">
-                    💡 <strong>Workflow:</strong> Đề xuất → <span style="color: #D3D3D3; font-weight: 600;">BACKLOG</span> → (Admin xét duyệt hoặc đạt 10+ votes) → <span style="color: white; font-weight: 600;">TODO</span> → IN PROGRESS → IN REVIEW → DONE<br>
+                    💡 <strong>Workflow:</strong> Đề xuất → <span style="color: #D3D3D3; font-weight: 600;">BACKLOG</span> → (Admin xét duyệt hoặc đạt 10+ votes) → <span style="color: white; font-weight: 600;">TODO</span> → <span style="color: #FFA500; font-weight: 600;">IN DEVELOPMENT</span> → DONE<br>
                     <span style="font-size: 0.9rem; opacity: 0.85;">Mỗi email chỉ vote 1 lần • Tính năng có nhiều vote nhất được ưu tiên triển khai</span>
                 </p>
             </div>
@@ -2493,8 +2479,7 @@
             const columns = {
                 'BACKLOG': document.getElementById('backlog-cards'),
                 'TODO': document.getElementById('todo-cards'),
-                'IN PROGRESS': document.getElementById('progress-cards'),
-                'IN REVIEW': document.getElementById('review-cards'),
+                'IN DEVELOPMENT': document.getElementById('development-cards'),
                 'DONE': document.getElementById('done-cards')
             };
             
@@ -2505,13 +2490,22 @@
             const grouped = {
                 'BACKLOG': [],
                 'TODO': [],
-                'IN PROGRESS': [],
-                'IN REVIEW': [],
+                'IN DEVELOPMENT': [],
                 'DONE': []
             };
             
+            // Map old statuses to new IN DEVELOPMENT
+            const statusMap = {
+                'IN PROGRESS': 'IN DEVELOPMENT',
+                'IN REVIEW': 'IN DEVELOPMENT'
+            };
+            
             kanbanFeatures.forEach(feature => {
-                const status = feature.status || 'TODO';
+                let status = feature.status || 'TODO';
+                // Map old statuses to new structure
+                if (statusMap[status]) {
+                    status = statusMap[status];
+                }
                 if (grouped[status]) {
                     grouped[status].push(feature);
                 }
@@ -2533,8 +2527,7 @@
             // Update counts
             document.getElementById('backlog-count').textContent = grouped['BACKLOG'].length;
             document.getElementById('todo-count').textContent = grouped['TODO'].length;
-            document.getElementById('progress-count').textContent = grouped['IN PROGRESS'].length;
-            document.getElementById('review-count').textContent = grouped['IN REVIEW'].length;
+            document.getElementById('development-count').textContent = grouped['IN DEVELOPMENT'].length;
             document.getElementById('done-count').textContent = grouped['DONE'].length;
         }
         
@@ -2705,7 +2698,7 @@
         
         // Show error in Kanban board
         function showKanbanError() {
-            ['backlog-cards', 'todo-cards', 'progress-cards', 'review-cards', 'done-cards'].forEach(id => {
+            ['backlog-cards', 'todo-cards', 'development-cards', 'done-cards'].forEach(id => {
                 const container = document.getElementById(id);
                 container.innerHTML = `
                     <div style="text-align: center; padding: 20px; color: #d32f2f; opacity: 0.8;">
