@@ -1979,10 +1979,10 @@
         // ============================================
         // GOOGLE APPS SCRIPT CONFIGURATION
         // ============================================
-        // ✅ DEPLOYED v2.0 - CORS Fixed - Feb 6, 2026, 3:30 PM
-        // Google Sheet: https://docs.google.com/spreadsheets/d/1-fruHaSlCKIOpIfU5Qrkns0ze3bx3E-mKUgQ5fUF-Hg/edit
+        // ✅ DEPLOYED v3.0 - 4 Columns + CORS Fixed - Feb 16, 2026
+        // Updated: API endpoint with BACKLOG support + IN DEVELOPMENT merged status
         
-        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwGBB22T6QWEx7W25XuU-yYnBgkg4PAFJu2dD9NdWAikT582wN63P1Xdyt1qAsXDdxr_w/exec';
+        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxtgbgIqkavGWuxdex7BZMH4Entix4UCUd_VaTE-ZB8Tp0pGz7ifbJcfsQygHQyvJjByw/exec';
         
         let currentRegistrationData = null;
         let userReferralCode = null;
@@ -2461,7 +2461,7 @@
                 
                 console.log('📊 Features loaded:', result);
                 
-                if (result.status === 'success') {
+                if (result.success) {
                     kanbanFeatures = result.data || [];
                     renderKanbanBoard();
                 } else {
