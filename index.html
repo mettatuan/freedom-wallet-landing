@@ -1187,7 +1187,7 @@
         
         .feature-request-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6) !important;
+            box-shadow: 0 10px 30px rgba(15, 80, 173, 0.5) !important;
         }
         
         @keyframes float {
@@ -1197,9 +1197,10 @@
         
         .roadmap-floating-icon {
             position: absolute;
-            opacity: 0.1;
+            opacity: 0.05;
             animation: float 6s ease-in-out infinite;
             pointer-events: none;
+            color: var(--primary);
         }
         
         .roadmap-floating-icon:nth-child(1) {
@@ -1258,16 +1259,16 @@
     </section>
 
     <!-- ROADMAP KANBAN -->
-    <section id="roadmap-section" style="padding: 80px 20px; background: linear-gradient(135deg, #0F50AD 0%, #1a6dd9 100%); color: white; position: relative;">
+    <section id="roadmap-section" style="padding: 80px 20px; background: var(--background); position: relative;">
         <!-- Floating decorative icons -->
         <div class="roadmap-floating-icon" style="font-size: 80px;">💡</div>
         <div class="roadmap-floating-icon" style="font-size: 60px;">🚀</div>
         <div class="roadmap-floating-icon" style="font-size: 70px;">✨</div>
         
         <div class="container" style="position: relative; z-index: 1;">
-            <div class="section-title" style="color: white;">
-                <h2 style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.2);">🗺️ Roadmap Phát Triển - Kanban Board</h2>
-                <p style="color: rgba(255,255,255,0.95); font-size: 1.1rem; max-width: 800px; margin: 10px auto 30px; line-height: 1.8;">
+            <div class="section-title">
+                <h2 style="color: var(--primary); font-weight: 700;">🗺️ Roadmap Phát Triển - Kanban Board</h2>
+                <p style="color: var(--text-light); font-size: 1.1rem; max-width: 800px; margin: 10px auto 30px; line-height: 1.8;">
                     Xem tiến độ phát triển real-time • Đề xuất tính năng • Vote cho ý tưởng bạn thích!
                 </p>
                 
@@ -1278,14 +1279,14 @@
                         class="feature-request-btn"
                         style="
                             padding: 16px 40px; 
-                            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); 
-                            color: var(--primary); 
+                            background: linear-gradient(135deg, var(--primary) 0%, #1a6dd9 100%); 
+                            color: white; 
                             border: none; 
                             border-radius: 50px; 
                             font-weight: 700; 
                             cursor: pointer; 
                             font-size: 1.1rem; 
-                            box-shadow: 0 6px 20px rgba(255,215,0,0.4);
+                            box-shadow: 0 6px 20px rgba(15,80,173,0.3);
                             position: relative;
                             z-index: 1;
                         "
@@ -1293,7 +1294,7 @@
                         <i class="fas fa-lightbulb" style="margin-right: 8px;"></i> 
                         <span style="position: relative; z-index: 2;">Đề Xuất Ý Tưởng Mới</span>
                     </button>
-                    <p style="margin-top: 15px; font-size: 0.9rem; color: rgba(255,255,255,0.8);">
+                    <p style="margin-top: 15px; font-size: 0.9rem; color: var(--text-light); font-weight: 500;">
                         🎁 Mỗi đóng góp đều được ghi nhận và đánh giá cao!
                     </p>
                 </div>
@@ -1302,96 +1303,96 @@
             <!-- Kanban Board -->
             <div class="kanban-board" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; max-width: 100%; overflow-x: auto;">
                 <!-- BACKLOG Column -->
-                <div class="kanban-column" style="background: rgba(128,128,128,0.15); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(128,128,128,0.5);">
-                        <h3 style="margin: 0; font-size: 1.1rem; color: #D3D3D3;">💡 BACKLOG</h3>
-                        <span id="backlog-count" class="card-count" style="background: rgba(128,128,128,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; color: #D3D3D3;">0</span>
+                <div class="kanban-column" style="background: white; border-radius: 15px; padding: 20px; border: 2px solid #e0e0e0; box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: all 0.3s;" onmouseover="this.style.boxShadow='0 8px 25px rgba(0,0,0,0.12)'" onmouseout="this.style.boxShadow='0 4px 15px rgba(0,0,0,0.08)'">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 3px solid #9e9e9e;">
+                        <h3 style="margin: 0; font-size: 1.1rem; color: #616161; font-weight: 700;">💡 BACKLOG</h3>
+                        <span id="backlog-count" class="card-count" style="background: #f5f5f5; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; color: #616161;">0</span>
                     </div>
                     <div id="backlog-cards" class="kanban-cards" style="display: flex; flex-direction: column; gap: 12px;">
-                        <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.7;">
-                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
-                            <p style="margin-top: 10px; font-size: 0.9rem;">Đang tải...</p>
+                        <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.6;">
+                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: var(--primary);"></i>
+                            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">Đang tải...</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- TO DO Column -->
-                <div class="kanban-column" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(255,255,255,0.3);">
-                        <h3 style="margin: 0; font-size: 1.1rem; color: white;">📋 TO DO</h3>
-                        <span id="todo-count" class="card-count" style="background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700;">0</span>
+                <div class="kanban-column" style="background: white; border-radius: 15px; padding: 20px; border: 2px solid var(--primary); box-shadow: 0 4px 15px rgba(15,80,173,0.15); transition: all 0.3s;" onmouseover="this.style.boxShadow='0 8px 25px rgba(15,80,173,0.25)'" onmouseout="this.style.boxShadow='0 4px 15px rgba(15,80,173,0.15)'">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 3px solid var(--primary);">
+                        <h3 style="margin: 0; font-size: 1.1rem; color: var(--primary); font-weight: 700;">📋 TO DO</h3>
+                        <span id="todo-count" class="card-count" style="background: rgba(15,80,173,0.1); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; color: var(--primary);">0</span>
                     </div>
                     <div id="todo-cards" class="kanban-cards" style="display: flex; flex-direction: column; gap: 12px;">
-                        <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.7;">
-                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
-                            <p style="margin-top: 10px; font-size: 0.9rem;">Đang tải...</p>
+                        <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.6;">
+                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: var(--primary);"></i>
+                            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">Đang tải...</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- IN DEVELOPMENT Column -->
-                <div class="kanban-column" style="background: rgba(255,165,0,0.15); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(255,165,0,0.5);">
-                        <h3 style="margin: 0; font-size: 1.1rem; color: #FFA500;">🔨 IN DEVELOPMENT</h3>
-                        <span id="development-count" class="card-count" style="background: rgba(255,165,0,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; color: #FFA500;">0</span>
+                <div class="kanban-column" style="background: white; border-radius: 15px; padding: 20px; border: 2px solid #FF9800; box-shadow: 0 4px 15px rgba(255,152,0,0.15); transition: all 0.3s;" onmouseover="this.style.boxShadow='0 8px 25px rgba(255,152,0,0.25)'" onmouseout="this.style.boxShadow='0 4px 15px rgba(255,152,0,0.15)'">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 3px solid #FF9800;">
+                        <h3 style="margin: 0; font-size: 1.1rem; color: #F57C00; font-weight: 700;">🔨 IN DEVELOPMENT</h3>
+                        <span id="development-count" class="card-count" style="background: rgba(255,152,0,0.1); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; color: #F57C00;">0</span>
                     </div>
                     <div id="development-cards" class="kanban-cards" style="display: flex; flex-direction: column; gap: 12px;">
-                        <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.7;">
-                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
-                            <p style="margin-top: 10px; font-size: 0.9rem;">Đang tải...</p>
+                        <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.6;">
+                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: var(--primary);"></i>
+                            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">Đang tải...</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- DONE Column -->
-                <div class="kanban-column" style="background: rgba(144,238,144,0.15); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(144,238,144,0.5);">
-                        <h3 style="margin: 0; font-size: 1.1rem; color: #90EE90;">✅ DONE</h3>
-                        <span id="done-count" class="card-count" style="background: rgba(144,238,144,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; color: #90EE90;">0</span>
+                <div class="kanban-column" style="background: white; border-radius: 15px; padding: 20px; border: 2px solid #4CAF50; box-shadow: 0 4px 15px rgba(76,175,80,0.15); transition: all 0.3s;" onmouseover="this.style.boxShadow='0 8px 25px rgba(76,175,80,0.25)'" onmouseout="this.style.boxShadow='0 4px 15px rgba(76,175,80,0.15)'">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 3px solid #4CAF50;">
+                        <h3 style="margin: 0; font-size: 1.1rem; color: #2E7D32; font-weight: 700;">✅ DONE</h3>
+                        <span id="done-count" class="card-count" style="background: rgba(76,175,80,0.1); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; color: #2E7D32;">0</span>
                     </div>
                     <div id="done-cards" class="kanban-cards" style="display: flex; flex-direction: column; gap: 12px;">
-                        <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.7;">
-                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
-                            <p style="margin-top: 10px; font-size: 0.9rem;">Đang tải...</p>
+                        <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.6;">
+                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: var(--primary);"></i>
+                            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">Đang tải...</p>
                         </div>
                     </div>
                 </div>
             </div>
             
             <!-- Info Box with enhanced design -->
-            <div style="margin-top: 40px; padding: 30px; background: rgba(255,255,255,0.15); backdrop-filter: blur(15px); border-radius: 20px; border: 2px solid rgba(255,255,255,0.25); text-align: center; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
-                <div style="display: inline-block; padding: 10px 20px; background: rgba(255,215,0,0.2); border-radius: 10px; margin-bottom: 15px;">
-                    <p style="font-size: 1.05rem; margin: 0; font-weight: 600;">
+            <div style="margin-top: 40px; padding: 30px; background: white; border-radius: 20px; border: 2px solid var(--primary); text-align: center; box-shadow: 0 8px 32px rgba(15,80,173,0.12);">
+                <div style="display: inline-block; padding: 10px 20px; background: rgba(15,80,173,0.1); border-radius: 10px; margin-bottom: 15px;">
+                    <p style="font-size: 1.05rem; margin: 0; font-weight: 700; color: var(--primary);">
                         💡 <strong>Cách thức hoạt động:</strong>
                     </p>
                 </div>
-                <p style="font-size: 1rem; margin: 0; line-height: 1.8;">
-                    Bạn đề xuất → <span style="color: #D3D3D3; font-weight: 700; background: rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 8px;">BACKLOG</span> 
+                <p style="font-size: 1rem; margin: 0; line-height: 1.8; color: var(--text);">
+                    Bạn đề xuất → <span style="color: #616161; font-weight: 700; background: #f5f5f5; padding: 4px 12px; border-radius: 8px;">BACKLOG</span> 
                     → Cộng đồng vote (10+ votes) hoặc Admin phê duyệt 
-                    → <span style="color: white; font-weight: 700; background: rgba(255,255,255,0.15); padding: 4px 12px; border-radius: 8px;">TODO</span> 
-                    → <span style="color: #FFA500; font-weight: 700; background: rgba(255,165,0,0.2); padding: 4px 12px; border-radius: 8px;">IN DEVELOPMENT</span> 
-                    → <span style="color: #90EE90; font-weight: 700; background: rgba(144,238,144,0.2); padding: 4px 12px; border-radius: 8px;">DONE</span>
+                    → <span style="color: var(--primary); font-weight: 700; background: rgba(15,80,173,0.1); padding: 4px 12px; border-radius: 8px;">TODO</span> 
+                    → <span style="color: #F57C00; font-weight: 700; background: rgba(255,152,0,0.1); padding: 4px 12px; border-radius: 8px;">IN DEVELOPMENT</span> 
+                    → <span style="color: #2E7D32; font-weight: 700; background: rgba(76,175,80,0.1); padding: 4px 12px; border-radius: 8px;">DONE</span>
                 </p>
-                <p style="font-size: 0.95rem; margin-top: 15px; opacity: 0.9; display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                    <span><i class="fas fa-vote-yea"></i> Mỗi email 1 vote</span>
+                <p style="font-size: 0.95rem; margin-top: 15px; color: var(--text-light); display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                    <span><i class="fas fa-vote-yea" style="color: var(--primary);"></i> Mỗi email 1 vote</span>
                     <span>•</span>
-                    <span><i class="fas fa-fire"></i> Tính năng hot nhất được ưu tiên</span>
+                    <span><i class="fas fa-fire" style="color: var(--accent);"></i> Tính năng hot nhất được ưu tiên</span>
                     <span>•</span>
-                    <span><i class="fas fa-users"></i> Cộng đồng quyết định</span>
+                    <span><i class="fas fa-users" style="color: var(--secondary);"></i> Cộng đồng quyết định</span>
                 </p>
             </div>
             
             <!-- CTA with better design -->
-            <div style="text-align: center; margin-top: 60px; padding: 40px 20px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 20px; border: 2px dashed rgba(255,255,255,0.3);">
+            <div style="text-align: center; margin-top: 60px; padding: 40px 20px; background: linear-gradient(135deg, rgba(15,80,173,0.05) 0%, rgba(26,109,217,0.05) 100%); border-radius: 20px; border: 2px dashed var(--primary);">
                 <div style="margin-bottom: 20px;">
                     <span style="font-size: 3rem;">🎉</span>
                 </div>
-                <h3 style="font-size: 2rem; margin-bottom: 15px; text-shadow: 0 2px 10px rgba(0,0,0,0.2);">Bắt Đầu Hành Trình Ngay Hôm Nay!</h3>
-                <p style="font-size: 1.15rem; margin-bottom: 30px; opacity: 0.95; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
-                    Đăng ký ngay để nhận <strong style="color: #FFD700;">Template FREE vĩnh viễn</strong><br>
-                    <span style="font-size: 1rem;">🎁 Full tính năng - Không giới hạn thời gian - 100% miễn phí!</span>
+                <h3 style="font-size: 2rem; margin-bottom: 15px; color: var(--primary); font-weight: 700;">Bắt Đầu Hành Trình Ngay Hôm Nay!</h3>
+                <p style="font-size: 1.15rem; margin-bottom: 30px; color: var(--text); max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                    Đăng ký ngay để nhận <strong style="color: var(--primary);">Template FREE vĩnh viễn</strong><br>
+                    <span style="font-size: 1rem; color: var(--text-light);">🎁 Full tính năng - Không giới hạn thời gian - 100% miễn phí!</span>
                 </p>
-                <button class="btn-register" onclick="openRegistrationModal('free')" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: var(--primary); font-size: 1.2rem; padding: 18px 50px; border-radius: 50px; box-shadow: 0 8px 25px rgba(255,215,0,0.4); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 35px rgba(255,215,0,0.6)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(255,215,0,0.4)'">
+                <button class="btn-register" onclick="openRegistrationModal('free')" style="background: var(--accent); color: white; font-size: 1.2rem; padding: 18px 50px; border-radius: 12px; box-shadow: 0 5px 20px rgba(229,162,27,0.4); transition: all 0.3s; border: none; cursor: pointer; font-weight: 700;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 30px rgba(229,162,27,0.6)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(229,162,27,0.4)'">
                     <i class="fas fa-download" style="margin-right: 10px;"></i> Tải Template Miễn Phí
                 </button>
             </div>
