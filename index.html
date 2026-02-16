@@ -990,6 +990,31 @@
         }
         
         /* Kanban Card Styles */
+        /* Kanban cards container with scrollbar */
+        .kanban-cards {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 8px;
+        }
+        
+        .kanban-cards::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .kanban-cards::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+        
+        .kanban-cards::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.3);
+            border-radius: 10px;
+        }
+        
+        .kanban-cards::-webkit-scrollbar-thumb:hover {
+            background: rgba(255,255,255,0.5);
+        }
+        
         .kanban-card {
             background: white;
             border-radius: 10px;
@@ -1121,11 +1146,8 @@
                     <p class="sub-headline">Freedom Wallet - Ứng dụng quản lý tài chính hiện đại dựa trên phương pháp 6 Hũ Tiền. Tích hợp Telegram Bot & AI để giúp bạn kiểm soát thu chi, xây dựng tài sản và đạt tự do tài chính.</p>
                     
                     <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 30px;">
-                        <button class="btn-register" onclick="openRegistrationModal('free')" style="flex: 1; min-width: 200px;">
-                            <i class="fas fa-gift"></i> ĐĂNG KÝ FREE
-                        </button>
-                        <button class="btn-register" onclick="openRegistrationModal('premium')" style="flex: 1; min-width: 200px; background: linear-gradient(135deg, #FFD700, #FFA500); color: var(--primary);">
-                            <i class="fas fa-crown"></i> DÙ THỬ PREMIUM
+                        <button class="btn-register" onclick="openRegistrationModal('free')" style="min-width: 250px;">
+                            <i class="fas fa-gift"></i> ĐĂNG KÝ FREE NGAY
                         </button>
                     </div>
                     
@@ -1145,6 +1167,100 @@
                 <div class="hero-image">
                     <img src="images/freedom-wallet.jpg" alt="Freedom Wallet App">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROADMAP KANBAN -->
+    <section id="roadmap-section" style="padding: 80px 20px; background: linear-gradient(135deg, #0F50AD 0%, #1a6dd9 100%); color: white;">
+        <div class="container">
+            <div class="section-title" style="color: white;">
+                <h2 style="color: white;">🗺️ Roadmap Phát Triển - Kanban Board</h2>
+                <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem; max-width: 800px; margin: 10px auto 0;">
+                    Xem tiến độ phát triển real-time • Đề xuất tính năng • Vote cho ý tưởng bạn thích!<br>
+                    <button onclick="openFeatureRequestModal()" style="margin-top: 15px; padding: 12px 30px; background: #FFD700; color: var(--primary); border: none; border-radius: 25px; font-weight: 700; cursor: pointer; font-size: 1rem; box-shadow: 0 4px 15px rgba(255,215,0,0.4);">
+                        <i class="fas fa-lightbulb"></i> Đề Xuất Tính Năng Mới
+                    </button>
+                </p>
+            </div>
+            
+            <!-- Kanban Board -->
+            <div class="kanban-board" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; max-width: 100%; overflow-x: auto;">
+                <!-- BACKLOG Column -->
+                <div class="kanban-column" style="background: rgba(128,128,128,0.15); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(128,128,128,0.5);">
+                        <h3 style="margin: 0; font-size: 1.1rem; color: #D3D3D3;">💡 BACKLOG</h3>
+                        <span id="backlog-count" class="card-count" style="background: rgba(128,128,128,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; color: #D3D3D3;">0</span>
+                    </div>
+                    <div id="backlog-cards" class="kanban-cards" style="display: flex; flex-direction: column; gap: 12px;">
+                        <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.7;">
+                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
+                            <p style="margin-top: 10px; font-size: 0.9rem;">Đang tải...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TO DO Column -->
+                <div class="kanban-column" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(255,255,255,0.3);">
+                        <h3 style="margin: 0; font-size: 1.1rem; color: white;">📋 TO DO</h3>
+                        <span id="todo-count" class="card-count" style="background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700;">0</span>
+                    </div>
+                    <div id="todo-cards" class="kanban-cards" style="display: flex; flex-direction: column; gap: 12px;">
+                        <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.7;">
+                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
+                            <p style="margin-top: 10px; font-size: 0.9rem;">Đang tải...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IN DEVELOPMENT Column -->
+                <div class="kanban-column" style="background: rgba(255,165,0,0.15); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(255,165,0,0.5);">
+                        <h3 style="margin: 0; font-size: 1.1rem; color: #FFA500;">🔨 IN DEVELOPMENT</h3>
+                        <span id="development-count" class="card-count" style="background: rgba(255,165,0,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; color: #FFA500;">0</span>
+                    </div>
+                    <div id="development-cards" class="kanban-cards" style="display: flex; flex-direction: column; gap: 12px;">
+                        <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.7;">
+                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
+                            <p style="margin-top: 10px; font-size: 0.9rem;">Đang tải...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DONE Column -->
+                <div class="kanban-column" style="background: rgba(144,238,144,0.15); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(144,238,144,0.5);">
+                        <h3 style="margin: 0; font-size: 1.1rem; color: #90EE90;">✅ DONE</h3>
+                        <span id="done-count" class="card-count" style="background: rgba(144,238,144,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; color: #90EE90;">0</span>
+                    </div>
+                    <div id="done-cards" class="kanban-cards" style="display: flex; flex-direction: column; gap: 12px;">
+                        <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.7;">
+                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
+                            <p style="margin-top: 10px; font-size: 0.9rem;">Đang tải...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Info Box -->
+            <div style="margin-top: 40px; padding: 25px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 15px; border: 2px solid rgba(255,255,255,0.2); text-align: center;">
+                <p style="font-size: 1rem; margin: 0; line-height: 1.6;">
+                    💡 <strong>Workflow:</strong> Đề xuất → <span style="color: #D3D3D3; font-weight: 600;">BACKLOG</span> → (Admin xét duyệt hoặc đạt 10+ votes) → <span style="color: white; font-weight: 600;">TODO</span> → <span style="color: #FFA500; font-weight: 600;">IN DEVELOPMENT</span> → DONE<br>
+                    <span style="font-size: 0.9rem; opacity: 0.85;">Mỗi email chỉ vote 1 lần • Tính năng có nhiều vote nhất được ưu tiên triển khai</span>
+                </p>
+            </div>
+            
+            <!-- CTA -->
+            <div style="text-align: center; margin-top: 50px;">
+                <h3 style="font-size: 2rem; margin-bottom: 20px;">Bắt Đầu Hành Trình Ngay Hôm Nay!</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 30px; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Đăng ký ngay để nhận <strong>Template FREE vĩnh viễn</strong><br>
+                    <span style="font-size: 0.95rem;">🎁 Full tính năng - Không giới hạn thời gian!</span>
+                </p>
+                <button class="btn-register" onclick="openRegistrationModal('free')" style="background: #FFD700; color: var(--primary); font-size: 1.2rem; padding: 18px 40px;">
+                    <i class="fas fa-download"></i> Tải Template Miễn Phí
+                </button>
             </div>
         </div>
     </section>
@@ -1603,101 +1719,7 @@
         </div>
     </section>
 
-    <!-- ROADMAP KANBAN -->
-    <section id="roadmap-section" style="padding: 80px 20px; background: linear-gradient(135deg, #0F50AD 0%, #1a6dd9 100%); color: white;">
-        <div class="container">
-            <div class="section-title" style="color: white;">
-                <h2 style="color: white;">🗺️ Roadmap Phát Triển - Kanban Board</h2>
-                <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem; max-width: 800px; margin: 10px auto 0;">
-                    Xem tiến độ phát triển real-time • Đề xuất tính năng • Vote cho ý tưởng bạn thích!<br>
-                    <button onclick="openFeatureRequestModal()" style="margin-top: 15px; padding: 12px 30px; background: #FFD700; color: var(--primary); border: none; border-radius: 25px; font-weight: 700; cursor: pointer; font-size: 1rem; box-shadow: 0 4px 15px rgba(255,215,0,0.4);">
-                        <i class="fas fa-lightbulb"></i> Đề Xuất Tính Năng Mới
-                    </button>
-                </p>
-            </div>
-            
-            <!-- Kanban Board -->
-            <div class="kanban-board" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; max-width: 100%; overflow-x: auto;">
-                <!-- BACKLOG Column -->
-                <div class="kanban-column" style="background: rgba(128,128,128,0.15); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; min-height: 400px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(128,128,128,0.5);">
-                        <h3 style="margin: 0; font-size: 1.1rem; color: #D3D3D3;">💡 BACKLOG</h3>
-                        <span id="backlog-count" class="card-count" style="background: rgba(128,128,128,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; color: #D3D3D3;">0</span>
-                    </div>
-                    <div id="backlog-cards" class="kanban-cards" style="display: flex; flex-direction: column; gap: 12px;">
-                        <!-- Cards will be loaded here -->
-                        <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.7;">
-                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
-                            <p style="margin-top: 10px; font-size: 0.9rem;">Đang tải...</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TO DO Column -->
-                <div class="kanban-column" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; min-height: 400px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(255,255,255,0.3);">
-                        <h3 style="margin: 0; font-size: 1.1rem; color: white;">📋 TO DO</h3>
-                        <span id="todo-count" class="card-count" style="background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700;">0</span>
-                    </div>
-                    <div id="todo-cards" class="kanban-cards" style="display: flex; flex-direction: column; gap: 12px;">
-                        <!-- Cards will be loaded here -->
-                        <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.7;">
-                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
-                            <p style="margin-top: 10px; font-size: 0.9rem;">Đang tải...</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- IN DEVELOPMENT Column (Merged: IN PROGRESS + IN REVIEW) -->
-                <div class="kanban-column" style="background: rgba(255,165,0,0.15); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; min-height: 400px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(255,165,0,0.5);">
-                        <h3 style="margin: 0; font-size: 1.1rem; color: #FFA500;">🔨 IN DEVELOPMENT</h3>
-                        <span id="development-count" class="card-count" style="background: rgba(255,165,0,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; color: #FFA500;">0</span>
-                    </div>
-                    <div id="development-cards" class="kanban-cards" style="display: flex; flex-direction: column; gap: 12px;">
-                        <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.7;">
-                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
-                            <p style="margin-top: 10px; font-size: 0.9rem;">Đang tải...</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- DONE Column -->
-                <div class="kanban-column" style="background: rgba(144,238,144,0.15); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; min-height: 400px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(144,238,144,0.5);">
-                        <h3 style="margin: 0; font-size: 1.1rem; color: #90EE90;">✅ DONE</h3>
-                        <span id="done-count" class="card-count" style="background: rgba(144,238,144,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; color: #90EE90;">0</span>
-                    </div>
-                    <div id="done-cards" class="kanban-cards" style="display: flex; flex-direction: column; gap: 12px;">
-                        <div class="loading-spinner" style="text-align: center; padding: 40px; opacity: 0.7;">
-                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
-                            <p style="margin-top: 10px; font-size: 0.9rem;">Đang tải...</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Info Box -->
-            <div style="margin-top: 40px; padding: 25px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 15px; border: 2px solid rgba(255,255,255,0.2); text-align: center;">
-                <p style="font-size: 1rem; margin: 0; line-height: 1.6;">
-                    💡 <strong>Workflow:</strong> Đề xuất → <span style="color: #D3D3D3; font-weight: 600;">BACKLOG</span> → (Admin xét duyệt hoặc đạt 10+ votes) → <span style="color: white; font-weight: 600;">TODO</span> → <span style="color: #FFA500; font-weight: 600;">IN DEVELOPMENT</span> → DONE<br>
-                    <span style="font-size: 0.9rem; opacity: 0.85;">Mỗi email chỉ vote 1 lần • Tính năng có nhiều vote nhất được ưu tiên triển khai</span>
-                </p>
-            </div>
-            
-            <!-- CTA -->
-            <div style="text-align: center; margin-top: 50px;">
-                <h3 style="font-size: 2rem; margin-bottom: 20px;">Bắt Đầu Hành Trình Ngay Hôm Nay!</h3>
-                <p style="font-size: 1.1rem; margin-bottom: 30px; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">
-                    Đăng ký ngay để nhận <strong>Template FREE vĩnh viễn</strong><br>
-                    <span style="font-size: 0.95rem;">🎁 Full tính năng - Không giới hạn thời gian!</span>
-                </p>
-                <button class="btn-register" onclick="openRegistrationModal('free')" style="background: #FFD700; color: var(--primary); font-size: 1.2rem; padding: 18px 40px;">
-                    <i class="fas fa-download"></i> Tải Template Miễn Phí
-                </button>
-            </div>
-        </div>
-    </section>
+    <!-- Roadmap moved up before Pain Points section -->
 
     <!-- FOOTER -->
     <footer>
@@ -1913,6 +1935,46 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- VOTE MODAL -->
+    <div id="voteModal" class="modal vote-modal">
+        <div class="modal-content" style="max-width: 480px;">
+            <button class="modal-close" onclick="closeVoteModal()">&times;</button>
+            
+            <div style="text-align: center; margin-bottom: 25px;">
+                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #FFD700, #FFA500); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 8px 20px rgba(255,215,0,0.3);">
+                    <i class="fas fa-vote-yea" style="font-size: 2.5rem; color: white;"></i>
+                </div>
+                <h2 class="modal-title" style="margin-bottom: 10px;">👍 Vote cho tính năng</h2>
+                <p id="voteFeatureTitle" style="font-size: 1.1rem; color: var(--primary); font-weight: 700; margin-bottom: 10px;"></p>
+                <p style="color: var(--text-light); font-size: 0.95rem;">Mỗi email chỉ được vote 1 lần</p>
+            </div>
+            
+            <form onsubmit="event.preventDefault(); submitVote();" style="margin-top: 30px;">
+                <div class="form-group">
+                    <label style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--text);">
+                        <i class="fas fa-envelope"></i> Email của bạn
+                    </label>
+                    <input 
+                        type="email" 
+                        id="voteEmail" 
+                        placeholder="example@email.com" 
+                        required 
+                        style="width: 100%; padding: 14px 18px; border: 2px solid #E0E0E0; border-radius: 12px; font-size: 1rem; transition: all 0.3s; font-family: inherit;"
+                        onfocus="this.style.borderColor='var(--primary)'; this.style.boxShadow='0 0 0 3px rgba(15,80,173,0.1)'"
+                        onblur="this.style.borderColor='#E0E0E0'; this.style.boxShadow='none'"
+                    >
+                    <p style="margin-top: 8px; font-size: 0.85rem; color: var(--text-light);">
+                        <i class="fas fa-info-circle"></i> Email chỉ dùng để kiểm tra duplicate, không spam
+                    </p>
+                </div>
+
+                <button type="submit" class="btn-submit" style="width: 100%; padding: 16px; background: linear-gradient(135deg, #FFD700, #FFA500); color: var(--primary); font-size: 1.1rem; font-weight: 700; border: none; border-radius: 12px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(255,215,0,0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255,215,0,0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255,215,0,0.3)'">
+                    <i class="fas fa-check-circle"></i> Xác Nhận Vote
+                </button>
+            </form>
         </div>
     </div>
 
@@ -2581,18 +2643,52 @@
         }
         
         // Vote for feature
+        // Vote email modal
+        function showVoteModal(featureId) {
+            const modal = document.getElementById('voteModal');
+            const featureTitleEl = document.getElementById('voteFeatureTitle');
+            const feature = kanbanFeatures.find(f => f.id === featureId);
+            
+            if (feature) {
+                featureTitleEl.textContent = feature.title;
+            }
+            
+            modal.dataset.featureId = featureId;
+            modal.classList.add('active');
+            document.getElementById('voteEmail').focus();
+        }
+        
+        function closeVoteModal() {
+            const modal = document.getElementById('voteModal');
+            modal.classList.remove('active');
+            document.getElementById('voteEmail').value = '';
+        }
+        
         async function voteForFeature(featureId) {
             if (userVotes[featureId]) {
                 alert('❌ Bạn đã vote cho tính năng này rồi!');
                 return;
             }
             
-            // Ask for email confirmation
-            const email = prompt('📧 Nhập email để xác nhận vote:');
+            // Show beautiful modal instead of prompt
+            showVoteModal(featureId);
+        }
+        
+        async function submitVote() {
+            const modal = document.getElementById('voteModal');
+            const featureId = modal.dataset.featureId;
+            const email = document.getElementById('voteEmail').value.trim();
+            
             if (!email || !email.includes('@')) {
                 alert('❌ Email không hợp lệ!');
                 return;
             }
+            
+            // Disable button while processing
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner"></span> Đang gửi...';
             
             try {
                 const response = await fetch(GOOGLE_SHEETS_URL, {
@@ -2619,6 +2715,9 @@
                     feature.votes = (parseInt(feature.votes) || 0) + 1;
                 }
                 
+                // Close modal
+                closeVoteModal();
+                
                 // Re-render board
                 renderKanbanBoard();
                 
@@ -2627,6 +2726,9 @@
             } catch (error) {
                 console.error('❌ Error voting:', error);
                 alert('❌ Có lỗi xảy ra. Vui lòng thử lại sau!');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
             }
         }
         
