@@ -1133,6 +1133,92 @@
             padding: 2px 6px;
             border-radius: 4px;
         }
+        
+        /* Roadmap Section Enhancements */
+        #roadmap-section {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #roadmap-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+            animation: backgroundFloat 20s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes backgroundFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        
+        .feature-request-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-request-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .feature-request-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .feature-request-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6) !important;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .roadmap-floating-icon {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        .roadmap-floating-icon:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .roadmap-floating-icon:nth-child(2) {
+            top: 60%;
+            right: 8%;
+            animation-delay: 2s;
+        }
+        
+        .roadmap-floating-icon:nth-child(3) {
+            bottom: 15%;
+            left: 10%;
+            animation-delay: 4s;
+        }
     </style>
 </head>
 <body>
@@ -1172,16 +1258,45 @@
     </section>
 
     <!-- ROADMAP KANBAN -->
-    <section id="roadmap-section" style="padding: 80px 20px; background: linear-gradient(135deg, #0F50AD 0%, #1a6dd9 100%); color: white;">
-        <div class="container">
+    <section id="roadmap-section" style="padding: 80px 20px; background: linear-gradient(135deg, #0F50AD 0%, #1a6dd9 100%); color: white; position: relative;">
+        <!-- Floating decorative icons -->
+        <div class="roadmap-floating-icon" style="font-size: 80px;">💡</div>
+        <div class="roadmap-floating-icon" style="font-size: 60px;">🚀</div>
+        <div class="roadmap-floating-icon" style="font-size: 70px;">✨</div>
+        
+        <div class="container" style="position: relative; z-index: 1;">
             <div class="section-title" style="color: white;">
-                <h2 style="color: white;">🗺️ Roadmap Phát Triển - Kanban Board</h2>
-                <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem; max-width: 800px; margin: 10px auto 0;">
-                    Xem tiến độ phát triển real-time • Đề xuất tính năng • Vote cho ý tưởng bạn thích!<br>
-                    <button onclick="openFeatureRequestModal()" style="margin-top: 15px; padding: 12px 30px; background: #FFD700; color: var(--primary); border: none; border-radius: 25px; font-weight: 700; cursor: pointer; font-size: 1rem; box-shadow: 0 4px 15px rgba(255,215,0,0.4);">
-                        <i class="fas fa-lightbulb"></i> Đề Xuất Tính Năng Mới
-                    </button>
+                <h2 style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.2);">🗺️ Roadmap Phát Triển - Kanban Board</h2>
+                <p style="color: rgba(255,255,255,0.95); font-size: 1.1rem; max-width: 800px; margin: 10px auto 30px; line-height: 1.8;">
+                    Xem tiến độ phát triển real-time • Đề xuất tính năng • Vote cho ý tưởng bạn thích!
                 </p>
+                
+                <!-- Feature Request Button with enhanced design -->
+                <div style="text-align: center; margin: 30px 0;">
+                    <button 
+                        onclick="openFeatureRequestModal()" 
+                        class="feature-request-btn"
+                        style="
+                            padding: 16px 40px; 
+                            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); 
+                            color: var(--primary); 
+                            border: none; 
+                            border-radius: 50px; 
+                            font-weight: 700; 
+                            cursor: pointer; 
+                            font-size: 1.1rem; 
+                            box-shadow: 0 6px 20px rgba(255,215,0,0.4);
+                            position: relative;
+                            z-index: 1;
+                        "
+                    >
+                        <i class="fas fa-lightbulb" style="margin-right: 8px;"></i> 
+                        <span style="position: relative; z-index: 2;">Đề Xuất Ý Tưởng Mới</span>
+                    </button>
+                    <p style="margin-top: 15px; font-size: 0.9rem; color: rgba(255,255,255,0.8);">
+                        🎁 Mỗi đóng góp đều được ghi nhận và đánh giá cao!
+                    </p>
+                </div>
             </div>
             
             <!-- Kanban Board -->
@@ -1243,23 +1358,41 @@
                 </div>
             </div>
             
-            <!-- Info Box -->
-            <div style="margin-top: 40px; padding: 25px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 15px; border: 2px solid rgba(255,255,255,0.2); text-align: center;">
-                <p style="font-size: 1rem; margin: 0; line-height: 1.6;">
-                    💡 <strong>Workflow:</strong> Đề xuất → <span style="color: #D3D3D3; font-weight: 600;">BACKLOG</span> → (Admin xét duyệt hoặc đạt 10+ votes) → <span style="color: white; font-weight: 600;">TODO</span> → <span style="color: #FFA500; font-weight: 600;">IN DEVELOPMENT</span> → DONE<br>
-                    <span style="font-size: 0.9rem; opacity: 0.85;">Mỗi email chỉ vote 1 lần • Tính năng có nhiều vote nhất được ưu tiên triển khai</span>
+            <!-- Info Box with enhanced design -->
+            <div style="margin-top: 40px; padding: 30px; background: rgba(255,255,255,0.15); backdrop-filter: blur(15px); border-radius: 20px; border: 2px solid rgba(255,255,255,0.25); text-align: center; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+                <div style="display: inline-block; padding: 10px 20px; background: rgba(255,215,0,0.2); border-radius: 10px; margin-bottom: 15px;">
+                    <p style="font-size: 1.05rem; margin: 0; font-weight: 600;">
+                        💡 <strong>Cách thức hoạt động:</strong>
+                    </p>
+                </div>
+                <p style="font-size: 1rem; margin: 0; line-height: 1.8;">
+                    Bạn đề xuất → <span style="color: #D3D3D3; font-weight: 700; background: rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 8px;">BACKLOG</span> 
+                    → Cộng đồng vote (10+ votes) hoặc Admin phê duyệt 
+                    → <span style="color: white; font-weight: 700; background: rgba(255,255,255,0.15); padding: 4px 12px; border-radius: 8px;">TODO</span> 
+                    → <span style="color: #FFA500; font-weight: 700; background: rgba(255,165,0,0.2); padding: 4px 12px; border-radius: 8px;">IN DEVELOPMENT</span> 
+                    → <span style="color: #90EE90; font-weight: 700; background: rgba(144,238,144,0.2); padding: 4px 12px; border-radius: 8px;">DONE</span>
+                </p>
+                <p style="font-size: 0.95rem; margin-top: 15px; opacity: 0.9; display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                    <span><i class="fas fa-vote-yea"></i> Mỗi email 1 vote</span>
+                    <span>•</span>
+                    <span><i class="fas fa-fire"></i> Tính năng hot nhất được ưu tiên</span>
+                    <span>•</span>
+                    <span><i class="fas fa-users"></i> Cộng đồng quyết định</span>
                 </p>
             </div>
             
-            <!-- CTA -->
-            <div style="text-align: center; margin-top: 50px;">
-                <h3 style="font-size: 2rem; margin-bottom: 20px;">Bắt Đầu Hành Trình Ngay Hôm Nay!</h3>
-                <p style="font-size: 1.1rem; margin-bottom: 30px; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">
-                    Đăng ký ngay để nhận <strong>Template FREE vĩnh viễn</strong><br>
-                    <span style="font-size: 0.95rem;">🎁 Full tính năng - Không giới hạn thời gian!</span>
+            <!-- CTA with better design -->
+            <div style="text-align: center; margin-top: 60px; padding: 40px 20px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 20px; border: 2px dashed rgba(255,255,255,0.3);">
+                <div style="margin-bottom: 20px;">
+                    <span style="font-size: 3rem;">🎉</span>
+                </div>
+                <h3 style="font-size: 2rem; margin-bottom: 15px; text-shadow: 0 2px 10px rgba(0,0,0,0.2);">Bắt Đầu Hành Trình Ngay Hôm Nay!</h3>
+                <p style="font-size: 1.15rem; margin-bottom: 30px; opacity: 0.95; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                    Đăng ký ngay để nhận <strong style="color: #FFD700;">Template FREE vĩnh viễn</strong><br>
+                    <span style="font-size: 1rem;">🎁 Full tính năng - Không giới hạn thời gian - 100% miễn phí!</span>
                 </p>
-                <button class="btn-register" onclick="openRegistrationModal('free')" style="background: #FFD700; color: var(--primary); font-size: 1.2rem; padding: 18px 40px;">
-                    <i class="fas fa-download"></i> Tải Template Miễn Phí
+                <button class="btn-register" onclick="openRegistrationModal('free')" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: var(--primary); font-size: 1.2rem; padding: 18px 50px; border-radius: 50px; box-shadow: 0 8px 25px rgba(255,215,0,0.4); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 35px rgba(255,215,0,0.6)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(255,215,0,0.4)'">
+                    <i class="fas fa-download" style="margin-right: 10px;"></i> Tải Template Miễn Phí
                 </button>
             </div>
         </div>
