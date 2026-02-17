@@ -1270,7 +1270,7 @@
         
         <div class="container" style="position: relative; z-index: 1;">
             <div class="section-title">
-                <h2 style="color: var(--primary); font-weight: 700;">🗺️ Roadmap Phát Triển - Kanban Board</h2>
+                <h2 style="color: var(--primary); font-weight: 700;">🗺️ Roadmap Phát Triển</h2>
                 <p style="color: var(--text-light); font-size: 1.1rem; max-width: 800px; margin: 10px auto 30px; line-height: 1.8;">
                     Xem tiến độ phát triển real-time • Đề xuất tính năng • Vote cho ý tưởng bạn thích!
                 </p>
@@ -2663,7 +2663,9 @@
             // Map old statuses to new IN DEVELOPMENT
             const statusMap = {
                 'IN PROGRESS': 'IN DEVELOPMENT',
-                'IN REVIEW': 'IN DEVELOPMENT'
+                'IN REVIEW': 'IN DEVELOPMENT',
+                'TO DO': 'TODO',  // Normalize 'TO DO' (with space) to 'TODO'
+                'IN_DEVELOPMENT': 'IN DEVELOPMENT'  // Normalize underscore version
             };
             
             kanbanFeatures.forEach(feature => {
