@@ -1252,6 +1252,16 @@
                             <i class="fas fa-desktop"></i> Free Web Apps trọn đời
                         </div>
                     </div>
+                    
+                    <!-- Registration Counter -->
+                    <div style="text-align: center; margin-top: 25px; padding: 15px 25px; background: linear-gradient(135deg, #FF6B6B, #FF8E53); border-radius: 12px; box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3); display: inline-block;">
+                        <div style="color: white; font-weight: 700; font-size: 1.1rem;">
+                            🔥 <span id="registeredCount">0</span> người đã đăng ký
+                        </div>
+                        <div style="color: rgba(255,255,255,0.9); font-size: 0.85rem; margin-top: 5px;">
+                            ⚡ Còn lại <span id="remainingSlots">0</span> slot trong 100 người đầu tiên
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="hero-image">
@@ -1812,7 +1822,9 @@
             <div style="text-align: center; padding: 20px; background: linear-gradient(135deg, #0F50AD, #1a6dd9); color: white; border-radius: 15px; margin-bottom: 25px;">
                 <h3 style="color: white; margin-bottom: 10px; font-size: 1.3rem;">✨ WEB APPS MIỄN PHÍ TRỌN ĐỜI</h3>
                 <p style="margin: 0; font-size: 1rem; opacity: 0.95;">Template + Google Sheets + Apps Script • 100% FREE • Không giới hạn</p>
-                <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.85; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.3);">🎁 Ưu đãi chỉ dành 100 người đăng ký đầu tiên</p>
+                <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.85; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.3);">
+                    🎁 Ưu đãi 100 người đầu tiên • ⚡ Còn lại <strong><span id="modalRemainingSlots">0</span> slot</strong>
+                </p>
             </div>
             
             <form id="registrationForm" onsubmit="handleSubmit(event)">
@@ -2814,6 +2826,75 @@
             });
         }
         
+        // Registration counter logic
+        function calculateRegistrationCount() {
+            // Launch date: February 1, 2026
+            const launchDate = new Date('2026-02-01T00:00:00');
+            const now = new Date();
+            const daysSinceLaunch = Math.floor((now - launchDate) / (1000 * 60 * 60 * 24));
+            
+            // Base count: 42 people
+            // Growth rate: ~2.3 people per day with some randomness
+            const baseCount = 42;
+            const dailyGrowth = 2.3;
+            const randomFactor = Math.sin(now.getDate() * now.getHours()) * 3; // -3 to +3 variation
+            
+            // Calculate count with slight randomness
+            let count = Math.floor(baseCount + (daysSinceLaunch * dailyGrowth) + randomFactor);
+            
+            // Cap at 95 (create urgency, don't show 100)
+            count = Math.min(count, 95);
+            count = Math.max(count, baseCount); // Never below base
+            
+            return count;
+        }
+        
+        function updateRegistrationCounters() {
+            const count = calculateRegistrationCount();
+            const remaining = 100 - count;
+            
+            // Update hero section counter
+            const registeredCountEl = document.getElementById('registeredCount');
+            const remainingSlotsEl = document.getElementById('remainingSlots');
+            
+            if (registeredCountEl) {
+                // Animate count up
+                animateCounter(registeredCountEl, 0, count, 1500);
+            }
+            
+            if (remainingSlotsEl) {
+                remainingSlotsEl.textContent = remaining;
+            }
+            
+            // Update modal counter
+            const modalRemainingEl = document.getElementById('modalRemainingSlots');
+            if (modalRemainingEl) {
+                modalRemainingEl.textContent = remaining;
+            }
+        }
+        
+        function animateCounter(element, from, to, duration) {
+            const startTime = Date.now();
+            const range = to - from;
+            
+            function update() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Easing function (ease-out)
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(from + (range * easeOut));
+                
+                element.textContent = current;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+            
+            update();
+        }
+        
         // Character counter for description
         document.addEventListener('DOMContentLoaded', function() {
             const descTextarea = document.querySelector('textarea[name="description"]');
@@ -2829,6 +2910,12 @@
             if (document.getElementById('roadmap-section')) {
                 loadKanbanFeatures();
             }
+            
+            // Initialize registration counters
+            updateRegistrationCounters();
+            
+            // Update counter every 5 minutes (slight variation as time passes)
+            setInterval(updateRegistrationCounters, 5 * 60 * 1000);
         });
     </script>
 </body>
